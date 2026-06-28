@@ -1,0 +1,60 @@
+{
+  "file_count": 10,
+  "files": [
+    {
+      "bytes": 5984591,
+      "file_path": "data/raw/oas/SRR11528761_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 5709487,
+      "file_path": "data/raw/oas/SRR11528762_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 105743,
+      "file_path": "data/raw/oas/SRR10358523_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 57326,
+      "file_path": "data/raw/oas/SRR10358524_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 645999,
+      "file_path": "data/raw/oas/SRR10358525_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 2387842,
+      "file_path": "data/raw/oas/SRR9179273_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 2702485,
+      "file_path": "data/raw/oas/SRR9179274_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 4288571,
+      "file_path": "data/raw/oas/SRR9179275_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 3974382,
+      "file_path": "data/raw/oas/SRR9179276_paired.csv.gz",
+      "status": "downloaded"
+    },
+    {
+      "bytes": 3462028,
+      "file_path": "data/raw/oas/SRR9179277_paired.csv.gz",
+      "status": "downloaded"
+    }
+  ],
+  "raw_dir": "data/raw/oas",
+  "status": "available",
+  "status_counts": {
+    "downloaded": 10
+  }
+}

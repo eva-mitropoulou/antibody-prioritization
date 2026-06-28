@@ -1,0 +1,68 @@
+{
+  "artifacts": {
+    "docking_next_steps": "reports/docking_next_steps.md",
+    "metrics_json": "reports/metrics/structure_metadata_summary.json",
+    "report": "reports/structure_metadata_report.md",
+    "structure_annotated_shortlist": "reports/structure_annotated_shortlist.csv"
+  },
+  "docking_run_by_default": false,
+  "input_path": "reports/diversity_aware_existing_record_shortlist.csv",
+  "row_count": 23,
+  "status": "available",
+  "structure_available_count": 3,
+  "structure_missing_count": 20,
+  "structure_workflow_status_counts": {
+    "structure_metadata_available": 3,
+    "structure_metadata_missing": 20
+  },
+  "target_region_by_structure_status": {
+    "Mpro": {
+      "structure_metadata_available": 1,
+      "structure_metadata_missing": 0
+    },
+    "Nsp3; PLpro": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 2
+    },
+    "Nsp9": {
+      "structure_metadata_available": 1,
+      "structure_metadata_missing": 0
+    },
+    "S; NTD": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 3
+    },
+    "S; RBD": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 3
+    },
+    "S; RBD/non-RBD": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 1
+    },
+    "S; S1": {
+      "structure_metadata_available": 1,
+      "structure_metadata_missing": 1
+    },
+    "S; S2": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 3
+    },
+    "S; S2 (HR2 Peptide)": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 2
+    },
+    "S; Unk": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 3
+    },
+    "S; non-RBD": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 1
+    },
+    "unknown_target_region": {
+      "structure_metadata_available": 0,
+      "structure_metadata_missing": 1
+    }
+  }
+}

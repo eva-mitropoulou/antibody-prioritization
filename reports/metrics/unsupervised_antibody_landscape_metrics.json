@@ -1,0 +1,112 @@
+{
+  "artifacts": {
+    "clusters_csv": "reports/unsupervised_antibody_clusters.csv",
+    "figure": "reports/figures/unsupervised_antibody_landscape.png",
+    "metrics_json": "reports/metrics/unsupervised_antibody_landscape_metrics.json",
+    "report": "reports/unsupervised_antibody_landscape_report.md"
+  },
+  "assigned_row_count": 5573,
+  "assigned_row_fraction": 1.0,
+  "cluster_info": {
+    "method": "KMeans",
+    "n_clusters": 9,
+    "silhouette_score": 0.145587061939435
+  },
+  "cluster_size_counts": {
+    "0": 113,
+    "1": 1599,
+    "2": 176,
+    "3": 404,
+    "4": 1613,
+    "5": 178,
+    "6": 477,
+    "7": 601,
+    "8": 412
+  },
+  "feature_info": {
+    "path": "data/processed/embeddings_ablang2_pair.npy",
+    "shape": [
+      5573,
+      960
+    ]
+  },
+  "feature_source": "cached_pair_embeddings",
+  "input_path": "data/processed/neutral_sequence_classification_ml.csv",
+  "label_enrichment_after_clustering": {
+    "0": {
+      "label_counts": {
+        "0": 43,
+        "1": 70
+      },
+      "positive_fraction_labeled": 0.6194690265486725,
+      "row_count": 113
+    },
+    "1": {
+      "label_counts": {
+        "0": 723,
+        "1": 876
+      },
+      "positive_fraction_labeled": 0.5478424015009381,
+      "row_count": 1599
+    },
+    "2": {
+      "label_counts": {
+        "0": 120,
+        "1": 56
+      },
+      "positive_fraction_labeled": 0.3181818181818182,
+      "row_count": 176
+    },
+    "3": {
+      "label_counts": {
+        "0": 181,
+        "1": 223
+      },
+      "positive_fraction_labeled": 0.551980198019802,
+      "row_count": 404
+    },
+    "4": {
+      "label_counts": {
+        "0": 693,
+        "1": 920
+      },
+      "positive_fraction_labeled": 0.5703657780533168,
+      "row_count": 1613
+    },
+    "5": {
+      "label_counts": {
+        "0": 86,
+        "1": 92
+      },
+      "positive_fraction_labeled": 0.5168539325842697,
+      "row_count": 178
+    },
+    "6": {
+      "label_counts": {
+        "0": 58,
+        "1": 419
+      },
+      "positive_fraction_labeled": 0.8784067085953878,
+      "row_count": 477
+    },
+    "7": {
+      "label_counts": {
+        "0": 227,
+        "1": 374
+      },
+      "positive_fraction_labeled": 0.6222961730449251,
+      "row_count": 601
+    },
+    "8": {
+      "label_counts": {
+        "0": 161,
+        "1": 251
+      },
+      "positive_fraction_labeled": 0.6092233009708737,
+      "row_count": 412
+    }
+  },
+  "labels_used_for_clustering": false,
+  "row_count": 5573,
+  "status": "available"
+}

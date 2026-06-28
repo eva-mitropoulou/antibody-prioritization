@@ -1,0 +1,65 @@
+{
+  "artifacts": {
+    "metrics_json": "reports/metrics/oas_background_retrieval_metrics.json",
+    "report": "reports/oas_background_retrieval_report.md",
+    "score_distribution_figure": "reports/figures/oas_retrieval_score_distribution.png",
+    "scores_csv": "reports/oas_background_retrieval_scores.csv",
+    "sequence_space_figure": "reports/figures/oas_background_sequence_space.png",
+    "topk_enrichment_figure": "reports/figures/oas_retrieval_topk_enrichment.png"
+  },
+  "background_label_semantics": "OAS paired records are unknown-target natural background, not assayed negative-class labels.",
+  "balanced_rows_per_class": 11748,
+  "classification_task_mixed_with_main_task": false,
+  "exact_overlap_count": 5,
+  "input_paths": {
+    "oas_background": "data/processed/oas/oas_paired_standardized.csv",
+    "project_records": "data/processed/neutral_prepared_sequences.csv"
+  },
+  "model": {
+    "classifier": "LogisticRegression(max_iter=5000, class_weight=\"balanced\")",
+    "vectorizer": "TfidfVectorizer(analyzer=\"char\", ngram_range=(3,5), min_df=2, max_features=50000)"
+  },
+  "oas_row_count_after_overlap_removal": 17877,
+  "oas_row_count_before_overlap_removal": 17882,
+  "pr_auc": 0.9897284241972597,
+  "project_row_count_before_balance": 11748,
+  "random_baseline_positive_fraction": 0.5,
+  "retrieval_table_row_count": 23496,
+  "roc_auc": 0.9920802172928928,
+  "split": {
+    "random_state": 42,
+    "strategy": "stratified_train_test_split",
+    "test_label_counts": {
+      "oas_unknown_background": 2350,
+      "project_record": 2350
+    },
+    "test_rows": 4700,
+    "test_size": 0.2,
+    "train_label_counts": {
+      "oas_unknown_background": 9398,
+      "project_record": 9398
+    },
+    "train_rows": 18796
+  },
+  "status": "available",
+  "topk_enrichment": {
+    "100": {
+      "enrichment_over_random_baseline": 2.0,
+      "project_record_count": 100,
+      "project_record_fraction": 1.0,
+      "selected_count": 100
+    },
+    "50": {
+      "enrichment_over_random_baseline": 2.0,
+      "project_record_count": 50,
+      "project_record_fraction": 1.0,
+      "selected_count": 50
+    },
+    "500": {
+      "enrichment_over_random_baseline": 1.992,
+      "project_record_count": 498,
+      "project_record_fraction": 0.996,
+      "selected_count": 500
+    }
+  }
+}

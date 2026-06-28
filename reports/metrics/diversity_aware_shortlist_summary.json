@@ -1,0 +1,87 @@
+{
+  "artifacts": {
+    "probability_distribution": "reports/figures/shortlist_probability_distribution.png",
+    "record_category_counts": "reports/figures/shortlist_record_category_counts.png",
+    "report": "reports/diversity_aware_shortlist_report.md",
+    "shortlist_csv": "reports/diversity_aware_existing_record_shortlist.csv",
+    "summary_json": "reports/metrics/diversity_aware_shortlist_summary.json",
+    "target_region_counts": "reports/figures/shortlist_target_region_counts.png",
+    "tier_counts": "reports/figures/shortlist_tier_counts.png"
+  },
+  "candidate_pool_record_category_counts": {
+    "conflict_label": 165,
+    "known_neutralising": 600,
+    "missing_label": 329
+  },
+  "candidate_pool_size_before_diversity_filtering": 1094,
+  "candidate_pool_target_region_counts": {
+    "Mpro": 1,
+    "Nsp3; PLpro": 3,
+    "Nsp9": 1,
+    "S; NTD": 11,
+    "S; RBD": 980,
+    "S; RBD/non-RBD": 1,
+    "S; S1": 2,
+    "S; S2": 37,
+    "S; S2 (HR2 Peptide)": 7,
+    "S; Unk": 43,
+    "S; non-RBD": 7,
+    "unknown_target_region": 1
+  },
+  "conflict_label_shortlist_count": 0,
+  "diversity_group_count": 23,
+  "fallback_used": null,
+  "final_shortlist_size": 23,
+  "input_path": "reports/broader_existing_record_prioritization_table.csv",
+  "input_record_count": 11747,
+  "missing_label_shortlist_count": 17,
+  "model_disagreement_shortlist_count": 0,
+  "probability_summary": {
+    "max": 0.9853490815892036,
+    "mean": 0.8750212510030128,
+    "median": 0.8692090298810903,
+    "min": 0.8001050285175236
+  },
+  "shortlist_record_category_counts": {
+    "known_neutralising": 6,
+    "missing_label": 17
+  },
+  "shortlist_target_region_counts": {
+    "Mpro": 1,
+    "Nsp3; PLpro": 2,
+    "Nsp9": 1,
+    "S; NTD": 3,
+    "S; RBD": 3,
+    "S; RBD/non-RBD": 1,
+    "S; S1": 2,
+    "S; S2": 3,
+    "S; S2 (HR2 Peptide)": 2,
+    "S; Unk": 3,
+    "S; non-RBD": 1,
+    "unknown_target_region": 1
+  },
+  "shortlist_tier_counts": {
+    "tier_1": 13,
+    "tier_2": 10
+  },
+  "shortlist_top_target_region_counts": {
+    "Mpro": 1,
+    "Nsp3; PLpro": 2,
+    "Nsp9": 1,
+    "S; NTD": 3,
+    "S; RBD": 3,
+    "S; RBD/non-RBD": 1,
+    "S; S1": 2,
+    "S; S2": 3,
+    "S; S2 (HR2 Peptide)": 2,
+    "S; Unk": 3,
+    "S; non-RBD": 1,
+    "unknown_target_region": 1
+  },
+  "source_columns": {
+    "cdrh3_source": "missing",
+    "v_gene_group_source": "diversity_group_prefix"
+  },
+  "status": "available",
+  "warnings": []
+}

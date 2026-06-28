@@ -1,0 +1,84 @@
+{
+  "artifacts": {
+    "heavy_only_confusion_matrix": "reports/figures/kmer_baseline_confusion_matrix_heavy_only.png",
+    "heavy_only_model": "models/kmer_logreg_heavy_only.joblib",
+    "metrics_json": "reports/metrics/kmer_baseline_metrics.json",
+    "pair_text_confusion_matrix": "reports/figures/kmer_baseline_confusion_matrix_pair_text.png",
+    "pair_text_model": "models/kmer_logreg_pair_text.joblib",
+    "pr_curve": "reports/figures/kmer_baseline_pr_curve.png",
+    "report": "reports/kmer_baseline_report.md",
+    "roc_curve": "reports/figures/kmer_baseline_roc_curve.png"
+  },
+  "input_path": "data/processed/covabdab_neutralisation_ml.csv",
+  "label_counts": {
+    "0": 2292,
+    "1": 3281
+  },
+  "models": {
+    "heavy_only": {
+      "accuracy": 0.6573991031390135,
+      "average_precision": 0.7934427802551455,
+      "balanced_accuracy": 0.6653332403422074,
+      "confusion_matrix": [
+        [
+          326,
+          133
+        ],
+        [
+          249,
+          407
+        ]
+      ],
+      "f1": 0.6806020066889632,
+      "precision": 0.7537037037037037,
+      "recall": 0.6204268292682927,
+      "roc_auc": 0.7262739784260588
+    },
+    "majority_baseline": {
+      "accuracy": 0.5883408071748879,
+      "average_precision": 0.5883408071748879,
+      "balanced_accuracy": 0.5,
+      "confusion_matrix": [
+        [
+          0,
+          459
+        ],
+        [
+          0,
+          656
+        ]
+      ],
+      "f1": 0.740824392998306,
+      "precision": 0.5883408071748879,
+      "recall": 1.0,
+      "roc_auc": 0.5
+    },
+    "pair_text": {
+      "accuracy": 0.6816143497757847,
+      "average_precision": 0.8157273776077183,
+      "balanced_accuracy": 0.6931093575641638,
+      "confusion_matrix": [
+        [
+          348,
+          111
+        ],
+        [
+          244,
+          412
+        ]
+      ],
+      "f1": 0.6988973706530959,
+      "precision": 0.7877629063097514,
+      "recall": 0.6280487804878049,
+      "roc_auc": 0.7534107816568363
+    }
+  },
+  "row_count": 5573,
+  "split": {
+    "random_state": 42,
+    "stratify": "label",
+    "test_rows": 1115,
+    "test_size": 0.2,
+    "train_rows": 4458
+  }
+}

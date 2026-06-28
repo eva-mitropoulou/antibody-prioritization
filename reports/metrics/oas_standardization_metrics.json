@@ -1,0 +1,139 @@
+{
+  "duplicate_pair_count_removed": 9890,
+  "file_metrics": [
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR10358523_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 100,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 100,
+      "rows_after_sequence_cleaning": 100,
+      "rows_emitted_before_global_dedup": 100,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR10358524_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 47,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 47,
+      "rows_after_sequence_cleaning": 47,
+      "rows_emitted_before_global_dedup": 47,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR10358525_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 624,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 624,
+      "rows_after_sequence_cleaning": 624,
+      "rows_emitted_before_global_dedup": 624,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR11528761_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 5742,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 5741,
+      "rows_after_sequence_cleaning": 5742,
+      "rows_emitted_before_global_dedup": 5741,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR11528762_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 5646,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 5644,
+      "rows_after_sequence_cleaning": 5646,
+      "rows_emitted_before_global_dedup": 5644,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR9179273_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 2287,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 2287,
+      "rows_after_sequence_cleaning": 2287,
+      "rows_emitted_before_global_dedup": 2287,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR9179274_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 2557,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 2557,
+      "rows_after_sequence_cleaning": 2557,
+      "rows_emitted_before_global_dedup": 2557,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR9179275_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 3942,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 3942,
+      "rows_after_sequence_cleaning": 3942,
+      "rows_emitted_before_global_dedup": 3942,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR9179276_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 3654,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 3654,
+      "rows_after_sequence_cleaning": 3654,
+      "rows_emitted_before_global_dedup": 3654,
+      "status": "available"
+    },
+    {
+      "column_count": 180,
+      "file_path": "data/raw/oas/SRR9179277_paired.csv.gz",
+      "header_skiprows": 1,
+      "heavy_column": "sequence_alignment_aa_heavy",
+      "input_rows_scanned": 3176,
+      "light_column": "sequence_alignment_aa_light",
+      "rows_after_length_filter": 3176,
+      "rows_after_sequence_cleaning": 3176,
+      "rows_emitted_before_global_dedup": 3176,
+      "status": "available"
+    }
+  ],
+  "max_output_rows": 50000,
+  "output_columns": [
+    "heavy_sequence",
+    "light_sequence",
+    "sequence_pair_text",
+    "source_file",
+    "background_source"
+  ],
+  "output_path": "data/processed/oas/oas_paired_standardized.csv",
+  "raw_dir": "data/raw/oas",
+  "raw_file_count": 10,
+  "rows_before_global_dedup": 27772,
+  "standardized_row_count": 17882,
+  "status": "available"
+}

@@ -1,0 +1,542 @@
+{
+  "columns": {
+    "group_feature_b_j": {
+      "exists": true,
+      "missing_count": 481,
+      "non_missing_count": 5092,
+      "top_20_values": [
+        {
+          "count": 928,
+          "value_id": "value_e0fa8dc1488e"
+        },
+        {
+          "count": 819,
+          "value_id": "value_916cbc3b9720"
+        },
+        {
+          "count": 741,
+          "value_id": "value_e6477b7557f1"
+        },
+        {
+          "count": 668,
+          "value_id": "value_556fab884bb9"
+        },
+        {
+          "count": 596,
+          "value_id": "value_2319485c70c7"
+        },
+        {
+          "count": 498,
+          "value_id": "value_59b377153e72"
+        },
+        {
+          "count": 350,
+          "value_id": "value_975f9c9af7e4"
+        },
+        {
+          "count": 327,
+          "value_id": "value_7fe59df89193"
+        },
+        {
+          "count": 42,
+          "value_id": "value_8010ddc515ee"
+        },
+        {
+          "count": 29,
+          "value_id": "value_d16578498850"
+        },
+        {
+          "count": 28,
+          "value_id": "value_63d3b665f805"
+        },
+        {
+          "count": 21,
+          "value_id": "value_387d841661b9"
+        },
+        {
+          "count": 17,
+          "value_id": "value_66d0a98bfc39"
+        },
+        {
+          "count": 10,
+          "value_id": "value_8883fd2b6256"
+        },
+        {
+          "count": 7,
+          "value_id": "value_f00611ed764f"
+        },
+        {
+          "count": 4,
+          "value_id": "value_8ef77ed7f57c"
+        },
+        {
+          "count": 2,
+          "value_id": "value_31e69a1df661"
+        },
+        {
+          "count": 2,
+          "value_id": "value_d3998a254805"
+        },
+        {
+          "count": 1,
+          "value_id": "value_f4e8f969df1b"
+        },
+        {
+          "count": 1,
+          "value_id": "value_ca83b4f912f8"
+        }
+      ],
+      "unique_non_missing_count": 21,
+      "useful_for_grouping": true
+    },
+    "group_feature_b_v": {
+      "exists": true,
+      "missing_count": 481,
+      "non_missing_count": 5092,
+      "top_20_values": [
+        {
+          "count": 761,
+          "value_id": "value_5f52f240679a"
+        },
+        {
+          "count": 444,
+          "value_id": "value_531fb9726c25"
+        },
+        {
+          "count": 319,
+          "value_id": "value_ea669bea3bd0"
+        },
+        {
+          "count": 273,
+          "value_id": "value_730070a2b2d2"
+        },
+        {
+          "count": 243,
+          "value_id": "value_e5f8026eff37"
+        },
+        {
+          "count": 238,
+          "value_id": "value_7a9ae7887d4f"
+        },
+        {
+          "count": 234,
+          "value_id": "value_0e0d87c6b64f"
+        },
+        {
+          "count": 225,
+          "value_id": "value_73d6aab1864d"
+        },
+        {
+          "count": 207,
+          "value_id": "value_d007ee2ec7f8"
+        },
+        {
+          "count": 194,
+          "value_id": "value_3a156d31b79a"
+        },
+        {
+          "count": 155,
+          "value_id": "value_a32784bd95b8"
+        },
+        {
+          "count": 142,
+          "value_id": "value_e09d6d47aa87"
+        },
+        {
+          "count": 142,
+          "value_id": "value_aae348ca5427"
+        },
+        {
+          "count": 141,
+          "value_id": "value_a73354ebe5a5"
+        },
+        {
+          "count": 122,
+          "value_id": "value_a0f3d046449a"
+        },
+        {
+          "count": 84,
+          "value_id": "value_fdc0bdeb0f6e"
+        },
+        {
+          "count": 76,
+          "value_id": "value_5c52798c862d"
+        },
+        {
+          "count": 76,
+          "value_id": "value_9fc523a3ce0f"
+        },
+        {
+          "count": 70,
+          "value_id": "value_dfcb375ba0e9"
+        },
+        {
+          "count": 69,
+          "value_id": "value_a5e5e8f1ea81"
+        }
+      ],
+      "unique_non_missing_count": 106,
+      "useful_for_grouping": true
+    },
+    "group_feature_cdr3": {
+      "exists": true,
+      "missing_count": 0,
+      "non_missing_count": 5573,
+      "top_20_values": [
+        {
+          "count": 15,
+          "value_id": "value_db548ffa0bc8"
+        },
+        {
+          "count": 7,
+          "value_id": "value_9ded03292d5d"
+        },
+        {
+          "count": 7,
+          "value_id": "value_0092fc5b0837"
+        },
+        {
+          "count": 6,
+          "value_id": "value_557ce940b147"
+        },
+        {
+          "count": 6,
+          "value_id": "value_dc62d22d1bca"
+        },
+        {
+          "count": 6,
+          "value_id": "value_17b7897dcfab"
+        },
+        {
+          "count": 6,
+          "value_id": "value_3a10d1dd2deb"
+        },
+        {
+          "count": 5,
+          "value_id": "value_a674334b5330"
+        },
+        {
+          "count": 5,
+          "value_id": "value_e1d7ee322cbe"
+        },
+        {
+          "count": 5,
+          "value_id": "value_9c2f1ebc2743"
+        },
+        {
+          "count": 5,
+          "value_id": "value_2cb792ead203"
+        },
+        {
+          "count": 4,
+          "value_id": "value_5303cd37998c"
+        },
+        {
+          "count": 4,
+          "value_id": "value_fba0b5826da2"
+        },
+        {
+          "count": 4,
+          "value_id": "value_12d9f36e491f"
+        },
+        {
+          "count": 4,
+          "value_id": "value_acd833cef3c6"
+        },
+        {
+          "count": 4,
+          "value_id": "value_b3f6a81f25e0"
+        },
+        {
+          "count": 4,
+          "value_id": "value_3bd7ac80cf84"
+        },
+        {
+          "count": 4,
+          "value_id": "value_5b2e3916f758"
+        },
+        {
+          "count": 3,
+          "value_id": "value_936c6ad54787"
+        },
+        {
+          "count": 3,
+          "value_id": "value_d5768ef01d92"
+        }
+      ],
+      "unique_non_missing_count": 5245,
+      "useful_for_grouping": false
+    },
+    "group_feature_j": {
+      "exists": true,
+      "missing_count": 163,
+      "non_missing_count": 5410,
+      "top_20_values": [
+        {
+          "count": 2044,
+          "value_id": "value_396df9ba3504"
+        },
+        {
+          "count": 1236,
+          "value_id": "value_053b309a2ce0"
+        },
+        {
+          "count": 706,
+          "value_id": "value_f799e3bc966e"
+        },
+        {
+          "count": 637,
+          "value_id": "value_1036293ac249"
+        },
+        {
+          "count": 230,
+          "value_id": "value_3bc815231536"
+        },
+        {
+          "count": 223,
+          "value_id": "value_02596ffb3da0"
+        },
+        {
+          "count": 153,
+          "value_id": "value_b75eeb8777ac"
+        },
+        {
+          "count": 46,
+          "value_id": "value_817d626968ed"
+        },
+        {
+          "count": 42,
+          "value_id": "value_2dcaa4fddd1d"
+        },
+        {
+          "count": 36,
+          "value_id": "value_13ccfbf7dbfd"
+        },
+        {
+          "count": 20,
+          "value_id": "value_e61151475eba"
+        },
+        {
+          "count": 14,
+          "value_id": "value_ca25ea3ef522"
+        },
+        {
+          "count": 9,
+          "value_id": "value_21fdbc85a5ef"
+        },
+        {
+          "count": 5,
+          "value_id": "value_2304f6091281"
+        },
+        {
+          "count": 3,
+          "value_id": "value_6bfc01aa0bba"
+        },
+        {
+          "count": 2,
+          "value_id": "value_065a130627b0"
+        },
+        {
+          "count": 2,
+          "value_id": "value_7c2d7abf7af5"
+        },
+        {
+          "count": 1,
+          "value_id": "value_337c503301aa"
+        },
+        {
+          "count": 1,
+          "value_id": "value_ec39c1e7f5e2"
+        }
+      ],
+      "unique_non_missing_count": 19,
+      "useful_for_grouping": true
+    },
+    "group_feature_v": {
+      "exists": true,
+      "missing_count": 163,
+      "non_missing_count": 5410,
+      "top_20_values": [
+        {
+          "count": 661,
+          "value_id": "value_7ad05caf3010"
+        },
+        {
+          "count": 416,
+          "value_id": "value_46e93961f256"
+        },
+        {
+          "count": 300,
+          "value_id": "value_cde5be1fd5f9"
+        },
+        {
+          "count": 251,
+          "value_id": "value_65215e290c76"
+        },
+        {
+          "count": 251,
+          "value_id": "value_57b8eced2444"
+        },
+        {
+          "count": 221,
+          "value_id": "value_e648c591fa5d"
+        },
+        {
+          "count": 206,
+          "value_id": "value_ea321d935902"
+        },
+        {
+          "count": 202,
+          "value_id": "value_ee3e74e405e2"
+        },
+        {
+          "count": 199,
+          "value_id": "value_65b31eb84e92"
+        },
+        {
+          "count": 187,
+          "value_id": "value_a76b65f96ef2"
+        },
+        {
+          "count": 171,
+          "value_id": "value_d04655be8372"
+        },
+        {
+          "count": 166,
+          "value_id": "value_fe3c9193e8c2"
+        },
+        {
+          "count": 134,
+          "value_id": "value_b2fc3f4b2a78"
+        },
+        {
+          "count": 126,
+          "value_id": "value_0123663f9c90"
+        },
+        {
+          "count": 123,
+          "value_id": "value_8afa8f76180b"
+        },
+        {
+          "count": 116,
+          "value_id": "value_0c244e7adc07"
+        },
+        {
+          "count": 105,
+          "value_id": "value_e4f1ad870865"
+        },
+        {
+          "count": 103,
+          "value_id": "value_79ae027bddea"
+        },
+        {
+          "count": 96,
+          "value_id": "value_ecae1af50818"
+        },
+        {
+          "count": 91,
+          "value_id": "value_1ce2573dfa57"
+        }
+      ],
+      "unique_non_missing_count": 93,
+      "useful_for_grouping": true
+    },
+    "metadata_target_region": {
+      "exists": true,
+      "missing_count": 3,
+      "non_missing_count": 5570,
+      "top_20_values": [
+        {
+          "count": 4425,
+          "value_id": "value_983df8d7b4d1"
+        },
+        {
+          "count": 426,
+          "value_id": "value_3d147700270d"
+        },
+        {
+          "count": 367,
+          "value_id": "value_8d5ed738a26c"
+        },
+        {
+          "count": 183,
+          "value_id": "value_37fd827298f6"
+        },
+        {
+          "count": 71,
+          "value_id": "value_96c495bff678"
+        },
+        {
+          "count": 33,
+          "value_id": "value_139df316f3ce"
+        },
+        {
+          "count": 23,
+          "value_id": "value_ac4e218e9992"
+        },
+        {
+          "count": 7,
+          "value_id": "value_b764cdc0eab7"
+        },
+        {
+          "count": 6,
+          "value_id": "value_8bc60547545d"
+        },
+        {
+          "count": 3,
+          "value_id": "value_ebd521f3845f"
+        },
+        {
+          "count": 3,
+          "value_id": "value_f4c48b2e3873"
+        },
+        {
+          "count": 3,
+          "value_id": "value_1bf6b4237406"
+        },
+        {
+          "count": 3,
+          "value_id": "value_7cc238c3eb1d"
+        },
+        {
+          "count": 3,
+          "value_id": "value_6317daf0e688"
+        },
+        {
+          "count": 2,
+          "value_id": "value_baf414edceb4"
+        },
+        {
+          "count": 2,
+          "value_id": "value_72a43eabba1d"
+        },
+        {
+          "count": 2,
+          "value_id": "value_47360967bb77"
+        },
+        {
+          "count": 1,
+          "value_id": "value_f7b8c9355081"
+        },
+        {
+          "count": 1,
+          "value_id": "value_9d943d96d081"
+        },
+        {
+          "count": 1,
+          "value_id": "value_8de0b3c47f11"
+        }
+      ],
+      "unique_non_missing_count": 25,
+      "useful_for_grouping": true
+    }
+  },
+  "input_path": "data/processed/neutral_sequence_classification_ml.csv",
+  "row_count": 5573,
+  "thresholds": {
+    "mostly_missing_ratio": 0.5,
+    "near_row_unique_non_missing_ratio": 0.9,
+    "near_row_unique_row_ratio": 0.8
+  },
+  "value_display": "deterministic neutral value_id"
+}

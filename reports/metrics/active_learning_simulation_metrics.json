@@ -1,0 +1,229 @@
+{
+  "artifacts": {
+    "figure": "reports/figures/active_learning_strategy_hits.png",
+    "metrics_json": "reports/metrics/active_learning_simulation_metrics.json",
+    "report": "reports/active_learning_simulation_report.md",
+    "selected_records_csv": "reports/active_learning_selected_records.csv"
+  },
+  "available_strategy_count": 6,
+  "best_strategy": "highest_score",
+  "best_strategy_beats_random_mean": true,
+  "best_strategy_positive_count_at_largest_budget": 491,
+  "budgets": [
+    25,
+    50,
+    100,
+    200,
+    500
+  ],
+  "candidate_count": 7937,
+  "input_path": "reports/broader_existing_record_prioritization_table.csv",
+  "label_balance": {
+    "0": 2292,
+    "1": 5645
+  },
+  "random_positive_count_mean_at_largest_budget": 354.98,
+  "row_subset": "broader prioritization table, labeled records only",
+  "score_column": "primary_probability",
+  "split_strategy": "retrospective ranking simulation; no model refit",
+  "status": "available",
+  "strategy_results": {
+    "cluster_aware_high_score": {
+      "available_candidate_count": 5573,
+      "budget_metrics": {
+        "100": {
+          "positive_count": 94,
+          "precision": 0.94,
+          "selected_count": 100
+        },
+        "200": {
+          "positive_count": 184,
+          "precision": 0.92,
+          "selected_count": 200
+        },
+        "25": {
+          "positive_count": 25,
+          "precision": 1.0,
+          "selected_count": 25
+        },
+        "50": {
+          "positive_count": 48,
+          "precision": 0.96,
+          "selected_count": 50
+        },
+        "500": {
+          "positive_count": 461,
+          "precision": 0.922,
+          "selected_count": 500
+        }
+      },
+      "strategy": "cluster_aware_high_score"
+    },
+    "diversity_aware_high_score": {
+      "available_candidate_count": 7937,
+      "budget_metrics": {
+        "100": {
+          "positive_count": 75,
+          "precision": 0.75,
+          "selected_count": 100
+        },
+        "200": {
+          "positive_count": 133,
+          "precision": 0.665,
+          "selected_count": 200
+        },
+        "25": {
+          "positive_count": 20,
+          "precision": 0.8,
+          "selected_count": 25
+        },
+        "50": {
+          "positive_count": 41,
+          "precision": 0.82,
+          "selected_count": 50
+        },
+        "500": {
+          "positive_count": 305,
+          "precision": 0.61,
+          "selected_count": 500
+        }
+      },
+      "strategy": "diversity_aware_high_score"
+    },
+    "highest_score": {
+      "available_candidate_count": 7937,
+      "budget_metrics": {
+        "100": {
+          "positive_count": 98,
+          "precision": 0.98,
+          "selected_count": 100
+        },
+        "200": {
+          "positive_count": 198,
+          "precision": 0.99,
+          "selected_count": 200
+        },
+        "25": {
+          "positive_count": 25,
+          "precision": 1.0,
+          "selected_count": 25
+        },
+        "50": {
+          "positive_count": 50,
+          "precision": 1.0,
+          "selected_count": 50
+        },
+        "500": {
+          "positive_count": 491,
+          "precision": 0.982,
+          "selected_count": 500
+        }
+      },
+      "strategy": "highest_score"
+    },
+    "random": {
+      "available_candidate_count": 7937,
+      "budget_metrics": {
+        "100": {
+          "positive_count_mean": 70.56,
+          "positive_count_std": 4.695409320481942,
+          "precision_mean": 0.7056,
+          "precision_std": 0.04695409320481941,
+          "selected_count": 100
+        },
+        "200": {
+          "positive_count_mean": 142.15,
+          "positive_count_std": 5.987149538466498,
+          "precision_mean": 0.7107499999999999,
+          "precision_std": 0.029935747692332478,
+          "selected_count": 200
+        },
+        "25": {
+          "positive_count_mean": 17.74,
+          "positive_count_std": 2.209346537148965,
+          "precision_mean": 0.7096000000000001,
+          "precision_std": 0.08837386148595858,
+          "selected_count": 25
+        },
+        "50": {
+          "positive_count_mean": 35.62,
+          "positive_count_std": 3.3778242952671427,
+          "precision_mean": 0.7123999999999998,
+          "precision_std": 0.06755648590534286,
+          "selected_count": 50
+        },
+        "500": {
+          "positive_count_mean": 354.98,
+          "positive_count_std": 10.43399649359165,
+          "precision_mean": 0.7099600000000001,
+          "precision_std": 0.020867992987183292,
+          "selected_count": 500
+        }
+      },
+      "repeats": 100,
+      "strategy": "random"
+    },
+    "target_region_stratified_high_score": {
+      "available_candidate_count": 7937,
+      "budget_metrics": {
+        "100": {
+          "positive_count": 89,
+          "precision": 0.89,
+          "selected_count": 100
+        },
+        "200": {
+          "positive_count": 168,
+          "precision": 0.84,
+          "selected_count": 200
+        },
+        "25": {
+          "positive_count": 24,
+          "precision": 0.96,
+          "selected_count": 25
+        },
+        "50": {
+          "positive_count": 47,
+          "precision": 0.94,
+          "selected_count": 50
+        },
+        "500": {
+          "positive_count": 375,
+          "precision": 0.75,
+          "selected_count": 500
+        }
+      },
+      "strategy": "target_region_stratified_high_score"
+    },
+    "uncertainty": {
+      "available_candidate_count": 7937,
+      "budget_metrics": {
+        "100": {
+          "positive_count": 77,
+          "precision": 0.77,
+          "selected_count": 100
+        },
+        "200": {
+          "positive_count": 151,
+          "precision": 0.755,
+          "selected_count": 200
+        },
+        "25": {
+          "positive_count": 18,
+          "precision": 0.72,
+          "selected_count": 25
+        },
+        "50": {
+          "positive_count": 37,
+          "precision": 0.74,
+          "selected_count": 50
+        },
+        "500": {
+          "positive_count": 380,
+          "precision": 0.76,
+          "selected_count": 500
+        }
+      },
+      "strategy": "uncertainty"
+    }
+  }
+}

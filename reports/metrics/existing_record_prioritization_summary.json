@@ -1,0 +1,156 @@
+{
+  "artifacts": {
+    "developability_risk_counts": "reports/figures/developability_risk_counts.png",
+    "priority_category_counts": "reports/figures/priority_category_counts.png",
+    "probability_distribution": "reports/figures/prioritization_probability_distribution.png",
+    "probability_vs_developability_risk": "reports/figures/probability_vs_developability_risk.png",
+    "report": "reports/existing_record_prioritization_report.md",
+    "summary_json": "reports/metrics/existing_record_prioritization_summary.json",
+    "table_csv": "reports/existing_record_prioritization_table.csv"
+  },
+  "baseline_context": {
+    "finetuned_igbert_last_1_layer_seed_mean": {
+      "delta_pr_auc_vs_frozen_pair_mlp": 0.007287612446468805,
+      "delta_pr_auc_vs_kmer": -0.008512387553531231,
+      "delta_roc_auc_vs_frozen_pair_mlp": -0.009817722632767367,
+      "delta_roc_auc_vs_kmer": -0.0367177226327674,
+      "pr_auc": 0.8150876124464688,
+      "roc_auc": 0.7442822773672326
+    },
+    "frozen_pretrained_pair_mlp": {
+      "average_precision": 0.8078,
+      "roc_auc": 0.7541
+    },
+    "grouped_kmer_pair_text": {
+      "accuracy": 0.7007299270072993,
+      "average_precision": 0.8235781717625272,
+      "balanced_accuracy": 0.6746697349880939,
+      "confusion_matrix": [
+        [
+          179,
+          152
+        ],
+        [
+          94,
+          397
+        ]
+      ],
+      "f1": 0.7634615384615384,
+      "group_overlap_count": 0,
+      "input_column": "sequence_pair_text",
+      "precision": 0.7231329690346083,
+      "recall": 0.8085539714867617,
+      "roc_auc": 0.7809513847441254,
+      "test_group_count": 19,
+      "test_label_counts": {
+        "0": 331,
+        "1": 491
+      },
+      "test_size": 822,
+      "train_group_count": 75,
+      "train_label_counts": {
+        "0": 1961,
+        "1": 2790
+      },
+      "train_size": 4751
+    }
+  },
+  "confidence_bin_counts": {
+    "high": 683,
+    "low": 2911,
+    "medium": 1979
+  },
+  "developability_risk_counts": {
+    "high": 11,
+    "low": 4436,
+    "medium": 1126
+  },
+  "developability_risk_score_counts": {
+    "0": 1841,
+    "1": 2595,
+    "2": 976,
+    "3": 150,
+    "4": 9,
+    "5": 2
+  },
+  "diversity_group_count": 476,
+  "has_structure_count": 330,
+  "high_score_high_confidence_counts": {
+    "conflict_label": 0,
+    "known_neutralising": 600,
+    "known_non_neutralising": 14,
+    "missing_label": 0
+  },
+  "input_path": "data/processed/neutral_sequence_classification_ml.csv",
+  "labeled_record_count": 5573,
+  "missing_light_count": 481,
+  "model": {
+    "fallback_used": false,
+    "path": "models/kmer_logreg_pair_text.joblib",
+    "source": "loaded_saved_model",
+    "training_rows": null
+  },
+  "nanobody_like_count": 481,
+  "paired_light_status_counts": {
+    "light_missing_or_single_chain": 481,
+    "paired": 5092
+  },
+  "predicted_label_counts": {
+    "0": 2772,
+    "1": 2801
+  },
+  "priority_category_counts": {
+    "high_confidence_known_positive": 600,
+    "lower_priority": 2062,
+    "uncertain_prediction": 2911
+  },
+  "probability_summary": {
+    "max": 0.9823450969375928,
+    "mean": 0.5213635570913736,
+    "median": 0.5013974347731789,
+    "min": 0.11260605613555588
+  },
+  "record_category_counts": {
+    "known_neutralising": 3281,
+    "known_non_neutralising": 2292
+  },
+  "scored_record_count": 5573,
+  "status": "available",
+  "strict_labeled_scored_record_count": 5573,
+  "target_region_counts": {
+    "CSP ": 1,
+    "N": 1,
+    "S": 1,
+    "S2 (quaternary glycan epitope)": 2,
+    "S: RBD": 1,
+    "S; NTD": 426,
+    "S; NTD-SD1": 2,
+    "S; RBD": 4425,
+    "S; RBD/NTD": 1,
+    "S; RBD/non-RBD": 3,
+    "S; S1": 6,
+    "S; S1 non-RBD": 23,
+    "S; S1/S2 Cleavage Site": 1,
+    "S; S2": 183,
+    "S; S2 Fusion Peptide": 3,
+    "S; S2 Stem Helix": 3,
+    "S; S2' Cleavage Site/Fusion Peptide": 1,
+    "S; S2' Cleavage Site/Fusion Peptide NTD": 3,
+    "S; SD1": 1,
+    "S; Stem Helix": 3,
+    "S; Unk": 71,
+    "S; non-RBD": 367,
+    "S; non-S1": 33,
+    "TBC": 2,
+    "Unknown": 7,
+    "missing": 3
+  },
+  "target_region_group_counts": {
+    "NTD": 431,
+    "RBD": 4820,
+    "Spike/S": 1,
+    "other": 314,
+    "unknown": 7
+  },
+  "unlabeled_record_count": 0
+}

@@ -1,0 +1,169 @@
+{
+  "broader_row_count": 11748,
+  "broader_subgroups": {
+    "NTD": {
+      "label_counts": {
+        "0": 304,
+        "1": 190
+      },
+      "labeled_row_count": 494,
+      "paired_light_status_counts": {
+        "light_missing_or_single_chain": 238,
+        "paired": 582
+      },
+      "row_count": 820,
+      "structure_available_count": 44,
+      "structure_missing_count": 776
+    },
+    "RBD": {
+      "label_counts": {
+        "0": 1754,
+        "1": 5357
+      },
+      "labeled_row_count": 7111,
+      "paired_light_status_counts": {
+        "light_missing_or_single_chain": 923,
+        "paired": 7224
+      },
+      "row_count": 8147,
+      "structure_available_count": 567,
+      "structure_missing_count": 7580
+    },
+    "Spike/S": {
+      "label_counts": {
+        "0": 0,
+        "1": 1
+      },
+      "labeled_row_count": 1,
+      "paired_light_status_counts": {
+        "paired": 1
+      },
+      "row_count": 1,
+      "structure_available_count": 0,
+      "structure_missing_count": 1
+    },
+    "other": {
+      "label_counts": {
+        "0": 232,
+        "1": 90
+      },
+      "labeled_row_count": 322,
+      "paired_light_status_counts": {
+        "light_missing_or_single_chain": 601,
+        "paired": 2169
+      },
+      "row_count": 2770,
+      "structure_available_count": 48,
+      "structure_missing_count": 2722
+    },
+    "unknown": {
+      "label_counts": {
+        "0": 2,
+        "1": 8
+      },
+      "labeled_row_count": 10,
+      "paired_light_status_counts": {
+        "paired": 10
+      },
+      "row_count": 10,
+      "structure_available_count": 0,
+      "structure_missing_count": 10
+    }
+  },
+  "broader_target_region_group_counts": {
+    "NTD": 820,
+    "RBD": 8147,
+    "Spike/S": 1,
+    "other": 2770,
+    "unknown": 10
+  },
+  "broader_unknown_count": 10,
+  "input_path": "data/processed/neutral_prepared_sequences.csv",
+  "status": "available",
+  "strict_input_path": "data/processed/neutral_sequence_classification_ml.csv",
+  "strict_labeled_row_count": 5573,
+  "strict_labeled_subgroups": {
+    "NTD": {
+      "label_counts": {
+        "0": 304,
+        "1": 127
+      },
+      "labeled_row_count": 431,
+      "paired_light_status_counts": {
+        "light_missing_or_single_chain": 8,
+        "paired": 423
+      },
+      "row_count": 431,
+      "structure_available_count": 423,
+      "structure_missing_count": 8
+    },
+    "RBD": {
+      "label_counts": {
+        "0": 1754,
+        "1": 3066
+      },
+      "labeled_row_count": 4820,
+      "paired_light_status_counts": {
+        "light_missing_or_single_chain": 434,
+        "paired": 4386
+      },
+      "row_count": 4820,
+      "structure_available_count": 4458,
+      "structure_missing_count": 362
+    },
+    "Spike/S": {
+      "label_counts": {
+        "0": 0,
+        "1": 1
+      },
+      "labeled_row_count": 1,
+      "paired_light_status_counts": {
+        "paired": 1
+      },
+      "row_count": 1,
+      "structure_available_count": 1,
+      "structure_missing_count": 0
+    },
+    "other": {
+      "label_counts": {
+        "0": 232,
+        "1": 79
+      },
+      "labeled_row_count": 311,
+      "paired_light_status_counts": {
+        "light_missing_or_single_chain": 39,
+        "paired": 272
+      },
+      "row_count": 311,
+      "structure_available_count": 272,
+      "structure_missing_count": 39
+    },
+    "unknown": {
+      "label_counts": {
+        "0": 2,
+        "1": 8
+      },
+      "labeled_row_count": 10,
+      "paired_light_status_counts": {
+        "paired": 10
+      },
+      "row_count": 10,
+      "structure_available_count": 10,
+      "structure_missing_count": 0
+    }
+  },
+  "strict_target_region_group_counts": {
+    "NTD": 431,
+    "RBD": 4820,
+    "Spike/S": 1,
+    "other": 311,
+    "unknown": 10
+  },
+  "strict_unknown_count": 10,
+  "target_region_metadata_useful_for_subgroup_analysis": true,
+  "usable_labeled_groups": [
+    "RBD",
+    "NTD",
+    "other"
+  ]
+}

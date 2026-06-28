@@ -1,0 +1,409 @@
+{
+  "best_pretrained_or_embedding_result": {
+    "beats_matched_kmer_reference": null,
+    "label_balance": null,
+    "matched_kmer_reference": null,
+    "matched_kmer_reference_id": null,
+    "metrics": {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0
+    },
+    "model_id": "model_error_analysis",
+    "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+    "row_count": null,
+    "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+    "selected_metric_path": "subgroup_metrics.4",
+    "source_metrics_file": "reports/metrics/model_error_analysis_metrics.json",
+    "split": {
+      "group_overlap_count": 0,
+      "split_strategy": 0.2,
+      "test_label_counts": {
+        "0": 331,
+        "1": 491
+      },
+      "test_size": 822,
+      "train_label_counts": {
+        "0": 1961,
+        "1": 2790
+      },
+      "train_size": 4751
+    },
+    "status": "available"
+  },
+  "entries": [
+    {
+      "beats_matched_kmer_reference": {
+        "both_primary_metrics": false,
+        "pr_auc": false,
+        "roc_auc": false
+      },
+      "label_balance": {
+        "0": 2292,
+        "1": 3281
+      },
+      "matched_kmer_reference": {
+        "metrics": {
+          "pr_auc": 0.8233484033858629,
+          "roc_auc": 0.7800161209935945
+        },
+        "row_count": 5573,
+        "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+      },
+      "matched_kmer_reference_id": "full_strict_dataset",
+      "metrics": {
+        "pr_auc": 0.8211026614428591,
+        "roc_auc": 0.7381815273103168
+      },
+      "model_id": "embedding_baseline",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": 5573,
+      "row_subset": "data/processed/embeddings_ablang2_metadata.csv",
+      "selected_metric_path": "results.group_feature_v.models.heavy",
+      "source_metrics_file": "reports/metrics/embedding_baseline_metrics.json",
+      "split": {
+        "group_overlap_count": null,
+        "split_strategy": 0.2,
+        "test_label_counts": null,
+        "test_size": null,
+        "train_label_counts": null,
+        "train_size": null
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": {
+        "both_primary_metrics": false,
+        "pr_auc": false,
+        "roc_auc": false
+      },
+      "label_balance": {
+        "0": 2292,
+        "1": 3281
+      },
+      "matched_kmer_reference": {
+        "metrics": {
+          "pr_auc": 0.8233484033858629,
+          "roc_auc": 0.7800161209935945
+        },
+        "row_count": 5573,
+        "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+      },
+      "matched_kmer_reference_id": "full_strict_dataset",
+      "metrics": {
+        "pr_auc": 0.8098536238764099,
+        "roc_auc": 0.757292903686293
+      },
+      "model_id": "pytorch_embedding_mlp",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": 5573,
+      "row_subset": "data/processed/embeddings_ablang2_metadata.csv",
+      "selected_metric_path": "best_grouped_average_precision",
+      "source_metrics_file": "reports/metrics/pytorch_embedding_mlp_metrics.json",
+      "split": {
+        "group_overlap_count": null,
+        "split_strategy": 0.2,
+        "test_label_counts": null,
+        "test_size": null,
+        "train_label_counts": null,
+        "train_size": null
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": {
+        "both_primary_metrics": false,
+        "pr_auc": false,
+        "roc_auc": false
+      },
+      "label_balance": {
+        "0": 2292,
+        "1": 3281
+      },
+      "matched_kmer_reference": {
+        "metrics": {
+          "pr_auc": 0.8233484033858629,
+          "roc_auc": 0.7800161209935945
+        },
+        "row_count": 5573,
+        "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+      },
+      "matched_kmer_reference_id": "full_strict_dataset",
+      "metrics": {
+        "pr_auc": 0.8078187605690343,
+        "roc_auc": 0.7540933171713193
+      },
+      "model_id": "pretrained_frozen_baseline",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": 5573,
+      "row_subset": "data/processed/pretrained_embeddings/metadata.csv",
+      "selected_metric_path": "comparison.best_grouped_model",
+      "source_metrics_file": "reports/metrics/pretrained_frozen_baseline_metrics.json",
+      "split": {
+        "group_overlap_count": null,
+        "split_strategy": 0.2,
+        "test_label_counts": null,
+        "test_size": null,
+        "train_label_counts": null,
+        "train_size": null
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": {
+        "both_primary_metrics": false,
+        "pr_auc": true,
+        "roc_auc": false
+      },
+      "label_balance": {
+        "0": 2292,
+        "1": 3281
+      },
+      "matched_kmer_reference": {
+        "metrics": {
+          "pr_auc": 0.8233484033858629,
+          "roc_auc": 0.7800161209935945
+        },
+        "row_count": 5573,
+        "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+      },
+      "matched_kmer_reference_id": "full_strict_dataset",
+      "metrics": {
+        "pr_auc": 0.8317172155493301,
+        "roc_auc": 0.7694759446471533
+      },
+      "model_id": "pretrained_finetune",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": 5573,
+      "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+      "selected_metric_path": "comparison.best_mode",
+      "source_metrics_file": "reports/metrics/pretrained_finetune_metrics.json",
+      "split": {
+        "group_overlap_count": 0,
+        "split_strategy": 0.2,
+        "test_label_counts": {
+          "0": 331,
+          "1": 491
+        },
+        "test_size": 822,
+        "train_label_counts": {
+          "0": 1961,
+          "1": 2790
+        },
+        "train_size": 4751
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": {
+        "both_primary_metrics": false,
+        "pr_auc": false,
+        "roc_auc": false
+      },
+      "label_balance": {
+        "0": 2292,
+        "1": 3281
+      },
+      "matched_kmer_reference": {
+        "metrics": {
+          "pr_auc": 0.8233484033858629,
+          "roc_auc": 0.7800161209935945
+        },
+        "row_count": 5573,
+        "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+      },
+      "matched_kmer_reference_id": "full_strict_dataset",
+      "metrics": {
+        "pr_auc": 0.8150876124464688,
+        "roc_auc": 0.7442822773672326
+      },
+      "model_id": "pretrained_finetune_seed_check",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": 5573,
+      "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+      "selected_metric_path": "aggregate",
+      "source_metrics_file": "reports/metrics/pretrained_finetune_seed_check_metrics.json",
+      "split": {
+        "group_overlap_count": 0,
+        "split_strategy": "reported_in_source_metrics",
+        "test_label_counts": {
+          "0": 331,
+          "1": 491
+        },
+        "test_size": 822,
+        "train_label_counts": {
+          "0": 1961,
+          "1": 2790
+        },
+        "train_size": 4751
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": {
+        "both_primary_metrics": false,
+        "pr_auc": false,
+        "roc_auc": false
+      },
+      "label_balance": {
+        "0": 2292,
+        "1": 3281
+      },
+      "matched_kmer_reference": {
+        "metrics": {
+          "pr_auc": 0.8233484033858629,
+          "roc_auc": 0.7800161209935945
+        },
+        "row_count": 5573,
+        "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+      },
+      "matched_kmer_reference_id": "full_strict_dataset",
+      "metrics": {
+        "pr_auc": 0.8007274170864006,
+        "roc_auc": 0.7257503132928461
+      },
+      "model_id": "pretrained_lora_distilled",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": 5573,
+      "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+      "selected_metric_path": "aggregate",
+      "source_metrics_file": "reports/metrics/pretrained_lora_distilled_metrics.json",
+      "split": {
+        "group_overlap_count": 0,
+        "split_strategy": "reported_in_source_metrics",
+        "test_label_counts": {
+          "0": 331,
+          "1": 491
+        },
+        "test_size": 822,
+        "train_label_counts": {
+          "0": 1961,
+          "1": 2790
+        },
+        "train_size": 4751
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": null,
+      "label_balance": null,
+      "matched_kmer_reference": null,
+      "matched_kmer_reference_id": null,
+      "metrics": {
+        "pr_auc": 0.6056377425567042,
+        "roc_auc": 0.606149107630436
+      },
+      "model_id": "bioaware_igbert_final",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": null,
+      "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+      "selected_metric_path": "aggregate",
+      "source_metrics_file": "reports/metrics/bioaware_igbert_final_metrics.json",
+      "split": {
+        "group_overlap_count": 0,
+        "split_strategy": "reported_in_source_metrics",
+        "test_label_counts": {
+          "0": 369,
+          "1": 354
+        },
+        "test_size": 723,
+        "train_label_counts": {
+          "0": 1862,
+          "1": 2506
+        },
+        "train_size": 4368
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": {
+        "both_primary_metrics": false,
+        "pr_auc": false,
+        "roc_auc": false
+      },
+      "label_balance": {
+        "0": 2292,
+        "1": 3281
+      },
+      "matched_kmer_reference": {
+        "metrics": {
+          "pr_auc": 0.8233484033858629,
+          "roc_auc": 0.7800161209935945
+        },
+        "row_count": 5573,
+        "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+      },
+      "matched_kmer_reference_id": "full_strict_dataset",
+      "metrics": {
+        "pr_auc": 0.8225742081295218,
+        "roc_auc": 0.75096756726823
+      },
+      "model_id": "hybrid_baseline",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": 5573,
+      "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+      "selected_metric_path": "best_grouped_average_precision",
+      "source_metrics_file": "reports/metrics/hybrid_baseline_metrics.json",
+      "split": {
+        "group_overlap_count": null,
+        "split_strategy": 0.2,
+        "test_label_counts": null,
+        "test_size": null,
+        "train_label_counts": null,
+        "train_size": null
+      },
+      "status": "available"
+    },
+    {
+      "beats_matched_kmer_reference": null,
+      "label_balance": null,
+      "matched_kmer_reference": null,
+      "matched_kmer_reference_id": null,
+      "metrics": {
+        "pr_auc": 1.0,
+        "roc_auc": 1.0
+      },
+      "model_id": "model_error_analysis",
+      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+      "row_count": null,
+      "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+      "selected_metric_path": "subgroup_metrics.4",
+      "source_metrics_file": "reports/metrics/model_error_analysis_metrics.json",
+      "split": {
+        "group_overlap_count": 0,
+        "split_strategy": 0.2,
+        "test_label_counts": {
+          "0": 331,
+          "1": 491
+        },
+        "test_size": 822,
+        "train_label_counts": {
+          "0": 1961,
+          "1": 2790
+        },
+        "train_size": 4751
+      },
+      "status": "available"
+    }
+  ],
+  "interpretation": "Pretrained and embedding models are benchmark evidence, not automatically primary scorers.",
+  "matched_kmer_references": {
+    "full_strict_dataset": {
+      "metrics": {
+        "pr_auc": 0.8233484033858629,
+        "roc_auc": 0.7800161209935945
+      },
+      "row_count": 5573,
+      "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+    },
+    "paired_annotated_subset": {
+      "metrics": {
+        "pr_auc": 0.5888666499521199,
+        "roc_auc": 0.6208734157886702
+      },
+      "row_count": 5092,
+      "row_subset": "Paired annotated subset; whole-pair, region-only, and combined compact k-mer inputs."
+    }
+  },
+  "pretrained_models_beat_matched_kmer_baselines": false,
+  "status": "available"
+}

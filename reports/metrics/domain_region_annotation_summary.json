@@ -1,0 +1,58 @@
+{
+  "all_six_cdrs_found_count": 5091,
+  "all_six_cdrs_found_fraction": 0.9998036135113905,
+  "annotated_file": "data/processed/bioaware_paired_cdr_annotated.csv",
+  "existing_metrics_available": true,
+  "existing_report_available": true,
+  "fallback_region3_columns_available": [
+    "existing_cdrh3",
+    "existing_cdrl3",
+    "group_feature_cdr3",
+    "group_feature_b_cdr3"
+  ],
+  "label_counts": {
+    "0": 2232,
+    "1": 2860,
+    "missing": 0
+  },
+  "mismatch_or_missing_counts": {
+    "heavy_annotation_ok_false_or_missing": 0,
+    "light_annotation_ok_false_or_missing": 0,
+    "marker_insertion_ok_false_or_missing": 1
+  },
+  "paired_light_status_counts": {
+    "paired": 5092
+  },
+  "paired_row_count": 5092,
+  "reused_existing_metrics_keys": [
+    "all_six_cdrs_found_count",
+    "all_six_cdrs_found_fraction",
+    "annotated_output",
+    "cdr_match_summary",
+    "dependency_status",
+    "heavy_annotation_ok_count",
+    "light_annotation_ok_count",
+    "nanobody_like_or_missing_light_count",
+    "nanobody_summary",
+    "paired_annotation_candidate_count",
+    "primary_summary",
+    "raw_row_count",
+    "status"
+  ],
+  "row_count": 5092,
+  "single_chain_or_light_missing_row_count": 0,
+  "six_region_coverage": {
+    "cdrh1_found": 5092,
+    "cdrh2_found": 5092,
+    "cdrh3_found": 5092,
+    "cdrl1_found": 5092,
+    "cdrl2_found": 5092,
+    "cdrl3_found": 5091
+  },
+  "source_existing_summary": {
+    "nanobody_like_or_missing_light_count": 481,
+    "paired_annotation_candidate_count": 5092,
+    "status": "available"
+  },
+  "status": "available"
+}

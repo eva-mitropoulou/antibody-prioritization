@@ -1,0 +1,188 @@
+{
+  "best_kmer_result": {
+    "artifact": "models/kmer_logreg_pair_text.joblib",
+    "block_id": "full_strict_dataset",
+    "family": "compact_char_kmer_logreg",
+    "input_variant": "whole_pair_compact_kmer",
+    "label_balance": {
+      "0": 2292,
+      "1": 3281
+    },
+    "metrics": {
+      "balanced_accuracy": 0.677198638945121,
+      "f1": 0.7653846153846153,
+      "pr_auc": 0.8233484033858629,
+      "roc_auc": 0.7800161209935945
+    },
+    "model_id": "kmer_tfidf_logreg_pair_text",
+    "row_count": 5573,
+    "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input.",
+    "selection_note": "Selected as broad primary scorer by matched grouped validation on the full strict labeled subset; simple model retained over neural benchmarks unless a same-subset result clearly wins.",
+    "split": {
+      "group_column": "group_feature_v",
+      "group_overlap_count": 0,
+      "random_state": 42,
+      "strategy": "GroupShuffleSplit",
+      "test_group_count": 19,
+      "test_label_counts": {
+        "0": 331,
+        "1": 491
+      },
+      "test_size": 0.2,
+      "test_size_rows": 822,
+      "train_group_count": 75,
+      "train_label_counts": {
+        "0": 1961,
+        "1": 2790
+      },
+      "train_size": 4751
+    }
+  },
+  "best_pretrained_model_result": {
+    "beats_matched_kmer_reference": null,
+    "label_balance": null,
+    "matched_kmer_reference": null,
+    "matched_kmer_reference_id": null,
+    "metrics": {
+      "pr_auc": 1.0,
+      "roc_auc": 1.0
+    },
+    "model_id": "model_error_analysis",
+    "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+    "row_count": null,
+    "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
+    "selected_metric_path": "subgroup_metrics.4",
+    "source_metrics_file": "reports/metrics/model_error_analysis_metrics.json",
+    "split": {
+      "group_overlap_count": 0,
+      "split_strategy": 0.2,
+      "test_label_counts": {
+        "0": 331,
+        "1": 491
+      },
+      "test_size": 822,
+      "train_label_counts": {
+        "0": 1961,
+        "1": 2790
+      },
+      "train_size": 4751
+    },
+    "status": "available"
+  },
+  "invalid_cross_subset_comparisons": "Full strict dataset metrics and paired annotated subset metrics are reported separately and are not treated as directly comparable.",
+  "pretrained_models_beat_matched_kmer_baselines": false,
+  "primary_broad_scorer": {
+    "artifact": "models/kmer_logreg_pair_text.joblib",
+    "block_id": "full_strict_dataset",
+    "family": "compact_char_kmer_logreg",
+    "input_variant": "whole_pair_compact_kmer",
+    "label_balance": {
+      "0": 2292,
+      "1": 3281
+    },
+    "metrics": {
+      "balanced_accuracy": 0.677198638945121,
+      "f1": 0.7653846153846153,
+      "pr_auc": 0.8233484033858629,
+      "roc_auc": 0.7800161209935945
+    },
+    "model_id": "kmer_tfidf_logreg_pair_text",
+    "row_count": 5573,
+    "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input.",
+    "selection_note": "Selected as broad primary scorer by matched grouped validation on the full strict labeled subset; simple model retained over neural benchmarks unless a same-subset result clearly wins.",
+    "split": {
+      "group_column": "group_feature_v",
+      "group_overlap_count": 0,
+      "random_state": 42,
+      "strategy": "GroupShuffleSplit",
+      "test_group_count": 19,
+      "test_label_counts": {
+        "0": 331,
+        "1": 491
+      },
+      "test_size": 0.2,
+      "test_size_rows": 822,
+      "train_group_count": 75,
+      "train_label_counts": {
+        "0": 1961,
+        "1": 2790
+      },
+      "train_size": 4751
+    }
+  },
+  "primary_paired_region_scorer": {
+    "artifact": "models/kmer_logreg_pair_text.joblib",
+    "block_id": "paired_annotated_subset",
+    "family": "compact_char_kmer_logreg",
+    "input_variant": "whole_pair_plus_region_compact_kmer",
+    "label_balance": {
+      "0": 2232,
+      "1": 2860
+    },
+    "metrics": {
+      "balanced_accuracy": 0.6149183081386471,
+      "f1": 0.5899705014749262,
+      "pr_auc": 0.6144860629334744,
+      "roc_auc": 0.6550160329821347
+    },
+    "model_id": "kmer_tfidf_logreg__paired_annotated_subset__whole_pair_plus_region_compact_kmer",
+    "row_count": 5092,
+    "row_subset": "Paired annotated subset; whole-pair, region-only, and combined compact k-mer inputs.",
+    "selection_note": "Region features improved both matched ROC-AUC and PR-AUC.",
+    "split": {
+      "group_column": "group_feature_v",
+      "group_overlap_count": 0,
+      "random_state": 42,
+      "strategy": "GroupShuffleSplit",
+      "test_group_count": 18,
+      "test_label_counts": {
+        "0": 370,
+        "1": 354
+      },
+      "test_size": 0.2,
+      "test_size_rows": 724,
+      "train_group_count": 70,
+      "train_label_counts": {
+        "0": 1862,
+        "1": 2506
+      },
+      "train_size": 4368
+    }
+  },
+  "region_feature_comparison": {
+    "region_features_improved_pr_auc": true,
+    "region_features_improved_roc_auc": true,
+    "region_only_delta_pr_auc_vs_whole_pair": 0.04416485588562169,
+    "region_only_delta_roc_auc_vs_whole_pair": 0.04204076958314229,
+    "row_subset": "paired_annotated_subset",
+    "split_strategy": {
+      "group_column": "group_feature_v",
+      "group_overlap_count": 0,
+      "random_state": 42,
+      "strategy": "GroupShuffleSplit",
+      "test_group_count": 18,
+      "test_label_counts": {
+        "0": 370,
+        "1": 354
+      },
+      "test_size": 0.2,
+      "test_size_rows": 724,
+      "train_group_count": 70,
+      "train_label_counts": {
+        "0": 1862,
+        "1": 2506
+      },
+      "train_size": 4368
+    },
+    "whole_pair_plus_region_delta_pr_auc_vs_whole_pair": 0.025619412981354506,
+    "whole_pair_plus_region_delta_roc_auc_vs_whole_pair": 0.034142617193464564
+  },
+  "selection_rules": [
+    "Use matched validation performance.",
+    "Do not force pretrained models to win.",
+    "Demote unstable neural models.",
+    "Keep different row subsets separated.",
+    "Prefer the simpler model when performance is practically tied."
+  ],
+  "status": "available"
+}

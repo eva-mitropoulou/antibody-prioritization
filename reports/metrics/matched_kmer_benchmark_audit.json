@@ -1,0 +1,255 @@
+{
+  "blocks": {
+    "full_strict_dataset": {
+      "block_id": "full_strict_dataset",
+      "description": "Full strict labeled dataset; whole-pair compact k-mer input.",
+      "input_length_summaries": {
+        "whole_pair_compact_kmer": {
+          "empty_count": 0,
+          "max": 442,
+          "mean": 222.9359411448053,
+          "median": 232.0,
+          "min": 88
+        }
+      },
+      "label_counts": {
+        "0": 2292,
+        "1": 3281
+      },
+      "path": "data/processed/neutral_sequence_classification_ml.csv",
+      "results": {
+        "kmer_logreg": {
+          "whole_pair_compact_kmer": {
+            "accuracy": 0.7031630170316302,
+            "average_precision": 0.8233484033858629,
+            "balanced_accuracy": 0.677198638945121,
+            "confusion_matrix": [
+              [
+                180,
+                151
+              ],
+              [
+                93,
+                398
+              ]
+            ],
+            "f1": 0.7653846153846153,
+            "input_column": "whole_pair_compact_kmer",
+            "precision": 0.7249544626593807,
+            "recall": 0.8105906313645621,
+            "roc_auc": 0.7800161209935945
+          }
+        },
+        "majority_baseline": {
+          "accuracy": 0.597323600973236,
+          "average_precision": 0.597323600973236,
+          "balanced_accuracy": 0.5,
+          "confusion_matrix": [
+            [
+              0,
+              331
+            ],
+            [
+              0,
+              491
+            ]
+          ],
+          "f1": 0.7479055597867479,
+          "precision": 0.597323600973236,
+          "recall": 1.0,
+          "roc_auc": 0.5
+        }
+      },
+      "row_count": 5573,
+      "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input.",
+      "split": {
+        "group_column": "group_feature_v",
+        "group_overlap_count": 0,
+        "random_state": 42,
+        "strategy": "GroupShuffleSplit",
+        "test_group_count": 19,
+        "test_label_counts": {
+          "0": 331,
+          "1": 491
+        },
+        "test_size": 0.2,
+        "test_size_rows": 822,
+        "train_group_count": 75,
+        "train_label_counts": {
+          "0": 1961,
+          "1": 2790
+        },
+        "train_size": 4751
+      }
+    },
+    "paired_annotated_subset": {
+      "block_id": "paired_annotated_subset",
+      "description": "Paired annotated subset; whole-pair, region-only, and combined compact k-mer inputs.",
+      "input_length_summaries": {
+        "region_only_compact_kmer": {
+          "empty_count": 0,
+          "max": 101,
+          "mean": 52.95502749410841,
+          "median": 53.0,
+          "min": 40
+        },
+        "whole_pair_compact_kmer": {
+          "empty_count": 0,
+          "max": 442,
+          "mean": 232.4389238020424,
+          "median": 232.0,
+          "min": 208
+        },
+        "whole_pair_plus_region_compact_kmer": {
+          "empty_count": 0,
+          "max": 502,
+          "mean": 293.3939512961508,
+          "median": 293.0,
+          "min": 264
+        }
+      },
+      "label_counts": {
+        "0": 2232,
+        "1": 2860
+      },
+      "path": "data/processed/bioaware_paired_cdr_annotated.csv",
+      "results": {
+        "kmer_logreg": {
+          "region_only_compact_kmer": {
+            "accuracy": 0.6284530386740331,
+            "average_precision": 0.6330315058377416,
+            "balanced_accuracy": 0.6281187967628645,
+            "confusion_matrix": [
+              [
+                238,
+                132
+              ],
+              [
+                137,
+                217
+              ]
+            ],
+            "f1": 0.6173541963015647,
+            "input_column": "region_only_compact_kmer",
+            "precision": 0.6217765042979942,
+            "recall": 0.6129943502824858,
+            "roc_auc": 0.6629141853718125
+          },
+          "whole_pair_compact_kmer": {
+            "accuracy": 0.574585635359116,
+            "average_precision": 0.5888666499521199,
+            "balanced_accuracy": 0.5724843487555351,
+            "confusion_matrix": [
+              [
+                247,
+                123
+              ],
+              [
+                185,
+                169
+              ]
+            ],
+            "f1": 0.5232198142414861,
+            "input_column": "whole_pair_compact_kmer",
+            "precision": 0.5787671232876712,
+            "recall": 0.4774011299435028,
+            "roc_auc": 0.6208734157886702
+          },
+          "whole_pair_plus_region_compact_kmer": {
+            "accuracy": 0.6160220994475138,
+            "average_precision": 0.6144860629334744,
+            "balanced_accuracy": 0.6149183081386471,
+            "confusion_matrix": [
+              [
+                246,
+                124
+              ],
+              [
+                154,
+                200
+              ]
+            ],
+            "f1": 0.5899705014749262,
+            "input_column": "whole_pair_plus_region_compact_kmer",
+            "precision": 0.6172839506172839,
+            "recall": 0.5649717514124294,
+            "roc_auc": 0.6550160329821347
+          }
+        },
+        "majority_baseline": {
+          "accuracy": 0.4889502762430939,
+          "average_precision": 0.4889502762430939,
+          "balanced_accuracy": 0.5,
+          "confusion_matrix": [
+            [
+              0,
+              370
+            ],
+            [
+              0,
+              354
+            ]
+          ],
+          "f1": 0.6567717996289425,
+          "precision": 0.4889502762430939,
+          "recall": 1.0,
+          "roc_auc": 0.5
+        }
+      },
+      "row_count": 5092,
+      "row_subset": "Paired annotated subset; whole-pair, region-only, and combined compact k-mer inputs.",
+      "split": {
+        "group_column": "group_feature_v",
+        "group_overlap_count": 0,
+        "random_state": 42,
+        "strategy": "GroupShuffleSplit",
+        "test_group_count": 18,
+        "test_label_counts": {
+          "0": 370,
+          "1": 354
+        },
+        "test_size": 0.2,
+        "test_size_rows": 724,
+        "train_group_count": 70,
+        "train_label_counts": {
+          "0": 1862,
+          "1": 2506
+        },
+        "train_size": 4368
+      }
+    }
+  },
+  "model": {
+    "classifier": "LogisticRegression(max_iter=5000, class_weight=\"balanced\")",
+    "vectorizer": "TfidfVectorizer(analyzer=\"char\", ngram_range=(3,5), min_df=2)"
+  },
+  "region_feature_comparison": {
+    "region_features_improved_pr_auc": true,
+    "region_features_improved_roc_auc": true,
+    "region_only_delta_pr_auc_vs_whole_pair": 0.04416485588562169,
+    "region_only_delta_roc_auc_vs_whole_pair": 0.04204076958314229,
+    "row_subset": "paired_annotated_subset",
+    "split_strategy": {
+      "group_column": "group_feature_v",
+      "group_overlap_count": 0,
+      "random_state": 42,
+      "strategy": "GroupShuffleSplit",
+      "test_group_count": 18,
+      "test_label_counts": {
+        "0": 370,
+        "1": 354
+      },
+      "test_size": 0.2,
+      "test_size_rows": 724,
+      "train_group_count": 70,
+      "train_label_counts": {
+        "0": 1862,
+        "1": 2506
+      },
+      "train_size": 4368
+    },
+    "whole_pair_plus_region_delta_pr_auc_vs_whole_pair": 0.025619412981354506,
+    "whole_pair_plus_region_delta_roc_auc_vs_whole_pair": 0.034142617193464564
+  },
+  "status": "available"
+}

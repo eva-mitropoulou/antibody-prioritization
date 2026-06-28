@@ -1,0 +1,230 @@
+{
+  "artifacts": {
+    "calibration_curve": "reports/figures/calibration_curve.png",
+    "metrics_json": "reports/metrics/calibration_threshold_metrics.json",
+    "probability_histogram_by_label": "reports/figures/probability_histogram_by_label.png",
+    "report": "reports/calibration_threshold_report.md",
+    "threshold_precision_recall": "reports/figures/threshold_precision_recall.png"
+  },
+  "best_high_confidence_threshold": {
+    "f1": 0.438871473354232,
+    "precision": 0.8187134502923976,
+    "predicted_positive_count": 171,
+    "recall": 0.29978586723768735,
+    "selection_rule": "highest threshold with precision >= 0.8 and at least one predicted positive",
+    "threshold": 0.7
+  },
+  "brier_score": 0.2636201800186011,
+  "calibrated_model": {
+    "reason": "Uncalibrated source-grouped test diagnostics were prioritized; no final-test calibration fitting was performed.",
+    "status": "skipped"
+  },
+  "calibration_curve": [
+    {
+      "bin_index": 1,
+      "count": 0,
+      "mean_predicted_probability": null,
+      "observed_positive_fraction": null,
+      "probability_high": 0.1,
+      "probability_low": 0.0
+    },
+    {
+      "bin_index": 2,
+      "count": 16,
+      "mean_predicted_probability": 0.16945909595170114,
+      "observed_positive_fraction": 0.9375,
+      "probability_high": 0.2,
+      "probability_low": 0.1
+    },
+    {
+      "bin_index": 3,
+      "count": 58,
+      "mean_predicted_probability": 0.2590087283413141,
+      "observed_positive_fraction": 0.7586206896551724,
+      "probability_high": 0.30000000000000004,
+      "probability_low": 0.2
+    },
+    {
+      "bin_index": 4,
+      "count": 94,
+      "mean_predicted_probability": 0.3459498994589393,
+      "observed_positive_fraction": 0.7446808510638298,
+      "probability_high": 0.4,
+      "probability_low": 0.30000000000000004
+    },
+    {
+      "bin_index": 5,
+      "count": 99,
+      "mean_predicted_probability": 0.44589973735717037,
+      "observed_positive_fraction": 0.8383838383838383,
+      "probability_high": 0.5,
+      "probability_low": 0.4
+    },
+    {
+      "bin_index": 6,
+      "count": 81,
+      "mean_predicted_probability": 0.5467395171091464,
+      "observed_positive_fraction": 0.8518518518518519,
+      "probability_high": 0.6000000000000001,
+      "probability_low": 0.5
+    },
+    {
+      "bin_index": 7,
+      "count": 48,
+      "mean_predicted_probability": 0.6431770151908885,
+      "observed_positive_fraction": 0.9583333333333334,
+      "probability_high": 0.7000000000000001,
+      "probability_low": 0.6000000000000001
+    },
+    {
+      "bin_index": 8,
+      "count": 39,
+      "mean_predicted_probability": 0.7525893274372579,
+      "observed_positive_fraction": 0.8974358974358975,
+      "probability_high": 0.8,
+      "probability_low": 0.7000000000000001
+    },
+    {
+      "bin_index": 9,
+      "count": 113,
+      "mean_predicted_probability": 0.853894143433769,
+      "observed_positive_fraction": 0.8053097345132744,
+      "probability_high": 0.9,
+      "probability_low": 0.8
+    },
+    {
+      "bin_index": 10,
+      "count": 19,
+      "mean_predicted_probability": 0.9183993901191775,
+      "observed_positive_fraction": 0.7368421052631579,
+      "probability_high": 1.0,
+      "probability_low": 0.9
+    }
+  ],
+  "expected_calibration_error": 0.3034092220611994,
+  "input_path": "data/processed/neutral_sequence_classification_ml.csv",
+  "split": {
+    "fallback_reason": null,
+    "group_column": "source_group_short_id",
+    "group_overlap_count": 0,
+    "metrics": {
+      "accuracy": 0.54673721340388,
+      "balanced_accuracy": 0.5480192719486081,
+      "confusion_matrix": [
+        [
+          55,
+          45
+        ],
+        [
+          212,
+          255
+        ]
+      ],
+      "f1": 0.6649282920469362,
+      "majority_baseline": {
+        "accuracy": 0.8236331569664903,
+        "balanced_accuracy": 0.5,
+        "confusion_matrix": [
+          [
+            0,
+            100
+          ],
+          [
+            0,
+            467
+          ]
+        ],
+        "f1": 0.9032882011605415,
+        "pr_auc": 0.8236331569664903,
+        "pr_baseline": 0.8236331569664903,
+        "precision": 0.8236331569664903,
+        "recall": 1.0,
+        "roc_auc": 0.5,
+        "test_positive_fraction": 0.8236331569664903,
+        "valid_auc_metrics": true
+      },
+      "pr_auc": 0.8188909039069207,
+      "pr_baseline": 0.8236331569664903,
+      "precision": 0.85,
+      "recall": 0.5460385438972163,
+      "roc_auc": 0.5247323340471092,
+      "test_positive_fraction": 0.8236331569664903,
+      "valid_auc_metrics": true
+    },
+    "random_state": 42,
+    "strategy": "GroupShuffleSplit",
+    "test_group_count": 17,
+    "test_label_counts": {
+      "0": 100,
+      "1": 467
+    },
+    "test_rows": 567,
+    "test_size": 0.2,
+    "train_group_count": 67,
+    "train_label_counts": {
+      "0": 2192,
+      "1": 2814
+    },
+    "train_rows": 5006
+  },
+  "status": "available",
+  "threshold_metrics": [
+    {
+      "f1": 0.6649282920469362,
+      "precision": 0.85,
+      "predicted_positive_count": 300,
+      "recall": 0.5460385438972163,
+      "threshold": 0.5
+    },
+    {
+      "f1": 0.5422740524781341,
+      "precision": 0.8493150684931506,
+      "predicted_positive_count": 219,
+      "recall": 0.39828693790149894,
+      "threshold": 0.6
+    },
+    {
+      "f1": 0.438871473354232,
+      "precision": 0.8187134502923976,
+      "predicted_positive_count": 171,
+      "recall": 0.29978586723768735,
+      "threshold": 0.7
+    },
+    {
+      "f1": 0.35058430717863104,
+      "precision": 0.7954545454545454,
+      "predicted_positive_count": 132,
+      "recall": 0.22483940042826553,
+      "threshold": 0.8
+    },
+    {
+      "f1": 0.05761316872427984,
+      "precision": 0.7368421052631579,
+      "predicted_positive_count": 19,
+      "recall": 0.029978586723768737,
+      "threshold": 0.9
+    }
+  ],
+  "topk_precision": {
+    "100": {
+      "positive_count": 75,
+      "precision": 0.75,
+      "selected_count": 100
+    },
+    "25": {
+      "positive_count": 18,
+      "precision": 0.72,
+      "selected_count": 25
+    },
+    "250": {
+      "positive_count": 213,
+      "precision": 0.852,
+      "selected_count": 250
+    },
+    "50": {
+      "positive_count": 36,
+      "precision": 0.72,
+      "selected_count": 50
+    }
+  }
+}

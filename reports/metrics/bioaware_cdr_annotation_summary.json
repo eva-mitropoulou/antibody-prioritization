@@ -1,0 +1,51 @@
+{
+  "all_six_cdrs_found_count": 5091,
+  "all_six_cdrs_found_fraction": 0.9998036135113905,
+  "annotated_output": "data/processed/bioaware_paired_cdr_annotated.csv",
+  "cdr_match_summary": {
+    "cdrh3": {
+      "annotated_nonempty_count": 5092,
+      "exact_match_count": 4986,
+      "existing_nonempty_count": 5092,
+      "mismatch_count": 106,
+      "missing_count": 0
+    },
+    "cdrl3": {
+      "annotated_nonempty_count": 5091,
+      "exact_match_count": 4460,
+      "existing_nonempty_count": 5087,
+      "mismatch_count": 627,
+      "missing_count": 5
+    }
+  },
+  "dependency_status": {
+    "available": true,
+    "dependency": "abnumber",
+    "error": null
+  },
+  "heavy_annotation_ok_count": 5092,
+  "light_annotation_ok_count": 5092,
+  "nanobody_like_or_missing_light_count": 481,
+  "nanobody_summary": {
+    "count": 481,
+    "kmer_score_available": true,
+    "kmer_score_max": 0.9823451042175293,
+    "kmer_score_mean": 0.7748062014579773,
+    "kmer_score_median": 0.8032557964324951,
+    "kmer_score_min": 0.35521647334098816,
+    "label_counts": {
+      "0": 60,
+      "1": 421
+    }
+  },
+  "paired_annotation_candidate_count": 5092,
+  "primary_summary": {
+    "ambiguous_heavy_marker_count": 0,
+    "ambiguous_light_marker_count": 7,
+    "annotation_failure_count": 1,
+    "marker_insertion_failure_count": 1,
+    "primary_row_count": 5091
+  },
+  "raw_row_count": 5573,
+  "status": "available"
+}

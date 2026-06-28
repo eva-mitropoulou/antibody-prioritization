@@ -1,0 +1,81 @@
+{
+  "artifacts": {
+    "audit_metrics": "reports/metrics/oas_matched_background_audit.json",
+    "audit_report": "reports/oas_matched_background_audit.md",
+    "retrieval_metrics": "reports/metrics/oas_matched_background_retrieval_metrics.json",
+    "retrieval_report": "reports/oas_matched_background_retrieval_report.md",
+    "score_distribution_figure": "reports/figures/oas_matched_retrieval_score_distribution.png",
+    "scores_csv": "reports/oas_matched_background_retrieval_scores.csv",
+    "topk_enrichment_figure": "reports/figures/oas_matched_retrieval_topk_enrichment.png"
+  },
+  "background_label_semantics": "OAS is unknown-target background, not assayed negative-class data.",
+  "class_balance": {
+    "oas_unknown_target_background": 7192,
+    "project_record": 7192
+  },
+  "confusion_matrix": [
+    [
+      1346,
+      93
+    ],
+    [
+      24,
+      1414
+    ]
+  ],
+  "exact_overlap_count_removed": 5,
+  "input_paths": {
+    "oas_background": "data/processed/oas/oas_paired_standardized.csv",
+    "project_records": "data/processed/neutral_prepared_sequences.csv"
+  },
+  "main_neutralisation_benchmark_mixed": false,
+  "matched_nonempty_bin_count": 28,
+  "matched_oas_row_count": 7192,
+  "matched_project_row_count": 7192,
+  "matching_bin_count": 52,
+  "model": {
+    "classifier": "LogisticRegression(max_iter=5000, class_weight=\"balanced\")",
+    "vectorizer": "TfidfVectorizer(analyzer=\"char\", ngram_range=(3,5), min_df=2, max_features=50000)"
+  },
+  "pr_auc": 0.9892751894128918,
+  "project_rows_not_selected_due_to_oas_bin_shortage": 2738,
+  "random_baseline_positive_fraction": 0.49982620785540494,
+  "roc_auc": 0.9910993281727671,
+  "skipped_project_rows_due_to_no_matched_oas_bin": 1818,
+  "split": {
+    "random_state": 42,
+    "strategy": "stratified_train_test_split",
+    "test_label_counts": {
+      "0": 1439,
+      "1": 1438
+    },
+    "test_rows": 2877,
+    "test_size": 0.2,
+    "train_label_counts": {
+      "0": 5753,
+      "1": 5754
+    },
+    "train_rows": 11507
+  },
+  "status": "available",
+  "topk_enrichment": {
+    "100": {
+      "enrichment_over_random_baseline": 2.000695410292072,
+      "project_record_count": 100,
+      "project_record_fraction": 1.0,
+      "selected_count": 100
+    },
+    "50": {
+      "enrichment_over_random_baseline": 2.000695410292072,
+      "project_record_count": 50,
+      "project_record_fraction": 1.0,
+      "selected_count": 50
+    },
+    "500": {
+      "enrichment_over_random_baseline": 1.9926926286509041,
+      "project_record_count": 498,
+      "project_record_fraction": 0.996,
+      "selected_count": 500
+    }
+  }
+}
