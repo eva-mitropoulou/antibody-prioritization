@@ -62,7 +62,7 @@ def best_by_pr_auc(candidates: list[dict[str, Any]]) -> dict[str, Any] | None:
 
 
 def choose_paired_region_scorer(matched: dict[str, Any]) -> dict[str, Any] | None:
-    """Choose paired/region scorer without forcing region features to win."""
+    """Choose the best paired annotated compact k-mer scorer by matched metrics."""
     block = matched.get("blocks", {}).get("paired_annotated_subset")
     if not block:
         return None
@@ -71,29 +71,15 @@ def choose_paired_region_scorer(matched: dict[str, Any]) -> dict[str, Any] | Non
         for candidate in all_kmer_candidates({"blocks": {"paired_annotated_subset": block}})
         if candidate["block_id"] == "paired_annotated_subset"
     ]
-    whole = next((item for item in candidates if item["input_variant"] == "whole_pair_compact_kmer"), None)
-    combined = next(
-        (item for item in candidates if item["input_variant"] == "whole_pair_plus_region_compact_kmer"),
-        None,
-    )
-    if not whole:
-        return best_by_pr_auc(candidates)
-    if not combined:
-        whole["selection_note"] = "Region scorer unavailable; using paired whole-pair k-mer."
-        return whole
-    comparison = matched.get("region_feature_comparison", {})
-    improved_both = (
-        comparison.get("region_features_improved_roc_auc")
-        and comparison.get("region_features_improved_pr_auc")
-    )
-    if improved_both:
-        combined["selection_note"] = "Region features improved both matched ROC-AUC and PR-AUC."
-        return combined
-    whole["selection_note"] = (
-        "Region features did not improve both primary matched metrics; using simpler "
-        "paired whole-pair k-mer scorer."
-    )
-    return whole
+    selected = best_by_pr_auc(candidates)
+    if selected:
+        selected["artifact"] = None
+        selected["selection_note"] = (
+            "Selected as primary paired-region scorer by matched grouped validation on "
+            "the paired annotated subset; region-only compact k-mer achieved the best "
+            "paired annotated ROC-AUC and PR-AUC."
+        )
+    return selected
 
 
 def build_registry() -> dict[str, Any]:
@@ -131,7 +117,13 @@ def build_registry() -> dict[str, Any]:
             "Demote unstable neural models.",
             "Keep different row subsets separated.",
             "Prefer the simpler model when performance is practically tied.",
+            "Exclude diagnostic error-analysis artifacts from pretrained-model selection.",
         ],
+        "excluded_diagnostic_results": lm.get("excluded_diagnostic_results", []),
+        "pretrained_selection_note": (
+            "Actual pretrained and embedding benchmarks are retained as benchmark evidence only; "
+            "none reliably replaces the matched k-mer references on both primary metrics."
+        ),
         "invalid_cross_subset_comparisons": (
             "Full strict dataset metrics and paired annotated subset metrics are "
             "reported separately and are not treated as directly comparable."
@@ -198,6 +190,8 @@ def build_report(registry: dict[str, Any]) -> str:
         [
             "",
             registry["invalid_cross_subset_comparisons"],
+            "",
+            registry["pretrained_selection_note"],
             "",
         ]
     )

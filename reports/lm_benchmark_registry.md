@@ -14,10 +14,11 @@ balance, and whether a same-row-count matched k-mer reference was beaten.
 | pretrained_lora_distilled | `data/processed/neutral_sequence_classification_ml.csv` | 5573 | reported_in_source_metrics | 0 | 0.7258 | 0.8007 | false |
 | bioaware_igbert_final | `data/processed/neutral_sequence_classification_ml.csv` | n/a | reported_in_source_metrics | 0 | 0.6061 | 0.6056 | not same-subset comparable |
 | hybrid_baseline | `data/processed/neutral_sequence_classification_ml.csv` | 5573 | 0.2 | None | 0.7510 | 0.8226 | false |
-| model_error_analysis | `data/processed/neutral_sequence_classification_ml.csv` | n/a | 0.2 | 0 | 1.0000 | 1.0000 | not same-subset comparable |
 
 ## Interpretation
 
-Pretrained and embedding models are benchmark evidence, not automatically primary scorers.
+Pretrained and embedding models are benchmark evidence, not automatically primary scorers. None reliably replaces the matched k-mer references on both primary metrics.
 
 Invalid cross-subset comparisons are not used for model selection.
+
+Diagnostic error-analysis artifacts are excluded from pretrained-model selection.

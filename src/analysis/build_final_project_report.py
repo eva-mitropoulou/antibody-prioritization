@@ -74,9 +74,13 @@ def oas_interpretation(
     if isinstance(matched_roc, (int, float)) and isinstance(matched_pr, (int, float)):
         if matched_roc >= 0.9 and matched_pr >= 0.9:
             return (
-                "The enrichment signal persists after coarse length/status matching, "
-                "though OAS remains unknown-target background rather than assayed "
-                "negative-class data."
+                "OAS records are unknown-target background and unknown-target natural "
+                "antibody background. The OAS retrieval task is a background/enrichment "
+                "diagnostic and is not neutralisation or binding prediction; OAS records "
+                "are not assayed negative-class data. High OAS "
+                "retrieval separability likely reflects source/domain differences between "
+                "project records and natural repertoire background; it should not be "
+                "interpreted as biological binder/non-binder discrimination."
             )
         if (
             isinstance(broad_roc, (int, float))
@@ -85,11 +89,13 @@ def oas_interpretation(
         ):
             return (
                 "The original OAS retrieval task was partly driven by dataset/source "
-                "differences; matched-background retrieval is the more conservative estimate."
+                "differences; matched-background retrieval is the more conservative estimate. "
+                "OAS records remain unknown-target background, not assayed negative-class data."
             )
     return (
         "Matched OAS retrieval is reported as a conservative background-control "
-        "diagnostic separate from the main neutralisation benchmark."
+        "diagnostic separate from the main neutralisation benchmark. OAS records remain "
+        "unknown-target background, not assayed negative-class data."
     )
 
 

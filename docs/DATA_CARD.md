@@ -34,7 +34,9 @@ Neutralisation labels are public record labels, not a single harmonized assay. L
 
 ## OAS Background Semantics
 
-OAS paired records are treated as unknown-target natural antibody background. They are not assayed negative-class labels and are not mixed with the main neutralisation benchmark. OAS retrieval reports measure whether project records are distinguishable from local natural background under broad and matched controls.
+OAS paired records are treated as unknown-target natural antibody background. They are not assayed negative-class labels and are not mixed with the main neutralisation benchmark. The OAS retrieval task is a background/enrichment diagnostic and is not neutralisation or binding prediction.
+
+High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background. It should not be interpreted as biological binder/non-binder discrimination.
 
 ## Privacy And Safety
 

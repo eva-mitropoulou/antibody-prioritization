@@ -103,6 +103,23 @@ def test_source_robust_selected_model() -> None:
     assert metrics["model_selection"]["selected_model"] == "whole_pair_kmer"
 
 
+def test_model_registry_uses_region_only_paired_scorer() -> None:
+    registry = read_json("reports/metrics/model_registry.json")
+    paired = registry["primary_paired_region_scorer"]
+    assert paired["input_variant"] == "region_only_compact_kmer"
+    assert paired["model_id"].endswith("region_only_compact_kmer")
+    assert round(float(paired["metrics"]["roc_auc"]), 4) == 0.6629
+    assert round(float(paired["metrics"]["pr_auc"]), 4) == 0.6330
+
+
+def test_model_registry_excludes_diagnostic_best_pretrained_result() -> None:
+    registry = read_json("reports/metrics/model_registry.json")
+    best = registry["best_pretrained_model_result"]
+    assert best["model_id"] != "model_error_analysis"
+    assert best["source_metrics_file"] != "reports/metrics/model_error_analysis_metrics.json"
+    assert registry["pretrained_models_beat_matched_kmer_baselines"] is False
+
+
 def test_threshold_07_appears_in_calibration_outputs() -> None:
     calibration = read_json("reports/metrics/calibration_threshold_metrics.json")
     source_robust = read_json("reports/metrics/source_robust_model_selection_metrics.json")

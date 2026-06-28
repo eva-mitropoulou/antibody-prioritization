@@ -1,19 +1,33 @@
 {
   "best_pretrained_or_embedding_result": {
-    "beats_matched_kmer_reference": null,
-    "label_balance": null,
-    "matched_kmer_reference": null,
-    "matched_kmer_reference_id": null,
-    "metrics": {
-      "pr_auc": 1.0,
-      "roc_auc": 1.0
+    "beats_matched_kmer_reference": {
+      "both_primary_metrics": false,
+      "pr_auc": true,
+      "roc_auc": false
     },
-    "model_id": "model_error_analysis",
+    "label_balance": {
+      "0": 2292,
+      "1": 3281
+    },
+    "matched_kmer_reference": {
+      "metrics": {
+        "pr_auc": 0.8233484033858629,
+        "roc_auc": 0.7800161209935945
+      },
+      "row_count": 5573,
+      "row_subset": "Full strict labeled dataset; whole-pair compact k-mer input."
+    },
+    "matched_kmer_reference_id": "full_strict_dataset",
+    "metrics": {
+      "pr_auc": 0.8317172155493301,
+      "roc_auc": 0.7694759446471533
+    },
+    "model_id": "pretrained_finetune",
     "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
-    "row_count": null,
+    "row_count": 5573,
     "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
-    "selected_metric_path": "subgroup_metrics.4",
-    "source_metrics_file": "reports/metrics/model_error_analysis_metrics.json",
+    "selected_metric_path": "comparison.best_mode",
+    "source_metrics_file": "reports/metrics/pretrained_finetune_metrics.json",
     "split": {
       "group_overlap_count": 0,
       "split_strategy": 0.2,
@@ -352,40 +366,15 @@
         "train_size": null
       },
       "status": "available"
-    },
-    {
-      "beats_matched_kmer_reference": null,
-      "label_balance": null,
-      "matched_kmer_reference": null,
-      "matched_kmer_reference_id": null,
-      "metrics": {
-        "pr_auc": 1.0,
-        "roc_auc": 1.0
-      },
-      "model_id": "model_error_analysis",
-      "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
-      "row_count": null,
-      "row_subset": "data/processed/neutral_sequence_classification_ml.csv",
-      "selected_metric_path": "subgroup_metrics.4",
-      "source_metrics_file": "reports/metrics/model_error_analysis_metrics.json",
-      "split": {
-        "group_overlap_count": 0,
-        "split_strategy": 0.2,
-        "test_label_counts": {
-          "0": 331,
-          "1": 491
-        },
-        "test_size": 822,
-        "train_label_counts": {
-          "0": 1961,
-          "1": 2790
-        },
-        "train_size": 4751
-      },
-      "status": "available"
     }
   ],
-  "interpretation": "Pretrained and embedding models are benchmark evidence, not automatically primary scorers.",
+  "excluded_diagnostic_results": [
+    {
+      "model_id": "model_error_analysis",
+      "reason": "Diagnostic error-analysis artifact, not a pretrained or language-model benchmark."
+    }
+  ],
+  "interpretation": "Pretrained and embedding models are benchmark evidence, not automatically primary scorers. None reliably replaces the matched k-mer references on both primary metrics.",
   "matched_kmer_references": {
     "full_strict_dataset": {
       "metrics": {

@@ -27,11 +27,20 @@ Public antibody tables are useful, but the labels and source metadata are messy.
 The repository keeps generated reports and metrics. To regenerate the lightweight final reports from existing artifacts:
 
 ```bash
-source .venv/bin/activate
-bash scripts/reproduce_final_reports.sh
+python -m pip install -r requirements.txt
+make reproduce-small
+make test
 ```
 
 The script skips optional expensive stages when their outputs already exist. Raw and processed sequence tables are local artifacts and are not committed.
+
+For full pretrained language-model experiments, install the optional LM dependencies:
+
+```bash
+python -m pip install -r requirements-lm.txt
+```
+
+Those optional runs are benchmark evidence only. The selected public scorers remain the full strict whole-pair k-mer broad scorer and the region-only compact k-mer paired-region scorer.
 
 ## Current Results
 
@@ -85,3 +94,7 @@ Machine-readable summaries are under `reports/metrics/`.
 - OAS records are unknown-target natural antibody background, not assayed negative-class labels.
 - The workflow does not generate, mutate, optimize, or propose biological sequences.
 - The workflow does not claim therapeutic efficacy, clinical prediction, or prospective wet-lab readiness.
+
+## Dependency Notes
+
+The default requirements support lightweight report checks, classical k-mer baselines, and tests. Pretrained antibody language-model experiments use the optional packages listed in `requirements-lm.txt`.

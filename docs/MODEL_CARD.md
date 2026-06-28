@@ -49,5 +49,6 @@ In source-robust analysis, threshold 0.7 selected about 30.5% of held-out record
 - Source-holdout performance is weaker than V-gene grouped validation.
 - Public labels and source metadata are heterogeneous.
 - Probabilities are more useful for ranking than absolute risk estimation.
-- Region/CDR variants did not clearly replace the whole-pair k-mer scorer.
+- Region-only compact k-mer is the primary paired-region scorer on the paired annotated subset; it does not replace the full strict whole-pair k-mer broad scorer.
 - OAS retrieval is a background enrichment diagnostic and remains separate from the neutralisation benchmark.
+- High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background; it should not be interpreted as biological binder/non-binder discrimination.

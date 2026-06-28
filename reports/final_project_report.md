@@ -46,7 +46,7 @@ Pretrained models beat matched k-mer baselines on both primary metrics: False.
 
 Primary broad scorer: kmer_tfidf_logreg_pair_text on Full strict labeled dataset; whole-pair compact k-mer input. (ROC-AUC 0.7800, PR-AUC 0.8233).
 
-Primary paired/region scorer: kmer_tfidf_logreg__paired_annotated_subset__whole_pair_plus_region_compact_kmer on Paired annotated subset; whole-pair, region-only, and combined compact k-mer inputs. (ROC-AUC 0.6550, PR-AUC 0.6145).
+Primary paired/region scorer: kmer_tfidf_logreg__paired_annotated_subset__region_only_compact_kmer on Paired annotated subset; whole-pair, region-only, and combined compact k-mer inputs. (ROC-AUC 0.6629, PR-AUC 0.6330).
 
 ## Skeptical Validation Controls
 
@@ -98,7 +98,7 @@ Matched OAS retrieval used coarse heavy-length, light-length, total-length, and 
 
 ### Interpretation
 
-The enrichment signal persists after coarse length/status matching, though OAS remains unknown-target background rather than assayed negative-class data.
+OAS records are unknown-target background and unknown-target natural antibody background. The OAS retrieval task is a background/enrichment diagnostic and is not neutralisation or binding prediction; OAS records are not assayed negative-class data. High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background; it should not be interpreted as biological binder/non-binder discrimination.
 
 ## Retrospective Selection-Loop Simulation
 

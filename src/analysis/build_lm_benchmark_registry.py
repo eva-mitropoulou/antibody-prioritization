@@ -23,7 +23,6 @@ SOURCE_FILES = {
     "pretrained_lora_distilled": "pretrained_lora_distilled_metrics.json",
     "bioaware_igbert_final": "bioaware_igbert_final_metrics.json",
     "hybrid_baseline": "hybrid_baseline_metrics.json",
-    "model_error_analysis": "model_error_analysis_metrics.json",
 }
 
 
@@ -211,9 +210,15 @@ def build_registry() -> dict[str, Any]:
         "entries": entries,
         "best_pretrained_or_embedding_result": best,
         "pretrained_models_beat_matched_kmer_baselines": bool(any_beats),
+        "excluded_diagnostic_results": [
+            {
+                "model_id": "model_error_analysis",
+                "reason": "Diagnostic error-analysis artifact, not a pretrained or language-model benchmark.",
+            }
+        ],
         "interpretation": (
             "Pretrained and embedding models are benchmark evidence, not automatically "
-            "primary scorers."
+            "primary scorers. None reliably replaces the matched k-mer references on both primary metrics."
         ),
     }
 
@@ -256,6 +261,8 @@ def build_report(registry: dict[str, Any]) -> str:
             registry["interpretation"],
             "",
             "Invalid cross-subset comparisons are not used for model selection.",
+            "",
+            "Diagnostic error-analysis artifacts are excluded from pretrained-model selection.",
             "",
         ]
     )
