@@ -87,13 +87,12 @@ tests/         # Lightweight integrity checks
 
 Machine-readable summaries are under `reports/metrics/`.
 
-## Project Frame
+## Interpretation Context
 
 - Public neutralisation labels are heterogeneous across studies and assays.
 - Source-holdout validation is intentionally conservative and shows weaker generalization than V-gene grouped validation.
 - OAS records are unknown-target natural antibody background for enrichment analysis.
 - Existing-record prioritization and high-confidence review are the intended outputs.
-- Sequence-design and optimization are outside the project scope.
 
 ## Dependency Notes
 

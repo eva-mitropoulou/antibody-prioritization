@@ -1,7 +1,7 @@
 """Embed existing labeled sequences with a frozen Hugging Face sequence model.
 
 This script uses only existing rows and labels from the neutral ML table. It
-does not generate, mutate, optimize, rank, or propose biological sequences.
+works with existing public sequence records for benchmark analysis.
 
 Run from the project root:
 

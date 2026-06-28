@@ -1,7 +1,6 @@
 """Compare grouped-test errors for k-mer and frozen-embedding MLP models.
 
-This module evaluates existing labeled rows only. It does not generate,
-mutate, optimize, rank, or propose biological sequences.
+This module evaluates existing labeled rows for retrospective error analysis.
 
 Run from the project root:
 

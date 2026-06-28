@@ -1,8 +1,7 @@
 """Run neutral grouped validation for the generic k-mer sequence baseline.
 
 This script evaluates an existing supervised TF-IDF + logistic-regression model
-under random and neutral grouped train/test splits. It does not generate,
-design, mutate, optimize, rank, or propose sequences.
+under random and neutral grouped train/test splits.
 
 Run from the project root:
 

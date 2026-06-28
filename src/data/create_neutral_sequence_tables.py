@@ -1,8 +1,7 @@
 """Create neutral CSV copies for generic sequence classification.
 
 The script performs column neutralization, sequence-key construction, metadata
-carry-forward, and neutral warnings only. It does not generate, design, mutate,
-optimize, rank, or propose sequences.
+carry-forward, and neutral warning generation for existing records.
 
 Run from the project root:
 

@@ -2,8 +2,7 @@
 
 This script reads the broader existing-record prioritization table and selects
 one high-scoring representative per heuristic diversity group. It uses existing
-public dataset records only and does not generate, alter, mutate, optimize, or
-propose biological sequences.
+existing public dataset records for diversity-aware review queues.
 
 Run from the project root:
 

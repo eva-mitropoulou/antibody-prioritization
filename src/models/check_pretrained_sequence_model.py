@@ -1,7 +1,6 @@
 """Check a frozen Hugging Face sequence model on existing antibody rows.
 
-This script only reads existing labeled rows. It does not generate, mutate,
-optimize, rank, or propose biological sequences.
+This script reads existing labeled rows for benchmark checks.
 
 Run from the project root:
 

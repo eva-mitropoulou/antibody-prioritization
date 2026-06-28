@@ -32,7 +32,7 @@ Pretrained antibody language-model representations were benchmarked alongside si
 - Existing-record review queues with confidence, target-region, risk, diversity, and structure metadata.
 - Reproducible comparison of sequence-record models and validation controls.
 
-## Project Frame
+## Project Role
 
 - Retrospective public-record prioritization.
 - Matched model-family comparison across row subsets and validation strategies.
@@ -43,7 +43,7 @@ Pretrained antibody language-model representations were benchmarked alongside si
 
 In source-robust analysis, threshold 0.7 selected about 30.5% of held-out records with precision 0.8266 and recall 0.3062. This threshold is used as a high-confidence review cutoff for existing records.
 
-## Limitations
+## Interpretation Context
 
 - Source-holdout performance is weaker than V-gene grouped validation.
 - Public labels and source metadata are heterogeneous.

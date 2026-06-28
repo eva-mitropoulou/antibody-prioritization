@@ -24,11 +24,11 @@ The broader prepared table is `data/processed/neutral_prepared_sequences.csv`. I
 
 Missing-label and conflict-label records are preserved for scoring and review categorization in the broader table. Strict supervised metrics are computed on rows with usable binary labels.
 
-## Source/Study Caveats
+## Source And Study Metadata
 
 Publication/source metadata are heterogeneous. Source fields may combine multiple identifiers, dates, or publication-like metadata. Validation modules sanitize source identifiers before reporting and use leave-source-out or source-grouped splits to measure whether model behavior survives study-level shifts.
 
-## Label Heterogeneity Caveats
+## Label Heterogeneity
 
 Neutralisation labels are public record labels from heterogeneous sources. Label definitions, assay conditions, target-region annotations, and sequence completeness vary across records. Metrics support retrospective record-classification review.
 
@@ -38,6 +38,6 @@ OAS paired records are treated as unknown-target natural antibody background. Th
 
 High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background.
 
-## Privacy And Safety
+## Record Handling
 
 The workflow uses public records for benchmarking and existing-record prioritization. Source sequence fields are preserved by the reporting workflow.

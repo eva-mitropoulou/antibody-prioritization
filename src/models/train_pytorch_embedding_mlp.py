@@ -2,7 +2,7 @@
 
 This script benchmarks small supervised neural-network classifiers on cached
 AbLang2 embeddings for existing labeled rows. It does not fine-tune AbLang2 and
-does not generate, mutate, optimize, rank, or propose biological sequences.
+works with existing public sequence records for benchmark analysis.
 
 Run from the project root:
 

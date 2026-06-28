@@ -258,7 +258,7 @@ def build_skip_report(reason: str) -> dict[str, Any]:
             "oas_background": relpath(OAS_PATH),
             "project_records": relpath(PROJECT_PATH),
         },
-        "background_label_semantics": "OAS paired records are unknown-target natural background, not assayed negative-class labels.",
+        "background_label_semantics": "OAS paired records are unknown-target natural background used for enrichment analysis.",
         "classification_task_mixed_with_main_task": False,
     }
 

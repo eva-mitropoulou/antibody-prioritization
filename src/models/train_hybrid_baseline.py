@@ -1,9 +1,7 @@
 """Train hybrid sequence-classification baselines.
 
 This script benchmarks combinations of k-mer TF-IDF features, cached AbLang2
-embeddings, and simple row-level features on existing labeled rows. It does not
-fine-tune AbLang2 and does not generate, mutate, optimize, rank, or propose
-biological sequences.
+embeddings, and simple row-level features on existing labeled rows.
 
 Run from the project root:
 

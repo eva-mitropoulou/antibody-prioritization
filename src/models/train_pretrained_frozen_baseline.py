@@ -1,8 +1,7 @@
 """Train classifiers on frozen Hugging Face sequence-model embeddings.
 
 This script is a supervised benchmark on existing labeled rows. It does not
-fine-tune the pretrained model and does not generate, mutate, optimize, rank,
-or propose biological sequences.
+fine-tune the pretrained model and works with existing public sequence records for benchmark analysis.
 
 Run from the project root:
 

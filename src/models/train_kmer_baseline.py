@@ -1,8 +1,7 @@
 """Train generic k-mer logistic-regression baselines for sequence classification.
 
 This script trains standard supervised classifiers on existing labeled sequence
-strings. It does not generate, design, mutate, optimize, rank, or propose
-biological sequences.
+strings. It works with existing public sequence records for benchmark analysis.
 
 Run from the project root:
 
