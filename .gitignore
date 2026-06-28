@@ -1,0 +1,33 @@
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Local downloaded background data; regenerate with src/data/download_oas_paired_subset.py.
+data/raw/
+data/processed/
+!data/README.md
+data/raw/oas/*.csv.gz
+data/raw/oas/*.tsv.gz
+
+# Local caches, logs, and temporary outputs.
+*.log
+*.tmp
+*.temp
+tmp/
+temp/
+reports/run_logs/
+
+# Local record-level exports that can include sequence/source-bearing fields.
+reports/broader_existing_record_prioritization_table.csv
+reports/existing_record_prioritization_table.csv
+reports/diversity_aware_existing_record_shortlist.csv
+reports/structure_annotated_shortlist.csv
+
+# Large optional neural checkpoints/caches. Keep small final reports,
+# docs, tests, and metric JSON artifacts tracked.
+models/*.pt
+models/**/*.pt
+.cache/
+cache/

@@ -1,0 +1,13 @@
+pandas
+numpy
+requests
+matplotlib
+seaborn
+scikit-learn
+tqdm
+joblib
+pytest
+transformers
+peft
+abnumber
+anarci
