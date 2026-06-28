@@ -1,6 +1,6 @@
 # Artifact Index
 
-This map lists committed project artifacts by path only. Local raw and processed sequence tables are intentionally not committed.
+This map lists committed project artifacts by path. Local raw and processed sequence tables stay outside the public repository.
 
 ## Project Docs
 

@@ -176,7 +176,7 @@ def build_entry(model_id: str, filename: str, refs: dict[str, Any]) -> dict[str,
         "matched_kmer_reference_id": ref_id,
         "matched_kmer_reference": ref,
         "beats_matched_kmer_reference": beats,
-        "notes": "Benchmark evidence only; not automatically selected as primary scorer.",
+        "notes": "Benchmark comparison; k-mer references remain the selected primary scorers.",
     }
     return entry
 
@@ -217,8 +217,8 @@ def build_registry() -> dict[str, Any]:
             }
         ],
         "interpretation": (
-            "Pretrained and embedding models are benchmark evidence, not automatically "
-            "primary scorers. None reliably replaces the matched k-mer references on both primary metrics."
+            "Pretrained and embedding models are benchmark comparisons. The matched "
+            "k-mer references remain the selected primary scorers across the primary metrics."
         ),
     }
 
@@ -232,8 +232,8 @@ def build_report(registry: dict[str, Any]) -> str:
     lines = [
         "# Pretrained Sequence-Model Benchmark Registry",
         "",
-        "This registry uses existing metric files only. It does not rerun neural",
-        "training. Each row states the reported subset, split context, label",
+        "This registry summarizes existing metric files. Neural training can be",
+        "rerun separately. Each row states the reported subset, split context, label",
         "balance, and whether a same-row-count matched k-mer reference was beaten.",
         "",
         "| Model/result | Row subset | Row count | Split | Group overlap | ROC-AUC | PR-AUC | Beats matched k-mer |",

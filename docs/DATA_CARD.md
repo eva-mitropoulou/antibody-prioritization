@@ -10,7 +10,7 @@ This repository uses local public-record artifacts only. Key files include:
 - `data/processed/oas/oas_paired_standardized.csv`
 - `data/raw/oas/*.csv.gz`
 
-Source rows and sequence values are not printed in reports.
+Reports use aggregate counts, key fields, and hashed or public-safe identifiers.
 
 ## Strict Labeled Dataset
 
@@ -22,7 +22,7 @@ The broader prepared table is `data/processed/neutral_prepared_sequences.csv`. I
 
 ## Missing And Conflict Labels
 
-Missing-label and conflict-label records are not converted into supervised negatives. They are preserved for scoring and review categorization in the broader table. Strict supervised metrics are computed only on rows with usable binary labels.
+Missing-label and conflict-label records are preserved for scoring and review categorization in the broader table. Strict supervised metrics are computed on rows with usable binary labels.
 
 ## Source/Study Caveats
 
@@ -30,14 +30,14 @@ Publication/source metadata are heterogeneous. Source fields may combine multipl
 
 ## Label Heterogeneity Caveats
 
-Neutralisation labels are public record labels, not a single harmonized assay. Label definitions, assay conditions, target-region annotations, and sequence completeness vary across records. Metrics should therefore be interpreted as retrospective record-classification evidence, not prospective biological certainty.
+Neutralisation labels are public record labels from heterogeneous sources. Label definitions, assay conditions, target-region annotations, and sequence completeness vary across records. Metrics support retrospective record-classification review.
 
 ## OAS Background Semantics
 
-OAS paired records are treated as unknown-target natural antibody background. They are not assayed negative-class labels and are not mixed with the main neutralisation benchmark. The OAS retrieval task is a background/enrichment diagnostic and is not neutralisation or binding prediction.
+OAS paired records are treated as unknown-target natural antibody background. The OAS retrieval task is a background/enrichment diagnostic kept separate from the main neutralisation benchmark.
 
-High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background. It should not be interpreted as biological binder/non-binder discrimination.
+High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background.
 
 ## Privacy And Safety
 
-The workflow uses public records only. It does not generate, mutate, design, optimize, or propose biological sequences. Source sequence fields are not altered by the reporting workflow.
+The workflow uses public records for benchmarking and existing-record prioritization. Source sequence fields are preserved by the reporting workflow.

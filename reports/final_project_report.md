@@ -4,8 +4,8 @@
 
 Build a public-data antibody sequence-record ML workflow for neutralisation classification benchmarking, sequence-space analysis, retrospective selection simulation, and prioritization of existing records.
 
-The workflow does not create new sequences, alter source sequence fields,
-claim therapeutic efficacy, or claim production deployment.
+The workflow preserves source sequence fields and supports retrospective
+benchmarking, review prioritization, and background retrieval analysis.
 
 ## Datasets
 
@@ -68,7 +68,7 @@ Scores are more reliable for ranking than as absolute probabilities; thresholds 
 
 Selected source-robust model: whole_pair_kmer. Meaningful improvement over previous source-holdout baseline: False.
 
-Source-robust selection chose `whole_pair_kmer` and did not materially improve cross-source performance. CDR/region features were competitive for source robustness. Scores remain ranking/prioritization signals rather than calibrated prospective therapeutic predictions.
+Source-robust selection chose `whole_pair_kmer` and did not materially improve cross-source performance. CDR/region features were competitive for source robustness. Scores remain ranking and prioritization signals for existing records.
 
 Selected weighted leave-source-out ROC-AUC: 0.6095. Selected weighted leave-source-out PR-AUC: 0.6363. High-confidence threshold: 0.7000 with precision 0.8266, recall 0.3062, and coverage 0.3051.
 
@@ -86,7 +86,7 @@ Landscape status: available. Feature source: cached_pair_embeddings. Cluster cou
 
 ## Background Retrieval Status
 
-Background retrieval status: available. Background retrieval metrics were not mixed with the main classification task.
+Background retrieval status: available. Background retrieval metrics were kept separate from the main classification task.
 
 ### Broad OAS Retrieval
 
@@ -98,7 +98,7 @@ Matched OAS retrieval used coarse heavy-length, light-length, total-length, and 
 
 ### Interpretation
 
-OAS records are unknown-target background and unknown-target natural antibody background. The OAS retrieval task is a background/enrichment diagnostic and is not neutralisation or binding prediction; OAS records are not assayed negative-class data. High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background; it should not be interpreted as biological binder/non-binder discrimination.
+OAS records are unknown-target natural antibody background. The OAS retrieval task is a background/enrichment diagnostic kept separate from the main neutralisation benchmark. High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background.
 
 ## Retrospective Selection-Loop Simulation
 
@@ -111,7 +111,7 @@ Structure metadata available in shortlist: 3. Docking was not run by default.
 ## Limitations
 
 - Public source labels are heterogeneous and retrospective.
-- Model probabilities are prioritization signals, not therapeutic efficacy.
+- Model probabilities are prioritization signals for existing-record review.
 - Subset-specific metrics are not directly comparable across row subsets.
 - Diversity and sequence-risk features are heuristic.
 - Background retrieval is optional and local-data dependent.
@@ -122,4 +122,4 @@ Structure metadata available in shortlist: 3. Docking was not run by default.
 - Curate clearer target-region and structure metadata where available.
 - Add prospective-style validation only when new external records are available.
 - Keep benchmark comparisons matched by row subset and split strategy.
-- Use the shortlist as an inspection queue for existing records, not as generated designs.
+- Use the shortlist as an inspection queue for existing records.

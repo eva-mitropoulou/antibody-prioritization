@@ -3,8 +3,8 @@
 Input file: `data/processed/covabdab_neutralisation_ml.csv`
 
 This report describes a generic supervised sequence-classification baseline
-trained on an existing labeled table. The workflow does not generate,
-design, mutate, optimize, rank, or propose biological sequences.
+trained on an existing labeled table. The workflow preserves source sequence
+fields and produces aggregate benchmark outputs.
 
 ## Data
 

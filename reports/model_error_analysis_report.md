@@ -130,8 +130,8 @@ Some subgroups show higher MLP balanced accuracy, but this should be interpreted
 
 - Labels are literature-derived.
 - Assay conditions are heterogeneous.
-- Grouped validation by V-gene reduces but does not eliminate all sequence-family leakage.
-- This is classification of existing labeled antibodies, not sequence design.
+- Grouped validation by V-gene reduces sequence-family leakage while source effects remain visible.
+- This is classification of existing labeled antibodies.
 
 ## Artifacts
 

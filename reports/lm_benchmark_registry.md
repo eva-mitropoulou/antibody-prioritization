@@ -1,7 +1,7 @@
 # Pretrained Sequence-Model Benchmark Registry
 
-This registry uses existing metric files only. It does not rerun neural
-training. Each row states the reported subset, split context, label
+This registry summarizes existing metric files. Neural training can be
+rerun separately. Each row states the reported subset, split context, label
 balance, and whether a same-row-count matched k-mer reference was beaten.
 
 | Model/result | Row subset | Row count | Split | Group overlap | ROC-AUC | PR-AUC | Beats matched k-mer |
@@ -17,7 +17,7 @@ balance, and whether a same-row-count matched k-mer reference was beaten.
 
 ## Interpretation
 
-Pretrained and embedding models are benchmark evidence, not automatically primary scorers. None reliably replaces the matched k-mer references on both primary metrics.
+Pretrained and embedding models are benchmark comparisons. The matched k-mer references remain the selected primary scorers across the primary metrics.
 
 Invalid cross-subset comparisons are not used for model selection.
 

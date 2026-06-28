@@ -3,13 +3,13 @@
     "expected_artifacts_exist": true,
     "no_affirmative_prospective_or_efficacy_overclaim": true,
     "oas_described_as_unknown_target_background": true,
-    "oas_not_described_as_assayed_negative_class": true,
+    "oas_not_described_as_assayed_negative_class": false,
     "public_score_csv_headers_safe": true,
     "selected_model_consistent": true,
     "source_holdout_limitations_included": true
   },
   "missing_expected_artifacts": [],
-  "next_recommended_action": "Repository project files are internally consistent.",
+  "next_recommended_action": "Inspect failed checks and regenerate project artifacts.",
   "public_score_header_checks": {
     "reports/oas_background_retrieval_scores.csv": {
       "exists": true,
@@ -33,5 +33,5 @@
     "model_registry_primary_model_id": "kmer_tfidf_logreg_pair_text",
     "source_robust_selected_model": "whole_pair_kmer"
   },
-  "status": "PASS"
+  "status": "WARN"
 }

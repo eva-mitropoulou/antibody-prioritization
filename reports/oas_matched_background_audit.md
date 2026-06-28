@@ -1,7 +1,7 @@
 # OAS Matched Background Audit
 
-OAS rows are treated as unknown-target background, not assayed negative-class labels.
-This matching audit does not print raw sequence values.
+OAS rows are treated as unknown-target background for enrichment analysis.
+This matching audit reports aggregate matching fields and public-safe identifiers.
 
 | Metric | Value |
 |---|---:|

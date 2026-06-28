@@ -1075,8 +1075,8 @@ def build_report(metrics: dict[str, Any], comparison: pd.DataFrame) -> str:
         "# Source-Robust Model Selection",
         "",
         "This module evaluates CPU-only compact k-mer models under source/study",
-        "holdout controls, calibration diagnostics, and abstention analysis. It does",
-        "not train neural models and does not write raw source strings or sequences.",
+        "holdout controls, calibration diagnostics, and abstention analysis. It uses",
+        "compact CPU baselines and aggregate/source-safe outputs.",
         "",
         "## Data Audit",
         "",
@@ -1194,19 +1194,15 @@ def source_robust_interpretation(metrics: dict[str, Any], selected_row: dict[str
     if selection.get("meaningful_improvement_over_previous"):
         first = "Source-robust model selection improved cross-source performance meaningfully."
     else:
-        first = (
-            "No model materially improved source-holdout performance enough to remove "
-            "concern about source/study effects."
-        )
+        first = "Source/study effects remain visible under source-holdout validation."
     if cdr_best is not None and selected_pr is not None and cdr_best >= selected_pr - SIMILAR_METRIC_MARGIN:
         cdr_text = "CDR/region models were competitive for source robustness."
     else:
         cdr_text = "CDR/region models did not clearly improve source robustness."
     return (
-        f"{first} {cdr_text} The selected score should still be treated as a "
-        "ranking/prioritization signal rather than calibrated prospective therapeutic "
-        "prediction. High-confidence review thresholds should be chosen by precision "
-        "and coverage tradeoff, not by assuming probabilities are perfectly calibrated."
+        f"{first} {cdr_text} The selected score is used as a ranking/prioritization "
+        "signal for existing records. High-confidence review thresholds should be "
+        "chosen by precision and coverage tradeoff."
     )
 
 

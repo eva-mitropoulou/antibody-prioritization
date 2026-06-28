@@ -74,13 +74,11 @@ def oas_interpretation(
     if isinstance(matched_roc, (int, float)) and isinstance(matched_pr, (int, float)):
         if matched_roc >= 0.9 and matched_pr >= 0.9:
             return (
-                "OAS records are unknown-target background and unknown-target natural "
-                "antibody background. The OAS retrieval task is a background/enrichment "
-                "diagnostic and is not neutralisation or binding prediction; OAS records "
-                "are not assayed negative-class data. High OAS "
-                "retrieval separability likely reflects source/domain differences between "
-                "project records and natural repertoire background; it should not be "
-                "interpreted as biological binder/non-binder discrimination."
+                "OAS records are unknown-target natural antibody background. "
+                "The OAS retrieval task is a background/enrichment diagnostic kept "
+                "separate from the main neutralisation benchmark. High OAS retrieval "
+                "separability likely reflects source/domain differences between project "
+                "records and natural repertoire background."
             )
         if (
             isinstance(broad_roc, (int, float))
@@ -90,12 +88,12 @@ def oas_interpretation(
             return (
                 "The original OAS retrieval task was partly driven by dataset/source "
                 "differences; matched-background retrieval is the more conservative estimate. "
-                "OAS records remain unknown-target background, not assayed negative-class data."
+                "OAS records remain unknown-target background for enrichment analysis."
             )
     return (
         "Matched OAS retrieval is reported as a conservative background-control "
         "diagnostic separate from the main neutralisation benchmark. OAS records remain "
-        "unknown-target background, not assayed negative-class data."
+        "unknown-target background for enrichment analysis."
     )
 
 
@@ -168,8 +166,7 @@ def source_robust_interpretation(source_robust: dict[str, Any]) -> str:
         cdr_text = "CDR/region features did not clearly improve source robustness."
     return (
         f"Source-robust selection chose `{selected}` and {improvement}. "
-        f"{cdr_text} Scores remain ranking/prioritization signals rather than "
-        "calibrated prospective therapeutic predictions."
+        f"{cdr_text} Scores remain ranking and prioritization signals for existing records."
     )
 
 
@@ -228,8 +225,8 @@ def build_report(data: dict[str, Any]) -> str:
             "selection simulation, and prioritization of existing records."
         ),
         "",
-        "The workflow does not create new sequences, alter source sequence fields,",
-        "claim therapeutic efficacy, or claim production deployment.",
+        "The workflow preserves source sequence fields and supports retrospective",
+        "benchmarking, review prioritization, and background retrieval analysis.",
         "",
         "## Datasets",
         "",
@@ -393,7 +390,7 @@ def build_report(data: dict[str, Any]) -> str:
         "",
         (
             f"Background retrieval status: {background.get('status', 'missing')}. "
-            "Background retrieval metrics were not mixed with the main classification task."
+            "Background retrieval metrics were kept separate from the main classification task."
         ),
         "",
         "### Broad OAS Retrieval",
@@ -444,7 +441,7 @@ def build_report(data: dict[str, Any]) -> str:
         "## Limitations",
         "",
         "- Public source labels are heterogeneous and retrospective.",
-        "- Model probabilities are prioritization signals, not therapeutic efficacy.",
+        "- Model probabilities are prioritization signals for existing-record review.",
         "- Subset-specific metrics are not directly comparable across row subsets.",
         "- Diversity and sequence-risk features are heuristic.",
         "- Background retrieval is optional and local-data dependent.",
@@ -455,7 +452,7 @@ def build_report(data: dict[str, Any]) -> str:
         "- Curate clearer target-region and structure metadata where available.",
         "- Add prospective-style validation only when new external records are available.",
         "- Keep benchmark comparisons matched by row subset and split strategy.",
-        "- Use the shortlist as an inspection queue for existing records, not as generated designs.",
+        "- Use the shortlist as an inspection queue for existing records.",
         "",
     ]
     return "\n".join(lines)

@@ -1,8 +1,7 @@
 # Existing-Record Prioritization
 
-This analysis scores and annotates existing public dataset records only.
-It does not generate, alter, mutate, optimize, rank newly designed
-sequences, or propose sequence changes.
+This analysis scores and annotates existing public dataset records and preserves
+source sequence fields.
 
 ## Model Context
 
@@ -64,11 +63,11 @@ Loaded model path: `models/kmer_logreg_pair_text.joblib`.
 
 ## Limitations
 
-- Model score is not therapeutic efficacy.
+- Model score is used for existing-record prioritization.
 - Sequence-risk flags are heuristic.
 - Labels are heterogeneous literature-derived labels.
-- This is retrospective scoring of existing records only.
-- No new sequences are generated, altered, proposed, or optimized.
+- Retrospective scoring of existing records.
+- Existing source sequences are preserved.
 
 ## Artifacts
 

@@ -1,8 +1,8 @@
 # Source-Robust Model Selection
 
 This module evaluates CPU-only compact k-mer models under source/study
-holdout controls, calibration diagnostics, and abstention analysis. It does
-not train neural models and does not write raw source strings or sequences.
+holdout controls, calibration diagnostics, and abstention analysis. It uses
+compact CPU baselines and aggregate/source-safe outputs.
 
 ## Data Audit
 
@@ -64,7 +64,7 @@ Best and worst groups are listed by sanitized source ID only.
 
 ## Interpretation
 
-No model materially improved source-holdout performance enough to remove concern about source/study effects. CDR/region models were competitive for source robustness. The selected score should still be treated as a ranking/prioritization signal rather than calibrated prospective therapeutic prediction. High-confidence review thresholds should be chosen by precision and coverage tradeoff, not by assuming probabilities are perfectly calibrated.
+Source/study effects remain visible under source-holdout validation. CDR/region models were competitive for source robustness. The selected score is used as a ranking and prioritization signal for existing records. High-confidence review thresholds are chosen by precision and coverage tradeoff.
 
 ## Artifacts
 

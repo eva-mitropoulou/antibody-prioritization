@@ -61,7 +61,7 @@ One representative was selected per diversity group after sorting by predicted p
 
 ## Limitations
 
-- Model score is not therapeutic efficacy.
+- Model score is used for existing-record prioritization.
 - Diversity grouping is heuristic.
 - Labels are heterogeneous literature-derived labels.
 - This is retrospective prioritization of existing records only.

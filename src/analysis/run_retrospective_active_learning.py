@@ -240,7 +240,7 @@ def build_report(metrics: dict[str, Any]) -> str:
         "# Retrospective Selection-Loop Simulation",
         "",
         "This simulation compares selection strategies on existing labeled records.",
-        "It is retrospective and does not claim prospective efficacy.",
+        "It is retrospective and evaluates existing-record selection behavior.",
         "",
         "| Metric | Value |",
         "|---|---:|",

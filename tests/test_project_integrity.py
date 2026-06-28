@@ -95,7 +95,8 @@ def test_oas_score_csv_uses_ids_not_raw_sequences() -> None:
 def test_final_report_oas_wording() -> None:
     text = (ROOT / "reports/final_project_report.md").read_text().lower()
     assert "unknown-target background" in text
-    assert "assayed negative-class" in text
+    assert "enrichment diagnostic" in text
+    assert "kept separate from the main neutralisation benchmark" in text
 
 
 def test_source_robust_selected_model() -> None:

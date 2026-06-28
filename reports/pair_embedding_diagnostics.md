@@ -95,8 +95,8 @@ np.save(PAIR_EMBEDDING_PATH, pair_embeddings)
 ```
 
 Conclusion for AbLang2: despite the helper function accepting `(heavy, light)`
-tuples, this script does not create `pair` embeddings by passing real heavy and
-real light together in one model call. The saved AbLang2 `pair` array is
+tuples, this script creates AbLang2 `pair` arrays by concatenating separately
+embedded heavy and light chains. The saved AbLang2 `pair` array is
 concatenated heavy-only plus light-only.
 
 Saved shapes:
@@ -244,8 +244,8 @@ Therefore:
 - pair classifier input: one 960-dimensional concatenated vector:
   `[heavy-only embedding, light-only embedding]`.
 - classifier interaction capacity: the pretrained AbLang2 representation itself
-  does not encode heavy-light interaction in the saved `pair` array, because
-  heavy and light were embedded separately. A downstream MLP can learn
+  represents separately embedded heavy and light chains in the saved `pair`
+  array. A downstream MLP can learn
   interactions after concatenation; logistic regression cannot learn nonlinear
   cross-chain interactions unless they are already encoded or explicitly
   featurized.
@@ -297,7 +297,7 @@ Current naming:
 - `pair` is accurate for Hugging Face / IgBert because the embedding is a true
   joint pair-text model representation.
 - `pair` is potentially misleading for AbLang2 because the saved array is
-  concatenated heavy-only plus light-only, not a true joint heavy-light model
+  concatenated heavy-only plus light-only rather than a joint heavy-light model
   embedding.
 
 Rename recommendation:

@@ -1,6 +1,6 @@
 # Final Consistency Audit
 
-Overall status: **PASS**
+Overall status: **WARN**
 
 ## Checks
 
@@ -9,7 +9,7 @@ Overall status: **PASS**
 | expected_artifacts_exist | True |
 | selected_model_consistent | True |
 | oas_described_as_unknown_target_background | True |
-| oas_not_described_as_assayed_negative_class | True |
+| oas_not_described_as_assayed_negative_class | False |
 | source_holdout_limitations_included | True |
 | no_affirmative_prospective_or_efficacy_overclaim | True |
 | public_score_csv_headers_safe | True |

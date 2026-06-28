@@ -1,8 +1,8 @@
 """Run OAS unknown-target background retrieval diagnostics.
 
 This module compares project records against local paired OAS natural background
-records. OAS rows are unknown-target background, not assayed negative-class labels, and the
-metrics are not mixed with the main neutralisation classification benchmark.
+records. OAS rows are unknown-target background for enrichment analysis, and the
+metrics are kept separate from the main neutralisation classification benchmark.
 """
 
 from __future__ import annotations
@@ -211,7 +211,7 @@ def run_retrieval() -> tuple[pd.DataFrame, dict[str, Any], Pipeline, pd.DataFram
             "oas_background": relpath(OAS_PATH),
             "project_records": relpath(PROJECT_PATH),
         },
-        "background_label_semantics": "OAS paired records are unknown-target natural background, not assayed negative-class labels.",
+        "background_label_semantics": "OAS paired records are unknown-target natural background for enrichment analysis.",
         "classification_task_mixed_with_main_task": False,
         "model": {
             "vectorizer": 'TfidfVectorizer(analyzer="char", ngram_range=(3,5), min_df=2, max_features=50000)',
@@ -329,7 +329,7 @@ def build_report(metrics: dict[str, Any]) -> str:
         "# OAS Background Retrieval",
         "",
         "This diagnostic treats paired OAS records as unknown-target natural",
-        "background, not assayed negative-class data. Metrics are not mixed with the main",
+        "background for enrichment analysis. Metrics are kept separate from the main",
         "neutralisation classification benchmark.",
         "",
         "| Metric | Value |",

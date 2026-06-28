@@ -1,7 +1,7 @@
 # OAS Background Retrieval
 
 This diagnostic treats paired OAS records as unknown-target natural
-background, not assayed negative-class data. Metrics are not mixed with the main
+background for enrichment analysis. Metrics are kept separate from the main
 neutralisation classification benchmark.
 
 | Metric | Value |

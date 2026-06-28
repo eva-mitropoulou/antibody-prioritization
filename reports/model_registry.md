@@ -1,8 +1,7 @@
 # Final Model Registry
 
 The registry separates full strict dataset comparisons from paired annotated
-subset comparisons. It does not treat metrics from different row subsets as
-directly comparable.
+subset comparisons. Metrics from different row subsets are kept separate.
 
 | Role | Model | Row subset | Rows | Group overlap | ROC-AUC | PR-AUC |
 |---|---|---|---:|---:|---:|---:|
