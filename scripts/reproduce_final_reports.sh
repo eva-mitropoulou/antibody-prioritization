@@ -72,6 +72,14 @@ if [[ -s "data/processed/oas/oas_paired_standardized.csv" ]]; then
     "src/analysis/run_oas_matched_background_retrieval.py" \
     "reports/metrics/oas_matched_background_retrieval_metrics.json" \
     "reports/oas_matched_background_retrieval_scores.csv"
+
+  run_if_outputs_missing \
+    "OAS existing-record retrieval shortlist" \
+    "src/analysis/build_oas_existing_record_shortlist.py" \
+    "reports/metrics/oas_existing_record_shortlist_metrics.json" \
+    "reports/oas_existing_record_shortlist_top25.csv" \
+    "reports/oas_existing_record_shortlist_top100.csv" \
+    "reports/oas_existing_record_scores_public.csv"
 else
   echo "[skip] OAS retrieval skipped because local standardized OAS data is missing"
 fi

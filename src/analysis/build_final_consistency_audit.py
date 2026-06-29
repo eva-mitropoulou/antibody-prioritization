@@ -28,6 +28,7 @@ EXPECTED_ARTIFACTS = [
     "reports/source_robust_model_selection_report.md",
     "reports/calibration_threshold_report.md",
     "reports/oas_background_retrieval_report.md",
+    "reports/oas_existing_record_shortlist_report.md",
     "reports/matched_kmer_benchmark_audit.md",
     "reports/unsupervised_antibody_landscape_report.md",
     "reports/active_learning_simulation_report.md",
@@ -36,7 +37,11 @@ EXPECTED_ARTIFACTS = [
     "reports/metrics/source_holdout_validation_metrics.json",
     "reports/metrics/calibration_threshold_metrics.json",
     "reports/metrics/oas_background_retrieval_metrics.json",
+    "reports/metrics/oas_existing_record_shortlist_metrics.json",
     "reports/metrics/matched_kmer_benchmark_audit.json",
+    "reports/oas_existing_record_shortlist_top25.csv",
+    "reports/oas_existing_record_shortlist_top100.csv",
+    "reports/oas_existing_record_scores_public.csv",
 ]
 
 
@@ -135,6 +140,9 @@ def public_score_header_check() -> dict[str, Any]:
     score_csvs = [
         "reports/oas_background_retrieval_scores.csv",
         "reports/oas_matched_background_retrieval_scores.csv",
+        "reports/oas_existing_record_shortlist_top25.csv",
+        "reports/oas_existing_record_shortlist_top100.csv",
+        "reports/oas_existing_record_scores_public.csv",
         "reports/source_robust_model_comparison.csv",
         "reports/source_holdout_failure_analysis.csv",
     ]
@@ -161,7 +169,12 @@ def build_audit() -> tuple[str, dict[str, Any]]:
     readme = read_text("README.md").lower()
     data_card = read_text("docs/DATA_CARD.md").lower()
     model_card = read_text("docs/MODEL_CARD.md").lower()
-    combined_project_text = "\n".join([final_report, readme, data_card, model_card])
+    oas_shortlist_report = read_text(
+        "reports/oas_existing_record_shortlist_report.md"
+    ).lower()
+    combined_project_text = "\n".join(
+        [final_report, readme, data_card, model_card, oas_shortlist_report]
+    )
     models = selected_models()
     missing_expected = [
         path for path in EXPECTED_ARTIFACTS if not (PROJECT_ROOT / path).is_file()
@@ -182,6 +195,18 @@ def build_audit() -> tuple[str, dict[str, Any]]:
             and models["model_registry_primary_model_id"] == "kmer_tfidf_logreg_pair_text"
         ),
         "oas_described_as_unknown_target_background": "unknown-target background" in combined_project_text,
+        "oas_existing_record_shortlist_documented": (
+            "oas existing-record retrieval shortlist" in combined_project_text
+            and "existing-record shortlist" in combined_project_text
+        ),
+        "oas_shortlist_score_not_binding_probability": (
+            "not a binding probability" in combined_project_text
+        ),
+        "oas_shortlist_not_sequence_generation": (
+            "does not generate or modify sequences" in combined_project_text
+            or "does not generate, mutate, design, optimize, or propose sequences"
+            in combined_project_text
+        ),
         "oas_not_described_as_assayed_negative_class": "assayed negative-class" in combined_project_text,
         "source_holdout_limitations_included": (
             "source-holdout" in combined_project_text
@@ -240,6 +265,7 @@ def build_audit() -> tuple[str, dict[str, Any]]:
             "## Notes",
             "",
             "- OAS is treated as unknown-target background and kept separate from the neutralisation benchmark.",
+            "- The OAS existing-record retrieval shortlist is tracked as expert-review prioritization, not antibody design.",
             "- Source-holdout limitations are preserved in project documentation.",
             "- The audit checks paths, report wording, JSON summaries, and CSV headers only.",
             "",

@@ -96,6 +96,14 @@ Broad OAS retrieval used OAS paired rows as unknown-target background. Project r
 
 Matched OAS retrieval used coarse heavy-length, light-length, total-length, and light-status bins. Matched project rows: 7192. Matched OAS rows: 7192. Skipped project rows: 1818. Exact overlaps removed: 5. ROC-AUC: 0.9911. PR-AUC: 0.9893.
 
+### OAS Existing-Record Retrieval Shortlist
+
+The OAS existing-record retrieval shortlist identifies existing OAS background records that are sequence-similar to curated project-positive records. OAS records are unknown-target natural antibody background, and the output is an existing-record shortlist for expert review.
+
+OAS rows scored: 17882. Project-positive reference rows: 3281. Top-25 diverse shortlist size: 25. Top-100 ranked table size: 100. Diversity clusters: 25.
+
+The shortlist score is a computational prioritization score, not a binding probability. Shortlisted records are not validated binders or therapeutics, and the module does not generate or modify sequences.
+
 ### Interpretation
 
 OAS records are unknown-target natural antibody background. The OAS retrieval task is a background/enrichment diagnostic kept separate from the main neutralisation benchmark. High OAS retrieval separability likely reflects source/domain differences between project records and natural repertoire background.
@@ -115,6 +123,7 @@ Structure metadata available in shortlist: 3. Docking was not run by default.
 - Subset-specific metrics are not directly comparable across row subsets.
 - Diversity and sequence-risk features are heuristic.
 - Background retrieval is optional and local-data dependent.
+- The OAS existing-record shortlist is an expert-review queue, not antibody design or therapeutic discovery.
 - Docking remains a separate future validation workflow.
 
 ## Next Steps

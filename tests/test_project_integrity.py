@@ -39,6 +39,7 @@ def test_required_metrics_exist() -> None:
         "reports/metrics/source_robust_model_selection_metrics.json",
         "reports/metrics/calibration_threshold_metrics.json",
         "reports/metrics/oas_background_retrieval_metrics.json",
+        "reports/metrics/oas_existing_record_shortlist_metrics.json",
         "reports/metrics/final_consistency_audit.json",
     ]
     missing = [path for path in required if not (ROOT / path).is_file()]
@@ -49,6 +50,9 @@ def test_public_score_csv_headers_do_not_expose_raw_sequence_columns() -> None:
     score_csvs = [
         "reports/oas_background_retrieval_scores.csv",
         "reports/oas_matched_background_retrieval_scores.csv",
+        "reports/oas_existing_record_shortlist_top25.csv",
+        "reports/oas_existing_record_shortlist_top100.csv",
+        "reports/oas_existing_record_scores_public.csv",
         "reports/active_learning_selected_records.csv",
         "reports/model_error_analysis_predictions.csv",
     ]
@@ -71,12 +75,16 @@ def test_oas_score_csv_uses_ids_not_raw_sequences() -> None:
     oas_csvs = [
         "reports/oas_background_retrieval_scores.csv",
         "reports/oas_matched_background_retrieval_scores.csv",
+        "reports/oas_existing_record_shortlist_top25.csv",
+        "reports/oas_existing_record_shortlist_top100.csv",
+        "reports/oas_existing_record_scores_public.csv",
     ]
     allowed_id_columns = {
         "sequence_pair_hash",
         "hashed_sequence_key",
         "record_id",
         "row_id",
+        "oas_record_hash",
     }
     forbidden_exact = {
         "sequence",
@@ -90,6 +98,55 @@ def test_oas_score_csv_uses_ids_not_raw_sequences() -> None:
         columns = {column.strip().lower() for column in csv_columns(path)}
         assert columns & allowed_id_columns, path
         assert not (columns & forbidden_exact), path
+
+
+def test_oas_existing_record_shortlist_files_exist() -> None:
+    required = [
+        "reports/oas_existing_record_shortlist_report.md",
+        "reports/metrics/oas_existing_record_shortlist_metrics.json",
+        "reports/oas_existing_record_shortlist_top25.csv",
+        "reports/oas_existing_record_shortlist_top100.csv",
+        "reports/oas_existing_record_scores_public.csv",
+        "reports/figures/oas_existing_record_score_distribution.png",
+        "reports/figures/oas_existing_record_similarity_vs_score.png",
+        "reports/figures/oas_existing_record_diversity_map.png",
+    ]
+    missing = [path for path in required if not (ROOT / path).is_file()]
+    assert not missing
+
+
+def test_public_oas_shortlist_csvs_do_not_expose_raw_sequence_columns() -> None:
+    oas_shortlist_csvs = [
+        "reports/oas_existing_record_shortlist_top25.csv",
+        "reports/oas_existing_record_shortlist_top100.csv",
+        "reports/oas_existing_record_scores_public.csv",
+    ]
+    forbidden_exact = {
+        "sequence",
+        "heavy_sequence",
+        "light_sequence",
+        "sequence_pair_text",
+        "vhorvhh",
+        "vl",
+    }
+    for path in oas_shortlist_csvs:
+        normalized_columns = {column.strip().lower() for column in csv_columns(path)}
+        assert not (normalized_columns & forbidden_exact), path
+
+
+def test_oas_existing_record_shortlist_report_wording() -> None:
+    text = (ROOT / "reports/oas_existing_record_shortlist_report.md").read_text().lower()
+    assert "unknown-target background" in text
+    assert "existing-record shortlist" in text
+
+
+def test_oas_existing_record_shortlist_report_avoids_true_binder_claims() -> None:
+    text = (ROOT / "reports/oas_existing_record_shortlist_report.md").read_text().lower()
+    forbidden_phrases = [
+        "true binders",
+        "true non-binders",
+    ]
+    assert not any(phrase in text for phrase in forbidden_phrases)
 
 
 def test_final_report_oas_wording() -> None:

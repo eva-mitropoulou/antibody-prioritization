@@ -3,7 +3,10 @@
     "expected_artifacts_exist": true,
     "no_affirmative_prospective_or_efficacy_overclaim": true,
     "oas_described_as_unknown_target_background": true,
+    "oas_existing_record_shortlist_documented": true,
     "oas_not_described_as_assayed_negative_class": false,
+    "oas_shortlist_not_sequence_generation": true,
+    "oas_shortlist_score_not_binding_probability": true,
     "public_score_csv_headers_safe": true,
     "selected_model_consistent": true,
     "source_holdout_limitations_included": true
@@ -16,6 +19,18 @@
       "forbidden_columns_found": []
     },
     "reports/oas_matched_background_retrieval_scores.csv": {
+      "exists": true,
+      "forbidden_columns_found": []
+    },
+    "reports/oas_existing_record_scores_public.csv": {
+      "exists": true,
+      "forbidden_columns_found": []
+    },
+    "reports/oas_existing_record_shortlist_top100.csv": {
+      "exists": true,
+      "forbidden_columns_found": []
+    },
+    "reports/oas_existing_record_shortlist_top25.csv": {
       "exists": true,
       "forbidden_columns_found": []
     },

@@ -1,0 +1,132 @@
+{
+  "artifacts": {
+    "diversity_map_figure": "reports/figures/oas_existing_record_diversity_map.png",
+    "full_scores_csv": "reports/oas_existing_record_scores_public.csv",
+    "metrics_json": "reports/metrics/oas_existing_record_shortlist_metrics.json",
+    "report": "reports/oas_existing_record_shortlist_report.md",
+    "score_distribution_figure": "reports/figures/oas_existing_record_score_distribution.png",
+    "similarity_vs_score_figure": "reports/figures/oas_existing_record_similarity_vs_score.png",
+    "top100_csv": "reports/oas_existing_record_shortlist_top100.csv",
+    "top25_csv": "reports/oas_existing_record_shortlist_top25.csv"
+  },
+  "composite_weights": {
+    "max_positive_neighbor_similarity": 0.3,
+    "positive_centroid_similarity": 0.1,
+    "retrieval_score": 0.4,
+    "top10_positive_neighbor_similarity": 0.2
+  },
+  "diversity_cluster_count": 25,
+  "diversity_summary": {
+    "diversity_cluster_count": 25,
+    "diversity_similarity_threshold": 0.95,
+    "exact_duplicate_hash_count": 0,
+    "near_duplicate_to_shortlist_count": 1,
+    "selected_diverse_shortlist_size": 25
+  },
+  "feature_model": {
+    "internal_retrieval_classifier": "LogisticRegression(max_iter=3000, class_weight=\"balanced\")",
+    "vectorizer": "TfidfVectorizer(analyzer=\"char\", ngram_range=(3,5), min_df=2, max_features=50000)",
+    "vocabulary_size": 50000
+  },
+  "input_diagnostics": {
+    "oas": {
+      "blank_pair_text_rows_dropped": 0,
+      "columns": [
+        "heavy_sequence",
+        "light_sequence",
+        "sequence_pair_text",
+        "source_file",
+        "background_source"
+      ],
+      "input_rows": 17882,
+      "path": "data/processed/oas/oas_paired_standardized.csv",
+      "source_file_count": 10,
+      "usable_oas_rows": 17882
+    },
+    "project_positive": {
+      "columns": [
+        "sample_name",
+        "sample_type",
+        "label",
+        "sequence_a",
+        "sequence_b",
+        "sequence_a_raw",
+        "sequence_pair_text",
+        "sequence_key",
+        "group_feature_v",
+        "group_feature_j",
+        "group_feature_b_v",
+        "group_feature_b_j",
+        "group_feature_cdr3",
+        "group_feature_b_cdr3",
+        "metadata_target_region",
+        "metadata_origin",
+        "extra_col_10",
+        "extra_col_11",
+        "extra_col_12",
+        "extra_col_13",
+        "extra_col_14",
+        "extra_col_15",
+        "extra_col_16",
+        "extra_col_17",
+        "extra_col_18",
+        "extra_col_19",
+        "extra_col_20",
+        "extra_col_21",
+        "extra_col_22",
+        "extra_col_23",
+        "extra_col_24"
+      ],
+      "input_rows": 5573,
+      "label_column": "label",
+      "load_attempts": [],
+      "path": "data/processed/neutral_sequence_classification_ml.csv",
+      "status": "available",
+      "strict_positive_rows": 3281,
+      "unique_positive_reference_texts": 3281,
+      "usable_positive_reference_rows": 3281
+    }
+  },
+  "input_paths": {
+    "broad_retrieval_scores": "reports/oas_background_retrieval_scores.csv",
+    "matched_retrieval_scores": "reports/oas_matched_background_retrieval_scores.csv",
+    "oas_records": "data/processed/oas/oas_paired_standardized.csv",
+    "project_positive_records": "data/processed/neutral_sequence_classification_ml.csv"
+  },
+  "interpretation": {
+    "background_semantics": "OAS records are unknown-target natural antibody background.",
+    "output_semantics": "existing-record shortlist for expert review",
+    "score_semantics": "computational prioritization score, not a binding probability",
+    "sequence_generation": false,
+    "therapeutic_efficacy_claim": false
+  },
+  "module": "OAS existing-record retrieval shortlist",
+  "oas_rows_scored": 17882,
+  "project_positive_reference_rows": 3281,
+  "public_output_forbidden_columns": [
+    "heavy_sequence",
+    "light_sequence",
+    "sequence",
+    "sequence_pair_text",
+    "vhorvhh",
+    "vl"
+  ],
+  "retrieval_score_strategy": "internal logistic-regression retrieval score for all OAS rows; compatible saved OAS retrieval scores merged and averaged where available",
+  "risk_flag_counts": {
+    "cysteine_count_flag": 4,
+    "duplicate_or_near_duplicate_flag": 1,
+    "hydrophobic_fraction_flag": 0,
+    "unusual_length_flag": 18
+  },
+  "saved_retrieval_score_match_count": 3585,
+  "score_summary": {
+    "max": 0.9101842050768316,
+    "mean": 0.1349254208493613,
+    "median": 0.09305348968767696,
+    "min": 0.016376691645709936
+  },
+  "status": "available",
+  "top100_table_size": 100,
+  "top25_shortlist_size": 25,
+  "unique_positive_reference_texts": 3281
+}

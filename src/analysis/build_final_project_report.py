@@ -24,6 +24,10 @@ METRICS = {
     / "reports"
     / "metrics"
     / "oas_matched_background_retrieval_metrics.json",
+    "oas_shortlist": PROJECT_ROOT
+    / "reports"
+    / "metrics"
+    / "oas_existing_record_shortlist_metrics.json",
     "source_holdout": PROJECT_ROOT
     / "reports"
     / "metrics"
@@ -206,6 +210,7 @@ def build_report(data: dict[str, Any]) -> str:
     target = data["target"]
     background = data["background"]
     matched_background = data["matched_background"]
+    oas_shortlist = data["oas_shortlist"]
     source_holdout = data["source_holdout"]
     calibration = data["calibration"]
     source_robust = data["source_robust"]
@@ -420,6 +425,31 @@ def build_report(data: dict[str, Any]) -> str:
             f"PR-AUC: {metric_text(matched_background.get('pr_auc'))}."
         ),
         "",
+        "### OAS Existing-Record Retrieval Shortlist",
+        "",
+        (
+            "The OAS existing-record retrieval shortlist identifies existing OAS "
+            "background records that are sequence-similar to curated project-positive "
+            "records. OAS records are unknown-target natural antibody background, and "
+            "the output is an existing-record shortlist for expert review."
+        ),
+        "",
+        (
+            f"OAS rows scored: {oas_shortlist.get('oas_rows_scored', 'n/a')}. "
+            f"Project-positive reference rows: "
+            f"{oas_shortlist.get('project_positive_reference_rows', 'n/a')}. "
+            f"Top-25 diverse shortlist size: "
+            f"{oas_shortlist.get('top25_shortlist_size', 'n/a')}. "
+            f"Top-100 ranked table size: {oas_shortlist.get('top100_table_size', 'n/a')}. "
+            f"Diversity clusters: {oas_shortlist.get('diversity_cluster_count', 'n/a')}."
+        ),
+        "",
+        (
+            "The shortlist score is a computational prioritization score, not a "
+            "binding probability. Shortlisted records are not validated binders or "
+            "therapeutics, and the module does not generate or modify sequences."
+        ),
+        "",
         "### Interpretation",
         "",
         oas_interpretation(background, matched_background),
@@ -445,6 +475,7 @@ def build_report(data: dict[str, Any]) -> str:
         "- Subset-specific metrics are not directly comparable across row subsets.",
         "- Diversity and sequence-risk features are heuristic.",
         "- Background retrieval is optional and local-data dependent.",
+        "- The OAS existing-record shortlist is an expert-review queue, not antibody design or therapeutic discovery.",
         "- Docking remains a separate future validation workflow.",
         "",
         "## Next Steps",
