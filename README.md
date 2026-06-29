@@ -4,7 +4,7 @@ This project works with public SARS-CoV-2 antibody sequence records. The data is
 
 The workflow builds a strict labeled dataset for neutralisation classification, keeps a broader table of existing records for review, and checks how much the results change under different validation splits.
 
-The main model is deliberately simple: compact heavy/light sequence text, character k-mer TF-IDF features, and balanced logistic regression. I also tested pretrained antibody embedding and language-model approaches. On this dataset, the k-mer baseline was stronger.
+The main model uses compact heavy/light sequence text, character k-mer TF-IDF features, and balanced logistic regression. I also tested pretrained antibody embedding and language-model approaches. On this dataset, the k-mer baseline performed best.
 
 ## What It Does
 
@@ -23,16 +23,16 @@ The main model is deliberately simple: compact heavy/light sequence text, charac
 | Broad k-mer | Full strict labeled set, V-gene grouped split, zero overlap | ROC-AUC 0.7800, PR-AUC 0.8233 | Main baseline. |
 | Paired region model | Paired annotated set, V-gene grouped split, zero overlap | ROC-AUC 0.6629, PR-AUC 0.6330 | Region features helped in this subset. |
 | Source-holdout | Sanitized source groups | weighted ROC-AUC 0.6095, weighted PR-AUC 0.6363 | Source/study effects remain visible. |
-| Threshold 0.7 | Source-robust selected model | precision 0.8266, recall 0.3062, coverage 0.3051 | Higher precision, lower recall. |
+| Threshold 0.7 | Source-robust selected model | precision 0.8266, recall 0.3062, coverage 0.3051 | More selective review cutoff. |
 | OAS retrieval | Project records vs OAS unknown-target antibody background | ROC-AUC 0.9921, PR-AUC 0.9897 | Dataset/background comparison. |
 | Matched OAS retrieval | Coarse length/status matched OAS background | ROC-AUC 0.9911, PR-AUC 0.9893 | Separation stayed high after matching. |
 | Diversity-aware shortlist | Broader prioritization table | 23 records | Small review table. |
 
 ## Reading The Results
 
-The grouped k-mer benchmark is the strongest broad classification result in the project. The source-holdout result is weaker, which is important. It suggests that study effects, assay differences, and label noise are part of the task.
+The grouped k-mer benchmark is the main broad classification result in the project. The source-holdout result is lower, which points to study effects, assay differences, and label noise in the task.
 
-The selected broad model is `whole_pair_kmer`: compact heavy/light sequence-pair text represented with character k-mer TF-IDF and a balanced logistic-regression classifier. I read its probabilities as ranking and review scores for existing records. The threshold analysis makes that tradeoff explicit: at threshold 0.7, the model selects fewer records with higher precision and lower recall.
+The selected broad model is `whole_pair_kmer`: compact heavy/light sequence-pair text represented with character k-mer TF-IDF and a balanced logistic-regression classifier. Its probabilities are used as ranking and review scores for existing records. At threshold 0.7, the model becomes more selective and covers about 31% of records in the evaluated split.
 
 The OAS retrieval analysis compares project records with OAS unknown-target antibody background. It is useful for understanding dataset separation, and the signal remains high after coarse matching on length and light-chain status.
 
