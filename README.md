@@ -1,34 +1,35 @@
 # Antibody Prioritization
 
-This repository contains an antibody sequence classification workflow for public SARS-CoV-2 antibody sequence records. It tests how well sequence-based models work on existing public records, checks where results are affected by source or study bias, and produces review tables for records that may deserve closer inspection.
+I built this project to work through a messy but common problem in public antibody data: there are useful SARS-CoV-2 antibody sequence records, but the labels, assays, source metadata, and missing fields are uneven. The code here builds a cleaned set of strict labeled records for neutralisation classification, keeps a broader table of existing records for review, and checks how much the model results depend on the way the data is split.
 
-## Questions
+The main model is intentionally simple: compact heavy/light sequence text, character k-mer TF-IDF features, and balanced logistic regression. I also compared pretrained antibody embedding and language-model approaches, because they are a reasonable thing to try on this kind of data. In this dataset, the simpler k-mer baseline was stronger.
 
-The project is organized around a few concrete questions:
+## What Is In The Project
 
-- Can a simple character k-mer model classify strict labeled neutralisation records?
-- How much do results change when validation is grouped by sequence metadata or held out by source/study?
-- Do pretrained antibody embedding or language-model approaches improve on the k-mer baseline for these labels?
-- How should records with missing or conflicting labels be scored for separate review?
-- How different are the project records from OAS unknown-target antibody background records?
+The workflow has three main pieces.
+
+First, it prepares antibody sequence records for supervised neutralisation classification. The strict labeled subset is used for model training and validation. Records with missing or conflicting labels are kept in the broader table so they can still be scored and reviewed separately.
+
+Second, it tests the models under several validation setups. The grouped validation gives the stronger headline result, while source-holdout validation is weaker and more cautious. That difference matters: it suggests that publication or study-specific effects are part of the problem.
+
+Third, it produces review outputs for existing records. These include scored tables, a small diversity-aware shortlist, target-region summaries where metadata is available, and unsupervised clustering and similarity summaries built from sequence features.
+
+OAS is used as unknown-target antibody background for dataset comparison. That analysis asks how separable the project records are from natural antibody background records, separate from the neutralisation classifier.
+
+## Questions This Tries To Answer
+
+- How well does a simple sequence model classify strict labeled neutralisation records?
+- How different are grouped validation and source-holdout validation?
+- Do pretrained antibody embeddings or language models improve on the k-mer baseline here?
+- Which existing records look worth reviewing first when score, metadata, and diversity are considered together?
+- How different are the project records from OAS unknown-target antibody background?
 - What clusters or similarity patterns appear from sequence features alone?
-
-## What The Workflow Does
-
-- Builds strict labeled tables and broader existing-record tables from local processed data.
-- Runs supervised neutralisation classification on strict labeled records.
-- Compares compact character k-mer TF-IDF logistic regression with pretrained antibody embedding/model runs.
-- Keeps full strict, paired annotated, missing-label, and conflict-label subsets separate.
-- Runs grouped validation, source-holdout validation, calibration/threshold analysis, and source-robust model selection.
-- Scores broader existing records and creates a small diversity-aware review table.
-- Uses OAS as unknown-target antibody background for dataset comparison.
-- Builds unsupervised clustering and similarity summaries from sequence features.
 
 ## Reproducing The Reports
 
 The repository includes generated reports and machine-readable metrics. Raw and processed sequence tables are local artifacts kept outside the public repository.
 
-For the lightweight report refresh and integrity checks:
+For the report refresh and integrity checks:
 
 ```bash
 python -m pip install -r requirements.txt
@@ -47,7 +48,7 @@ To run only the tests:
 make test
 ```
 
-Optional pretrained model scripts require the packages listed in `requirements-lm.txt`. Those experiments are included as model comparisons. The saved reports can be read independently.
+The optional pretrained model scripts use the packages listed in `requirements-lm.txt`. The saved reports can be read without rerunning those heavier experiments.
 
 ## Current Results
 
@@ -61,11 +62,13 @@ Optional pretrained model scripts require the packages listed in `requirements-l
 | Matched OAS retrieval | Coarse length/status matched OAS background | ROC-AUC 0.9911, PR-AUC 0.9893 | The project/OAS difference remained high after coarse matching. |
 | Diversity-aware shortlist | Broader prioritization table | 23 records | Small review table for existing records. |
 
-## Selected Model
+## How I Read These Results
 
-The selected broad model is `whole_pair_kmer`: compact heavy/light sequence-pair text represented with character k-mer TF-IDF and a balanced logistic-regression classifier.
+The grouped k-mer result is the best broad classification benchmark in the project. It is useful, but it is also optimistic compared with the source-holdout result. The source-holdout checks are a reminder that public antibody datasets carry study effects, assay differences, and label noise.
 
-In these reports, the simpler k-mer baseline outperformed the pretrained antibody embedding and language-model approaches on the noisy public-label task. The grouped benchmark is stronger than the source-holdout benchmark, so the model scores are best read as ranking and review signals for existing records.
+The selected broad model is `whole_pair_kmer`: compact heavy/light sequence-pair text represented with character k-mer TF-IDF and a balanced logistic-regression classifier. I treat its probabilities as ranking and review scores for existing records. The threshold analysis is included to make that use more explicit: at threshold 0.7, the model selects fewer records with higher precision and lower recall.
+
+The OAS retrieval result is best read as a dataset/background comparison. The project records are highly separable from OAS unknown-target antibody background, and that remains true after coarse matching on length and light-chain status.
 
 ## Repository Layout
 
@@ -79,7 +82,7 @@ src/           # Data, model, and analysis code
 tests/         # Lightweight integrity checks
 ```
 
-## Useful Outputs
+## Useful Files
 
 - `reports/final_project_report.md`
 - `reports/model_registry.md`
@@ -94,14 +97,6 @@ tests/         # Lightweight integrity checks
 
 Machine-readable summaries are under `reports/metrics/`.
 
-## Interpretation Notes
-
-- Public neutralisation labels are heterogeneous across studies and assays.
-- Source-holdout results are weaker than grouped validation results, which suggests source/study effects are important.
-- Probabilities and scores are mainly useful for ranking and review of existing records.
-- OAS is used as unknown-target antibody background for dataset/background comparison.
-- Records with missing or conflicting labels are preserved for review outputs.
-
 ## Requirements
 
-The default requirements support report checks, classical k-mer baselines, and tests. Pretrained antibody embedding/model scripts use the optional packages listed in `requirements-lm.txt`.
+The default requirements support report checks, classical k-mer baselines, and tests. Pretrained antibody embedding and model scripts use the optional packages listed in `requirements-lm.txt`.
