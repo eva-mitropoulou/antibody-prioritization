@@ -4,15 +4,11 @@ ML workflow for public SARS-CoV-2 antibody sequence records. It builds a strict 
 
 OAS is used as unknown-target antibody background for dataset comparison.
 
-## What Is Here
+## Overview
 
-- Strict labeled records for supervised neutralisation classification
-- Broader review table with existing records, including missing or conflicting labels
-- Whole-pair k-mer TF-IDF logistic regression
-- Pretrained antibody embedding and model comparisons
-- Grouped validation, source-holdout validation, calibration, and threshold checks
-- OAS background retrieval and matched OAS retrieval
-- Unsupervised clustering and similarity summaries from sequence features
+The project starts with public antibody records and separates strict labeled examples from broader records that still need review. The strict subset is used for supervised neutralisation classification. The broader set keeps existing records with missing or conflicting labels so they can be scored separately.
+
+The model comparisons include whole-pair k-mer TF-IDF logistic regression and pretrained antibody embedding/model runs. Validation is reported with grouped splits, source-holdout splits, calibration checks, and threshold summaries. The repository also includes OAS background retrieval, matched OAS retrieval, and unsupervised clustering from sequence features.
 
 ## Selected Model
 
