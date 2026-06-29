@@ -26,39 +26,37 @@ Most rows represent one public antibody entry, usually with a heavy-chain or VHH
 
 | Part | What it does |
 |---|---|
-| Data curation | Cleans public SARS-CoV-2 antibody entries and separates rows with clear yes/no neutralisation labels from rows with missing or conflicting labels. |
+| Data curation | Cleans public SARS-CoV-2 antibody entries and separates clear yes/no labels from missing or conflicting labels. |
 | Main classifier | Represents heavy/light-chain sequence text with k-mer TF-IDF features and trains balanced logistic regression. |
 | Model comparison | Compares the k-mer baseline with pretrained antibody embedding and language-model runs. |
-| CDR and region checks | Tests CDR/region feature views on the paired annotated subset. |
-| Validation | Uses grouped validation, source/study holdout, calibration, and threshold analysis to check how the signal behaves. |
-| Existing-row review | Scores the broader public-record table and builds a diversity-aware review shortlist. |
-| OAS comparison | Uses OAS as unknown-target antibody background for a separate dataset-comparison task. |
-| Unsupervised analysis | Summarizes clustering and similarity patterns from sequence features. |
+| CDR and region checks | Tests CDR/region sequence views on the paired annotated subset. |
+| Robustness checks | Uses grouped validation, source/study holdout, calibration, and threshold analysis to test where the signal is stable. |
+| OAS background controls | Compares project records against OAS unknown-target antibody background in broad and matched retrieval tasks. |
+| OAS record review | Scores existing OAS records by retrieval score and similarity to curated project-positive records. |
+| Shortlist selection | Builds small review queues with diversity filters rather than returning one long ranked list. |
 
 
 ## Project Workflow
 
-The first step is cleaning public CoV-AbDab records into project tables. Rows are filtered to public entries whose `Binds to` field mentions SARS-CoV-2. Sequence fields are normalized, common placeholder values are treated as missing, canonical amino-acid checks are applied, and a sequence key is built from the heavy/VHH chain plus the light chain when present.
+The first layer is curation. Public CoV-AbDab rows are filtered to entries whose `Binds to` field mentions SARS-CoV-2. Sequence fields are normalized, common placeholders are treated as missing, canonical amino-acid checks are applied, and a sequence key is built from the heavy/VHH chain plus the light chain when present.
 
-Neutralisation labels come from the public record fields. A row is treated as label 1 when `Neutralising Vs` mentions SARS-CoV-2. A row is treated as label 0 when `Not Neutralising Vs` mentions SARS-CoV-2 and the positive field does not. Rows where both fields point to SARS-CoV-2 are marked as conflicts.
+Neutralisation labels are extracted from the public record fields. A row is treated as label 1 when `Neutralising Vs` mentions SARS-CoV-2. A row is treated as label 0 when `Not Neutralising Vs` mentions SARS-CoV-2 and the positive field does not. Rows where both fields point to SARS-CoV-2 are marked as conflicts.
 
-The strict labeled table contains rows with usable binary labels. It is used for supervised benchmarking, source/study validation, calibration checks, model selection, and sequence-space summaries. Rows with missing or conflicting labels are not used for strict supervised metrics, but they stay in the broader prepared table so they can be scored and reviewed later.
+The strict labeled table is the supervised ML table. It keeps rows with usable binary labels and supports the main benchmarks, source/study validation, calibration checks, model selection, and sequence-space summaries. The broader prepared table keeps more public records, including rows with missing or conflicting labels, so the trained workflow can score and organize existing records for review.
 
 | Table | Rows | Used for |
 |---|---:|---|
-| Strict labeled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Matched broad benchmarking, source/study holdout, calibration, model selection, and sequence-space summaries. |
+| Strict labeled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Supervised benchmarking, source/study holdout, calibration, model selection, and sequence-space summaries. |
 | Broader prepared table | 11,748 | Existing-record scoring, missing/conflicting-label review categories, and shortlist construction. |
 | Paired annotated subset | 5,092 | CDR and region feature checks on rows with paired-chain annotation. |
 
-For ML, antibody entries are represented as sequence text in several ways: whole-pair, heavy-only, paired-only whole-pair, CDR/region, and whole-pair plus CDR/region. These views are not all available for the same rows, so full strict-table results and paired/region-subset results are reported separately.
+For modeling, antibody entries are converted into several sequence-text views: whole-pair, heavy-only, paired-only whole-pair, CDR/region, and whole-pair plus CDR/region. These views are not all available for the same rows, so full strict-table metrics and paired/region-subset metrics are reported separately.
 
-In this repository, a k-mer TF-IDF logistic-regression model means that sequence text is split into overlapping amino-acid character k-mers, those k-mers are weighted with TF-IDF, and a balanced logistic-regression classifier is fit to the public binary labels.
+The main baseline is intentionally simple. In this project, k-mer TF-IDF logistic regression means splitting antibody sequence text into overlapping amino-acid character k-mers, weighting those k-mers with TF-IDF, and fitting a balanced logistic-regression classifier to the public binary labels.
 
-Grouped validation holds out sequence groups with zero group overlap. Source/study holdout validation holds out source groups to ask whether the model still works when study-level structure changes. Calibration and threshold analysis then ask how model scores behave as review cutoffs rather than as calibrated biological probabilities.
+The OAS analyses are separate from the main neutralisation benchmark. Broad and matched OAS retrieval compare project rows against OAS unknown-target antibody background. The existing-OAS review module then ranks OAS records by a computational prioritization score built from retrieval-model score, nearest-neighbor similarity to project-positive records, top-neighbor similarity, and centroid similarity.
 
-OAS background retrieval is separate from the main binary-label benchmark. It compares project rows with OAS unknown-target antibody background rows. OAS is not treated as non-neutralising neutralisation data.
-
-The review shortlist is built from the broader scored table. Existing rows with high model scores, high confidence, acceptable heuristic risk, and review-relevant record categories form a candidate pool; the final diversity-aware shortlist keeps one representative per diversity group and contains 23 records.
+The shortlist step is deliberately conservative. It keeps existing records for expert review, uses hashed/public-safe outputs, applies review flags, and uses diversity filtering so the final list is not just many near-duplicates of the same sequence neighborhood.
 
 ## Main Results
 
@@ -68,10 +66,11 @@ The review shortlist is built from the broader scored table. Existing rows with 
 | Paired/region benchmark | ROC-AUC 0.6629, PR-AUC 0.6330 | CDR/region features are evaluated on the paired annotated subset, not the full strict table. |
 | Source-robust selected model | `whole_pair_kmer` | The selected model under source-robust model selection. |
 | Source/study holdout | weighted ROC-AUC 0.6095, weighted PR-AUC 0.6363 | Performance is lower when whole sources are held out. |
-| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | A more selective cutoff for review of existing rows. |
-| Broad OAS retrieval | ROC-AUC 0.9921, PR-AUC 0.9897 | Project rows are separable from OAS unknown-target antibody background. |
+| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | A more selective cutoff for existing-record review. |
+| Broad OAS retrieval | ROC-AUC 0.9921, PR-AUC 0.9897 | Project records are separable from OAS unknown-target antibody background. |
 | Matched OAS retrieval | ROC-AUC 0.9911, PR-AUC 0.9893 | Separation stays high after coarse length and light-chain matching. |
-| Diversity-aware shortlist | 23 records | A small review queue from the broader row set. |
+| Diversity-aware project shortlist | 23 records | A small review queue from the broader project table. |
+| OAS existing-record shortlist | 17,882 OAS rows scored; top 25 diverse records | A public-safe review queue of existing OAS records, not a binder or therapeutic claim. |
 
 <p align="center">
   <img src="reports/figures/threshold_precision_recall.png" alt="Threshold precision and recall tradeoff" width="48%">
@@ -94,11 +93,11 @@ The broad whole-pair k-mer benchmark is the main strict-table classification res
 
 The paired/region benchmark answers a narrower question. It uses rows where paired-chain CDR/region annotation is available, so it should not be compared directly against full strict-table metrics.
 
-The source/study holdout result is intentionally more skeptical. It tests whether the model still performs when whole source groups are held out. The lower value matters because public antibody records carry study-specific structure.
+The source/study holdout result is the skeptical check. It tests whether the model still performs when whole source groups are held out. The lower value matters because public antibody records carry study-specific structure.
 
 The threshold analysis turns model scores into possible review cutoffs. At threshold 0.7, the model covers about 30.5% of evaluated rows with higher precision and lower recall.
 
-The OAS analyses are background comparisons. They show that project records are separable from OAS unknown-target antibody background, including after coarse matching, but this is not the same as proving neutralisation or using OAS as a negative class.
+The OAS tasks should be read as background and review workflows. OAS rows are unknown-target natural antibody background, not assayed negative neutralisation data. Similarity to curated project-positive records can help organize records for review, but it does not establish binding, neutralisation, or therapeutic value.
 
 ## Figures
 
@@ -112,9 +111,9 @@ This is a retrospective public-record ML project. It does not perform antibody d
 
 Model scores are ranking signals for existing-record review. They are not calibrated biological truth and do not establish neutralisation, binding, developability, or therapeutic value.
 
-Results are sensitive to source/study validation. Background comparison metrics are separate from the main binary-label benchmark.
-
 OAS is used as unknown-target antibody background. It is not used as non-neutralising neutralisation data.
+
+The OAS existing-record shortlist is an expert-review queue. It is not antibody design, therapeutic discovery, or prospective validation.
 
 ## Reproduce
 
@@ -140,6 +139,7 @@ RUN_TESTS=0 bash scripts/reproduce_final_reports.sh
 
 - `reports/final_project_report.md`
 - `reports/model_registry.md`
+- `reports/oas_existing_record_shortlist_report.md`
 - `docs/DATA_CARD.md`
 - `docs/MODEL_CARD.md`
 - `scripts/reproduce_final_reports.sh`
