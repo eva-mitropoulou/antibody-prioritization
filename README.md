@@ -6,15 +6,23 @@ The workflow builds a strict labeled dataset for neutralisation classification, 
 
 The main model uses compact heavy/light sequence text, character k-mer TF-IDF features, and balanced logistic regression. I also tested pretrained antibody embedding and language-model approaches. On this dataset, the k-mer baseline performed best.
 
-## What It Does
+## Workflow
 
-- Prepares strict labeled records for supervised neutralisation classification.
-- Keeps records with missing or conflicting labels in a separate broader review table.
-- Compares k-mer logistic regression with pretrained antibody embedding/model runs.
-- Runs grouped validation, source-holdout validation, calibration, and threshold checks.
-- Scores existing records and builds a small diversity-aware review shortlist.
-- Uses OAS as unknown-target antibody background for dataset comparison.
-- Adds unsupervised clustering and similarity summaries from sequence features.
+```mermaid
+flowchart LR
+    A[Public SARS-CoV-2 antibody records] --> B[Strict labeled records]
+    A --> C[Broader existing records]
+    B --> D[Compact heavy/light sequence features]
+    D --> E[k-mer logistic regression and pretrained model comparisons]
+    E --> F[Grouped validation, source-holdout, calibration]
+    F --> G[whole_pair_kmer scorer]
+    C --> H[Existing-record scoring]
+    G --> H
+    H --> I[Diversity-aware shortlist and review tables]
+    B --> J[Unsupervised clustering and similarity summaries]
+    A --> K[Dataset/background retrieval]
+    L[OAS unknown-target antibody background] --> K
+```
 
 ## Current Results
 
