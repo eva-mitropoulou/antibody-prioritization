@@ -28,6 +28,11 @@ Among the tested approaches, the k-mer baseline performed best on this public-la
 | Matched OAS retrieval | ROC-AUC 0.9911, PR-AUC 0.9893 | Separation stayed high after coarse length/status matching. |
 | Diversity-aware shortlist | 23 records | Small review table from the broader record set. |
 
+<p align="center">
+  <img src="reports/figures/threshold_precision_recall.png" alt="Threshold precision and recall tradeoff" width="48%">
+  <img src="reports/figures/oas_matched_retrieval_score_distribution.png" alt="Matched OAS retrieval score distribution" width="48%">
+</p>
+
 ## How To Read This
 
 The grouped k-mer result is the main classification benchmark. The lower source-holdout result is important because it shows that source and study structure affect the task.
