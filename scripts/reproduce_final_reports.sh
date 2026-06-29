@@ -50,15 +50,12 @@ echo "[info] python: $PY"
 run_if_outputs_missing \
   "source holdout and calibration" \
   "src/analysis/run_source_holdout_and_calibration.py" \
-  "reports/source_holdout_validation_report.md" \
-  "reports/calibration_threshold_report.md" \
   "reports/metrics/source_holdout_validation_metrics.json" \
   "reports/metrics/calibration_threshold_metrics.json"
 
 run_if_outputs_missing \
   "source robust model selection" \
   "src/analysis/run_source_robust_model_selection.py" \
-  "reports/source_robust_model_selection_report.md" \
   "reports/metrics/source_robust_model_selection_metrics.json" \
   "reports/source_robust_model_comparison.csv" \
   "reports/source_holdout_failure_analysis.csv"
@@ -67,14 +64,12 @@ if [[ -s "data/processed/oas/oas_paired_standardized.csv" ]]; then
   run_if_outputs_missing \
     "OAS background retrieval" \
     "src/analysis/run_oas_background_retrieval.py" \
-    "reports/oas_background_retrieval_report.md" \
     "reports/metrics/oas_background_retrieval_metrics.json" \
     "reports/oas_background_retrieval_scores.csv"
 
   run_if_outputs_missing \
     "matched OAS background retrieval" \
     "src/analysis/run_oas_matched_background_retrieval.py" \
-    "reports/oas_matched_background_retrieval_report.md" \
     "reports/metrics/oas_matched_background_retrieval_metrics.json" \
     "reports/oas_matched_background_retrieval_scores.csv"
 else
@@ -82,7 +77,6 @@ else
 fi
 
 run_python_if_present "final project report generation" "src/analysis/build_final_project_report.py"
-run_python_if_present "final consistency audit" "src/analysis/build_final_consistency_audit.py"
 
 if [[ "$RUN_TESTS" == "1" ]]; then
   echo "[run] pytest"

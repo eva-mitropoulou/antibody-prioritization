@@ -74,11 +74,6 @@ Optional pretrained model scripts use `requirements-lm.txt`.
 
 - `reports/final_project_report.md`
 - `reports/model_registry.md`
-- `reports/source_robust_model_selection_report.md`
-- `reports/calibration_threshold_report.md`
-- `reports/oas_background_retrieval_report.md`
-- `reports/oas_matched_background_retrieval_report.md`
-- `reports/unsupervised_antibody_landscape_report.md`
 - `docs/DATA_CARD.md`
 - `docs/MODEL_CARD.md`
 

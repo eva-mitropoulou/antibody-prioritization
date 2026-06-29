@@ -21,11 +21,11 @@ def csv_columns(relative_path: str) -> list[str]:
 def test_required_final_reports_exist() -> None:
     required = [
         "README.md",
+        "data/README.md",
         "docs/DATA_CARD.md",
         "docs/MODEL_CARD.md",
         "reports/final_project_report.md",
-        "reports/final_artifact_map.md",
-        "reports/final_consistency_audit.md",
+        "reports/model_registry.md",
     ]
     missing = [path for path in required if not (ROOT / path).is_file()]
     assert not missing
