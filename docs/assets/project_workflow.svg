@@ -8,7 +8,7 @@
   </defs>
   <rect x="0" y="0" width="1200" height="560" fill="#f7f8fb"/>
   <text x="60" y="56" fill="#1f2937" font-family="Arial, sans-serif" font-size="28" font-weight="700">Project stages</text>
-  <text x="60" y="88" fill="#4b5563" font-family="Arial, sans-serif" font-size="16">Public antibody rows are curated, modeled from sequence fields, validated across splits, then used for review outputs.</text>
+  <text x="60" y="88" fill="#4b5563" font-family="Arial, sans-serif" font-size="16">Public antibody rows are curated, converted into sequence features, validated across splits, then used for review outputs.</text>
 
   <rect x="60" y="135" width="160" height="86" rx="12" fill="#ffffff" stroke="#c9d2df" stroke-width="2"/>
   <text x="140" y="169" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="16" font-weight="700">Public antibody</text>
@@ -38,7 +38,7 @@
   <rect x="900" y="280" width="160" height="86" rx="12" fill="#eef2ff" stroke="#94a3d8" stroke-width="2"/>
   <text x="980" y="315" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="16" font-weight="700">Selected</text>
   <text x="980" y="338" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="16" font-weight="700">scorer</text>
-  <text x="980" y="358" text-anchor="middle" fill="#4f5e8a" font-family="Arial, sans-serif" font-size="13">whole_pair_kmer</text>
+  <text x="980" y="358" text-anchor="middle" fill="#4f5e8a" font-family="Arial, sans-serif" font-size="13">Whole-pair k-mer</text>
 
   <rect x="690" y="280" width="160" height="86" rx="12" fill="#f0f9ff" stroke="#82c4e6" stroke-width="2"/>
   <text x="770" y="315" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="16" font-weight="700">Review</text>
@@ -61,9 +61,9 @@
   <text x="770" y="483" text-anchor="middle" fill="#8a4c52" font-family="Arial, sans-serif" font-size="13">OAS retrieval</text>
 
   <rect x="480" y="280" width="160" height="86" rx="12" fill="#f8fafc" stroke="#b6c3d1" stroke-width="2"/>
-  <text x="560" y="315" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="16" font-weight="700">Unsupervised</text>
+  <text x="560" y="315" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="16" font-weight="700">Clustering</text>
   <text x="560" y="338" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="16" font-weight="700">summaries</text>
-  <text x="560" y="358" text-anchor="middle" fill="#5d6b7a" font-family="Arial, sans-serif" font-size="13">Clusters and similarity</text>
+  <text x="560" y="358" text-anchor="middle" fill="#5d6b7a" font-family="Arial, sans-serif" font-size="13">Sequence similarity</text>
 
   <path d="M220 178 H270" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
   <path d="M430 178 H480" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
@@ -72,7 +72,7 @@
   <path d="M980 221 V280" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
   <path d="M900 323 H850" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
   <path d="M350 221 V280" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
-  <path d="M430 323 H690" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M430 323 H455 V386 H665 V323 H690" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
   <path d="M560 221 V280" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
   <path d="M640 448 H690" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
   <path d="M770 366 V405" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
