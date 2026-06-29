@@ -20,6 +20,10 @@ Most rows represent one public antibody entry, usually with a heavy-chain or VHH
 
 ## At a Glance
 
+<p align="center">
+  <img src="docs/assets/project_workflow.png" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
+</p>
+
 | Part | What it does |
 |---|---|
 | Data curation | Cleans public SARS-CoV-2 antibody entries and separates rows with clear yes/no neutralisation labels from rows with missing or conflicting labels. |
@@ -31,9 +35,6 @@ Most rows represent one public antibody entry, usually with a heavy-chain or VHH
 | OAS comparison | Uses OAS as unknown-target antibody background for a separate dataset-comparison task. |
 | Unsupervised analysis | Summarizes clustering and similarity patterns from sequence features. |
 
-<p align="center">
-  <img src="docs/assets/project_workflow.png" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
-</p>
 
 ## Project Workflow
 
