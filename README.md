@@ -11,13 +11,14 @@ The project asks whether classifiers that use only amino-acid sequence fields ca
 | Data curation | Separates rows with clean neutralisation labels from rows with missing or conflicting labels. |
 | Main classifier | Converts heavy/light-chain sequences into k-mer TF-IDF features and trains logistic regression. |
 | Model comparison | Checks the k-mer baseline against pretrained antibody embedding and language-model runs. |
+| CDR and region checks | Tests antibody region features on paired annotated rows. |
 | Validation | Reports grouped validation, source or study holdout, calibration, and threshold behavior. |
 | Existing-row review | Scores broader public records and builds a small diversity-aware shortlist. |
 | OAS comparison | Uses OAS as unknown-target antibody background for dataset comparison. |
 | Unsupervised analysis | Summarizes clustering and similarity patterns from sequence features. |
 
 <p align="center">
-  <img src="docs/assets/project_workflow_v2.svg" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
+  <img src="docs/assets/project_workflow.svg" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
 </p>
 
 ## Main Results
@@ -25,7 +26,7 @@ The project asks whether classifiers that use only amino-acid sequence fields ca
 | Area | Result | What it means |
 |---|---:|---|
 | Broad k-mer, grouped split | ROC-AUC 0.7800, PR-AUC 0.8233 | The sequence baseline learns signal on rows with clear labels. |
-| Paired region model | ROC-AUC 0.6629, PR-AUC 0.6330 | Region features helped inside the paired annotated subset. |
+| Paired CDR/region model | ROC-AUC 0.6629, PR-AUC 0.6330 | CDR and region features helped inside the paired annotated subset. |
 | Source or study holdout | weighted ROC-AUC 0.6095, weighted PR-AUC 0.6363 | Performance is lower when whole sources are held out. |
 | Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | More selective cutoff for review of existing rows. |
 | OAS retrieval | ROC-AUC 0.9921, PR-AUC 0.9897 | SARS-CoV-2 antibody rows are separable from OAS background. |

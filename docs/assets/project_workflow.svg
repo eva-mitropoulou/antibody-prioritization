@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="title desc">
+  <title id="title">Antibody prioritization workflow</title>
+  <desc id="desc">Workflow showing public antibody rows, label curation, clear labeled rows, sequence features, model checks, validation, selected classifier, review tables, clustering summaries, and OAS background comparison.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M2 2 L10 6 L2 10 Z" fill="#3f4a5a"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="620" fill="#f7f8fb"/>
+  <text x="54" y="54" fill="#1f2937" font-family="Arial, sans-serif" font-size="28" font-weight="700">Project stages</text>
+  <text x="54" y="86" fill="#4b5563" font-family="Arial, sans-serif" font-size="16">Public antibody rows are curated, turned into sequence features, validated, and used to score existing rows for review.</text>
+
+  <text x="54" y="126" fill="#334155" font-family="Arial, sans-serif" font-size="15" font-weight="700">Supervised classifier path</text>
+
+  <rect x="45" y="145" width="140" height="82" rx="12" fill="#ffffff" stroke="#c9d2df" stroke-width="2"/>
+  <text x="115" y="177" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Public antibody</text>
+  <text x="115" y="199" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">rows</text>
+  <text x="115" y="218" text-anchor="middle" fill="#64748b" font-family="Arial, sans-serif" font-size="12">One row per entry</text>
+
+  <rect x="210" y="145" width="140" height="82" rx="12" fill="#eff6ff" stroke="#8bb8e8" stroke-width="2"/>
+  <text x="280" y="177" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Label</text>
+  <text x="280" y="199" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">curation</text>
+  <text x="280" y="218" text-anchor="middle" fill="#43637f" font-family="Arial, sans-serif" font-size="12">Clear or unclear</text>
+
+  <rect x="375" y="145" width="140" height="82" rx="12" fill="#eafaf1" stroke="#8ccfb3" stroke-width="2"/>
+  <text x="445" y="177" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Clear labeled</text>
+  <text x="445" y="199" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">rows</text>
+  <text x="445" y="218" text-anchor="middle" fill="#427860" font-family="Arial, sans-serif" font-size="12">Train and test</text>
+
+  <rect x="540" y="145" width="140" height="82" rx="12" fill="#ecfdf5" stroke="#8ccfb3" stroke-width="2"/>
+  <text x="610" y="177" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Sequence</text>
+  <text x="610" y="199" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">features</text>
+  <text x="610" y="218" text-anchor="middle" fill="#427860" font-family="Arial, sans-serif" font-size="12">Heavy and light chains</text>
+
+  <rect x="705" y="145" width="140" height="82" rx="12" fill="#fff7ed" stroke="#f3b572" stroke-width="2"/>
+  <text x="775" y="177" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Model</text>
+  <text x="775" y="199" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">checks</text>
+  <text x="775" y="218" text-anchor="middle" fill="#8a5b2a" font-family="Arial, sans-serif" font-size="12">k-mer and embeddings</text>
+
+  <rect x="870" y="145" width="140" height="82" rx="12" fill="#f5f3ff" stroke="#b8a8e8" stroke-width="2"/>
+  <text x="940" y="177" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Validation</text>
+  <text x="940" y="199" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">checks</text>
+  <text x="940" y="218" text-anchor="middle" fill="#62558a" font-family="Arial, sans-serif" font-size="12">Grouped and source holdout</text>
+
+  <rect x="1035" y="145" width="140" height="82" rx="12" fill="#eef2ff" stroke="#94a3d8" stroke-width="2"/>
+  <text x="1105" y="177" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Selected</text>
+  <text x="1105" y="199" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">classifier</text>
+  <text x="1105" y="218" text-anchor="middle" fill="#4f5e8a" font-family="Arial, sans-serif" font-size="12">Whole-pair k-mer</text>
+
+  <text x="54" y="292" fill="#334155" font-family="Arial, sans-serif" font-size="15" font-weight="700">Review outputs and side analyses</text>
+
+  <rect x="210" y="315" width="140" height="82" rx="12" fill="#fefce8" stroke="#d9c76b" stroke-width="2"/>
+  <text x="280" y="347" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Rows kept</text>
+  <text x="280" y="369" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">for review</text>
+  <text x="280" y="388" text-anchor="middle" fill="#746b2d" font-family="Arial, sans-serif" font-size="12">Missing or conflicting labels</text>
+
+  <rect x="540" y="315" width="140" height="82" rx="12" fill="#f8fafc" stroke="#b6c3d1" stroke-width="2"/>
+  <text x="610" y="347" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Clustering</text>
+  <text x="610" y="369" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">summaries</text>
+  <text x="610" y="388" text-anchor="middle" fill="#5d6b7a" font-family="Arial, sans-serif" font-size="12">Sequence similarity</text>
+
+  <rect x="870" y="315" width="140" height="82" rx="12" fill="#f0f9ff" stroke="#82c4e6" stroke-width="2"/>
+  <text x="940" y="347" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Review</text>
+  <text x="940" y="369" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">tables</text>
+  <text x="940" y="388" text-anchor="middle" fill="#3d7290" font-family="Arial, sans-serif" font-size="12">Scores and shortlist</text>
+
+  <text x="54" y="462" fill="#334155" font-family="Arial, sans-serif" font-size="15" font-weight="700">Background comparison</text>
+
+  <rect x="375" y="485" width="140" height="82" rx="12" fill="#fdf2f8" stroke="#dfa2c4" stroke-width="2"/>
+  <text x="445" y="517" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">OAS</text>
+  <text x="445" y="539" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">background</text>
+  <text x="445" y="558" text-anchor="middle" fill="#8a4b69" font-family="Arial, sans-serif" font-size="12">Unknown target rows</text>
+
+  <rect x="540" y="485" width="140" height="82" rx="12" fill="#fff1f2" stroke="#e99aa1" stroke-width="2"/>
+  <text x="610" y="517" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">Dataset</text>
+  <text x="610" y="539" text-anchor="middle" fill="#111827" font-family="Arial, sans-serif" font-size="15" font-weight="700">comparison</text>
+  <text x="610" y="558" text-anchor="middle" fill="#8a4c52" font-family="Arial, sans-serif" font-size="12">Project rows vs OAS</text>
+
+  <path d="M185 186 H210" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M350 186 H375" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M515 186 H540" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M680 186 H705" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M845 186 H870" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M1010 186 H1035" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+
+  <path d="M280 227 V315" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M610 227 V315" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M1105 227 V270 H940 V315" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M350 356 H870" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+  <path d="M515 526 H540" fill="none" stroke="#3f4a5a" stroke-width="2.5" marker-end="url(#arrow)"/>
+</svg>
