@@ -1,30 +1,29 @@
 # Antibody Prioritization
 
-This project asks whether a simple classifier can use public SARS-CoV-2 antibody amino-acid sequences to predict neutralising vs non-neutralising labels better than random baselines.
+This repository analyzes public SARS-CoV-2 antibody sequence data. Each row is one antibody entry, usually with heavy-chain and light-chain amino-acid sequences, source metadata, and sometimes a neutralising or non-neutralising label.
 
-Each row in the data is one antibody entry. A row can include an antibody name, heavy-chain sequence, light-chain sequence, source or study metadata, and a neutralising or non-neutralising label. The training set uses rows where that label is clean enough to treat as yes or no. Rows with missing or conflicting labels stay in the project as review items.
+The project asks whether classifiers that use only amino-acid sequence fields can learn useful signal from rows with a clear neutralisation label, how stable that signal is across studies, and how the resulting scores can help review existing antibody entries.
 
-## At a Glance
+## Project Summary
 
-| Question | Answer |
+| Part | What it does |
 |---|---|
-| What is the data? | Public SARS-CoV-2 antibody entries. |
-| What is the model input? | Heavy-chain and light-chain amino-acid sequences. |
-| What is the label? | Neutralising vs non-neutralising, when the row has a clean label. |
-| Main baseline | k-mer TF-IDF features from antibody sequences, then logistic regression. |
-| Other models checked | Pretrained antibody embeddings and antibody language-model runs. |
-| Main validation checks | Grouped validation, source or study holdout, calibration, and threshold analysis. |
-| What happens to unclear rows? | Rows with missing or conflicting labels are kept for scoring and review. |
-| What is OAS doing? | OAS is unknown-target antibody background for dataset comparison. |
+| Data curation | Separates rows with clean neutralisation labels from rows with missing or conflicting labels. |
+| Main classifier | Converts heavy/light-chain sequences into k-mer TF-IDF features and trains logistic regression. |
+| Model comparison | Checks the k-mer baseline against pretrained antibody embedding and language-model runs. |
+| Validation | Reports grouped validation, source or study holdout, calibration, and threshold behavior. |
+| Existing-row review | Scores broader public records and builds a small diversity-aware shortlist. |
+| OAS comparison | Uses OAS as unknown-target antibody background for dataset comparison. |
+| Unsupervised analysis | Summarizes clustering and similarity patterns from sequence features. |
 
 ## Main Results
 
-| Area | Result | What It Means |
+| Area | Result | What it means |
 |---|---:|---|
-| Broad k-mer, grouped split | ROC-AUC 0.7800, PR-AUC 0.8233 | The baseline learns useful signal on clean labeled rows. |
+| Broad k-mer, grouped split | ROC-AUC 0.7800, PR-AUC 0.8233 | The sequence baseline learns signal on rows with clear labels. |
 | Paired region model | ROC-AUC 0.6629, PR-AUC 0.6330 | Region features helped inside the paired annotated subset. |
-| Source or study holdout | weighted ROC-AUC 0.6095, weighted PR-AUC 0.6363 | Performance drops when whole sources are held out. |
-| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | More selective cutoff for reviewing existing rows. |
+| Source or study holdout | weighted ROC-AUC 0.6095, weighted PR-AUC 0.6363 | Performance is lower when whole sources are held out. |
+| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | More selective cutoff for review of existing rows. |
 | OAS retrieval | ROC-AUC 0.9921, PR-AUC 0.9897 | SARS-CoV-2 antibody rows are separable from OAS background. |
 | Matched OAS retrieval | ROC-AUC 0.9911, PR-AUC 0.9893 | Separation stayed high after coarse length and light-chain matching. |
 | Diversity-aware shortlist | 23 rows | Small review table from the broader row set. |
@@ -36,17 +35,17 @@ Each row in the data is one antibody entry. A row can include an antibody name, 
 
 ## Selected Model
 
-`whole_pair_kmer` uses compact heavy/light sequence-pair text, character k-mer TF-IDF features, and balanced logistic regression.
+The selected classifier is `whole_pair_kmer`. It uses compact heavy/light sequence-pair text, character k-mer TF-IDF features, and balanced logistic regression.
 
-Among the tested approaches, this k-mer baseline performed best on the public-label dataset. The score is used for ranking and review of existing antibody rows.
+This model performed better than the pretrained antibody representation runs in these reports. Its scores are used for ranking and review of existing antibody rows.
 
-## How To Read This
+## Interpretation
 
-The grouped split is the main classification benchmark. The source-holdout result is lower, which shows that source and study structure matter in this dataset.
+The grouped validation result is the main classification benchmark. The lower source-holdout result is important because it shows that source and study structure affect the task.
 
-The threshold analysis shows the precision and recall tradeoff for review. At threshold 0.7, the model covers about 31% of rows in the evaluated split.
+The threshold analysis shows the tradeoff between precision, recall, and coverage. At threshold 0.7, the model reviews about 31% of rows in the evaluated split with higher precision and lower recall.
 
-OAS retrieval is a dataset comparison against unknown-target antibody background rows.
+The OAS analysis compares SARS-CoV-2 antibody rows with unknown-target antibody background rows. It is a dataset comparison that helps show how different the project records are from broad natural antibody background.
 
 ## Reproduce
 
