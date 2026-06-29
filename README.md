@@ -1,10 +1,10 @@
 # Antibody Prioritization
 
-This project explores how different ML models and validation checks behave on public SARS-CoV-2 antibody records. It compares simple k-mer TF-IDF logistic-regression baselines, CDR/region feature variants, pretrained antibody representation runs, grouped validation, source/study holdout, calibration and threshold analysis, and OAS background retrieval.
+This project builds an antibody sequence ML pipeline using public SARS-CoV-2 antibody records. I curated labeled public records, trained ML models to learn patterns associated with neutralising versus non-neutralising sequences, and then used the trained scoring workflow to prioritize existing OAS antibody records that look most similar to known neutralizing antibodies. The goal is finding existing records that may be worth closer expert review.
 
-The aim is retrospective and practical: use existing public records to benchmark sequence-based ranking signals, understand where those signals are stable or fragile, and build a small review shortlist for closer inspection. The project does not design antibodies or generate new sequences.
+The workflow is supported by several validation, benchmarking, and robustness checks: strict versus broader label curation, grouped validation to reduce sequence-family leakage, source/study holdout validation to test cross-study generalization, calibration and threshold analysis, CDR/region feature comparisons, pretrained antibody-representation benchmarks, OAS broad and matched-background retrieval controls, nearest-neighbor similarity audits, and diversity-aware shortlist selection.
 
-Most rows represent one public antibody entry, usually with a heavy-chain or VHH amino-acid sequence, sometimes a light-chain sequence, source metadata, target-region metadata, and, when available, a neutralising or non-neutralising label.
+Most rows represent one public antibody entry, usually with a heavy-chain or VHH amino-acid sequence, sometimes a light-chain sequence, source information, target-region information, and, when available, a neutralising or non-neutralising label.
 
 ## Table of Contents
 
