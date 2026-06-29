@@ -18,7 +18,7 @@ The project asks whether classifiers that use only amino-acid sequence fields ca
 | Unsupervised analysis | Summarizes clustering and similarity patterns from sequence features. |
 
 <p align="center">
-  <img src="docs/assets/project_workflow.svg" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
+  <img src="docs/assets/project_workflow.png" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
 </p>
 
 ## Main Results
