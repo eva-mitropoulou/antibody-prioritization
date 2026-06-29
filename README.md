@@ -16,6 +16,10 @@ The project asks whether classifiers that use only amino-acid sequence fields ca
 | OAS comparison | Uses OAS as unknown-target antibody background for dataset comparison. |
 | Unsupervised analysis | Summarizes clustering and similarity patterns from sequence features. |
 
+<p align="center">
+  <img src="docs/assets/project_workflow.svg" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
+</p>
+
 ## Main Results
 
 | Area | Result | What it means |
