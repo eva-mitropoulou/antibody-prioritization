@@ -76,20 +76,20 @@ After model selection, I checked how the model scores behave when different mini
 | Broader CoV-AbDab shortlist | 23 records | Review list built from broader CoV-AbDab records with missing or conflicting labels. |
 | OAS existing-record shortlist | 17,882 OAS rows scored; top 25 diverse records | Existing unknown-target OAS records ranked using a composite prioritization score and similarity to curated positive CoV-AbDab records. |
 
-### OAS Retrieval Diagnostics and Existing-Record Shortlist
+### OAS Comparison and Review Shortlist
 
-The OAS analysis is separate from the labelled CoV-AbDab neutralisation task. OAS records are treated as natural antibody sequences with unknown targets, not as labelled SARS-CoV-2 antibodies.
+The OAS analysis is separate from the labelled CoV-AbDab neutralisation task. OAS records are used as existing natural antibody sequences with unknown targets, not as labelled SARS-CoV-2 antibodies.
 
-Two retrieval diagnostics were used to test how easily the workflow separates curated CoV-AbDab records from OAS records. The broad retrieval test compares the project records with the available OAS paired records after exact overlap removal. The matched retrieval test is stricter: it compares project and OAS records after matching them by heavy-chain length, light-chain length, total sequence length, and whether a light chain is available.
+First, two OAS comparison checks are run. The broad check compares curated CoV-AbDab records with the available OAS paired records. The matched check repeats the comparison after making the two sets more similar in basic structure: heavy-chain length, light-chain length, total sequence length, and whether a light chain is available.
 
-| OAS retrieval diagnostic | Result | Interpretation |
+| OAS comparison check | Result | Interpretation |
 |---|---:|---|
-| Broad OAS retrieval | ROC AUC 0.9921, PR AUC 0.9897 | Project records are highly separable from the wider OAS comparison set. |
-| Matched OAS retrieval | ROC AUC 0.9911, PR AUC 0.9893 | Separability remains high even after coarse length and chain-status matching. |
+| Broad OAS comparison | ROC AUC 0.9921, PR AUC 0.9897 | CoV-AbDab records are highly separable from the wider OAS set. |
+| Matched OAS comparison | ROC AUC 0.9911, PR AUC 0.9893 | Separability remains high even after basic length and chain-availability matching. |
 
-These diagnostics are not neutralisation benchmarks. High separability likely reflects differences between curated CoV-AbDab SARS-CoV-2 records and natural OAS repertoire records.
+These comparison checks are not neutralisation benchmarks. They show how different the curated CoV-AbDab records are from OAS natural antibody records.
 
-The OAS shortlist is built separately. Existing OAS records are ranked with a composite prioritization score that combines the OAS comparison-model score, nearest-neighbour similarity to curated positive CoV-AbDab records, top-10 neighbour similarity, and similarity to the positive-record centroid. A diversity filter then selects the top 25 diverse OAS records for expert review. These records are review candidates only, not validated binders, therapeutics, or newly generated sequences.
+The OAS shortlist is then built separately from the CoV-AbDab shortlist. Existing OAS records are ranked with a combined prioritization score based on two signals: how much they look like curated CoV-AbDab records in the OAS comparison model, and how similar their sequences are to curated positive CoV-AbDab records. A diversity filter then selects the top 25 non-redundant OAS records for expert review. These records are review candidates only, not validated binders, therapeutics, or newly generated sequences.
 
 ## Reproduce
 
