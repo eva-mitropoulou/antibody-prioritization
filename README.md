@@ -27,9 +27,9 @@ After curation, the data is organised into model-ready datasets. The clearly lab
 
 | Dataset | Rows | Used for |
 |---|---:|---|
-| Strict labelled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Labelled dataset model benchmarking, source/study holdout, score/probability calibration, model selection, and sequence space summaries. |
+| Strict labelled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Labelled dataset model benchmarking, source/study holdout, score/probability calibration, model selection |
 | Broader prepared table | 11,748 | Existing record scoring, reviewing records with missing/conflicting labels, building the final candidate shortlist |
-| Paired annotated subset | 5,092 | heavy/light-chain subset with marked CDR positions |
+| Heavy/light-chain subset with marked CDR positions | 5,092 | heavy/light-chain subset with marked CDR positions |
 
 For modelling, each antibody record is represented as heavy/VHH sequence, paired heavy-light sequence when available, CDR/region sequence, or combined whole-pair plus region sequence. These representations are evaluated separately because not all records contain the same chain fields or region annotations.
 
