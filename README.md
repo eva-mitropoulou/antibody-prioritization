@@ -5,6 +5,7 @@ This project builds an antibody sequence ML pipeline using public SARS-CoV-2 ant
 ## Table of Contents
 
 - [Project Workflow](#project-workflow)
+- [Model Benchmarking and Selection](#model-benchmarking-and-selection)
 - [Main Results](#main-results)
 - [Selected Model](#selected-model)
 - [How To Read This](#how-to-read-this)
@@ -75,13 +76,31 @@ The main supervised benchmark compared sequence models on the strict labelled Co
 
 The first comparison showed that the whole pair k mer model and IgBERT fine tuning were close. The k mer model reached ROC AUC 0.7800 and PR AUC 0.8233, while the best single IgBERT fine tuning run reached ROC AUC 0.7695 and PR AUC 0.8317. IgBERT improved PR AUC slightly, but did not improve ROC AUC.
 
+<p align="center">
+  <img src="docs/assets/broad_model_benchmark.png" alt="Broad model benchmark on the full strict labelled dataset" width="100%">
+</p>
+
+This same-subset benchmark shows why the first comparison was close, but not a clear win for IgBERT on both primary metrics.
+
 Because this was not a clear win, I ran additional checks instead of selecting the neural model from one strong run. A five seed IgBERT fine tuning check gave lower mean performance, with ROC AUC 0.7443 and PR AUC 0.8151. Later IgBERT variants also did not consistently improve over the k mer baseline.
+
+<p align="center">
+  <img src="docs/assets/kmer_vs_igbert_followup.png" alt="K-mer and IgBERT follow-up model comparison" width="100%">
+</p>
+
+The seed-averaged follow-up supports retaining the k mer model rather than selecting a neural model from one strong run.
 
 The final broad scorer was therefore the whole pair k mer model. It was retained because it performed strongly on the full strict labelled dataset, remained simpler and easier to reproduce, and no same subset pretrained alternative clearly improved both primary metrics.
 
 I then tested the selected model under stricter validation. Grouped validation reduced sequence family leakage, while source and study holdout tested whether performance survived publication level shifts. The source holdout result was lower, with weighted ROC AUC 0.6095 and weighted PR AUC 0.6363, so model scores are treated as ranking signals for review rather than final biological labels.
 
 Calibration and threshold analysis were used after model selection. The threshold 0.7 setting selected fewer records but with higher precision, making it useful for focused review lists. This is the score cutoff used to discuss high confidence review behaviour, not a claim that the score is a calibrated probability.
+
+<p align="center">
+  <img src="docs/assets/selected_model_robustness.png" alt="Selected model robustness and threshold 0.7 review cutoff" width="100%">
+</p>
+
+The selected model is useful for review ranking, but the source/study holdout drop motivates conservative interpretation.
 
 ## Main Results
 
