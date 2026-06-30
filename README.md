@@ -39,7 +39,7 @@ The OAS analysis is kept separate from the model evaluation on labelled CoV-AbDa
 
 ## Model Benchmarking and Selection
 
-The main model comparison uses the high confidence labelled CoV AbDab table. The reference model uses TF-IDF features built from short amino acid sequence fragments with logistic regression. Pretrained comparison models use embeddings from antibody language models, including AbLang2, and IgBERT fine tuning.
+The main model comparison uses the high confidence labelled CoV AbDab table. The first model benchmarked is a simple whole pair k-mer model: TF IDF features built from short amino acid sequence fragments, followed by logistic regression. I then compare this model with pretrained antibody language model approaches, including AbLang2 embeddings and IgBERT fine tuning.
 
 The initial benchmark on the labelled dataset showed that the whole-pair k-mer model and IgBERT fine tuning were close. The k-mer model reached ROC AUC 0.7800 and PR AUC 0.8233, while the best single IgBERT fine tuning run reached ROC AUC 0.7695 and PR AUC 0.8317. IgBERT improved PR AUC slightly, but did not improve ROC AUC.
 <p align="center">
