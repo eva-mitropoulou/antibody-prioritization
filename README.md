@@ -35,7 +35,7 @@ For model training and evaluation, each antibody record is represented as heavy/
 
 The main reference model uses TF IDF features built from short amino acid sequence fragments and trains a class weighted logistic regression classifier. AbLang2 and IgBERT embeddings are tested separately as comparison models, not treated as automatically better.
 
-The OAS analysis is kept separate from the neutralisation benchmark. OAS records are treated as unknown target antibody background, and existing OAS records are ranked using model score and similarity to curated positive CoV AbDab records.
+The OAS analysis is kept separate from the model evaluation on labelled CoV-AbDab neutralisation records. OAS records with paired heavy and light chains are treated as a comparison set of natural antibody sequences with unknown targets, not as labelled SARS-CoV-2 antibodies. Existing OAS records are ranked with a composite prioritization score that combines the OAS comparison-model score with sequence similarity to curated positive CoV-AbDab records. A diversity filter is then used to build a shortlist for expert review. These records are review candidates only, not validated binders, therapeutics, or newly generated sequences.
 
 ## Model Benchmarking and Selection
 
