@@ -25,11 +25,11 @@ Neutralisation labels are taken directly from the public record fields. Records 
 
 After curation, the data is organised into model-ready datasets. The clearly labelled dataset is used for model benchmarking, grouped validation, source holdout, calibration, and model selection. The broader dataset that including rows with missing values or conflicting labels is kept so that its sequences so  can still be scored and reviewed as unlabelled canditates.A subset with paired heavy/light chains and marked CDR1, CDR2, and CDR3 sequence positions is used separately to compare sequences using only those marked CDR segments.
 
-| Table | Rows | Used for |
+| Dataset | Rows | Used for |
 |---|---:|---|
-| Strict labelled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Supervised benchmarking, source/study holdout, calibration, model selection, and sequence space summaries. |
-| Broader prepared table | 11,748 | Existing record scoring, missing/conflicting label review categories, and shortlist construction. |
-| Paired annotated subset | 5,092 | CDR and region comparisons on rows with paired chain annotation. |
+| Strict labelled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Labelled dataset model benchmarking, source/study holdout, score/probability calibration, model selection, and sequence space summaries. |
+| Broader prepared table | 11,748 | Existing record scoring, reviewing records with missing/conflicting labels, building the final candidate shortlist |
+| Paired annotated subset | 5,092 | heavy/light-chain subset with marked CDR positions |
 
 For modelling, each antibody record is represented as heavy/VHH sequence, paired heavy-light sequence when available, CDR/region sequence, or combined whole-pair plus region sequence. These representations are evaluated separately because not all records contain the same chain fields or region annotations.
 
