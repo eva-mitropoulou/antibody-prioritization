@@ -89,7 +89,7 @@ First, two OAS comparison checks are run. The broad check compares curated CoV-A
 
 These comparison checks are not neutralisation benchmarks. They show how different the curated CoV-AbDab records are from OAS natural antibody records.
 
-The OAS shortlist is then built separately from the CoV-AbDab shortlist. Existing OAS records are ranked with a combined prioritization score based on two signals: how much they look like curated CoV-AbDab records in the OAS comparison model, and how similar their sequences are to curated positive CoV-AbDab records. A diversity filter then selects the top 25 non-redundant OAS records for expert review. These records are review candidates only, not validated binders, therapeutics, or newly generated sequences.
+The OAS shortlist is then built separately from the CoV-AbDab shortlist. Existing OAS records are ranked with a combined prioritization score based on two signals: how much they look like curated CoV-AbDab records in the OAS comparison model, and how similar their sequences are to curated positive CoV-AbDab records. A diversity filter then selects the top 25 non-redundant OAS records for expert review. 
 
 ## Reproduce
 
