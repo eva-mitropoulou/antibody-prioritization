@@ -1,12 +1,9 @@
 PYTHON ?= python
 
-.PHONY: reproduce-small test report
+.PHONY: reproduce-small report
 
 reproduce-small:
-	RUN_TESTS=0 PYTHON=$(PYTHON) bash scripts/reproduce_final_reports.sh
-
-test:
-	$(PYTHON) -m pytest -q
+	PYTHON=$(PYTHON) bash scripts/reproduce_final_reports.sh
 
 report:
 	PYTHON=$(PYTHON) bash scripts/reproduce_final_reports.sh

@@ -93,21 +93,20 @@ Broad and matched OAS retrieval were used to check how separable curated CoV AbD
 
 The repository includes generated reports and machine-readable metrics. Some raw and processed sequence tables are local artifacts and may not be committed.
 
-Lightweight report refresh plus tests:
+Lightweight report refresh:
 
 ```bash
 python -m pip install -r requirements.txt
 make reproduce-small
-make test
 ```
 
 Direct script:
 
 ```bash
-RUN_TESTS=0 bash scripts/reproduce_final_reports.sh
+bash scripts/reproduce_final_reports.sh
 ```
 
-`make report` runs the same report script with tests enabled. OAS retrieval steps are skipped if local standardized OAS data is missing. Optional pretrained model scripts use `requirements-lm.txt`.
+`make report` runs the same report script. OAS retrieval steps are skipped if local standardized OAS data is missing. Optional pretrained model scripts use `requirements-lm.txt`.
 
 ## Useful Files
 

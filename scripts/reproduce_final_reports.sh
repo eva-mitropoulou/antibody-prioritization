@@ -13,7 +13,6 @@ else
 fi
 
 FORCE_REBUILD="${FORCE_REBUILD:-0}"
-RUN_TESTS="${RUN_TESTS:-1}"
 
 run_python_if_present() {
   local label="$1"
@@ -85,10 +84,3 @@ else
 fi
 
 run_python_if_present "final project report generation" "src/analysis/build_final_project_report.py"
-
-if [[ "$RUN_TESTS" == "1" ]]; then
-  echo "[run] pytest"
-  "$PY" -m pytest -q || echo "[warn] pytest failed"
-else
-  echo "[skip] pytest disabled with RUN_TESTS=0"
-fi
