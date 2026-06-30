@@ -2,41 +2,8 @@
 
 This project builds an antibody sequence ML pipeline using public SARS-CoV-2 antibody records. I curated labeled public records, trained ML models to learn patterns associated with neutralising versus non-neutralising sequences, and then used the trained scoring workflow to prioritize existing OAS antibody records that look most similar to known neutralizing antibodies. The goal is finding existing records that may be worth closer expert review.
 
-The workflow is evaluated with several checks:
-
-* **Strict and broader label curation**
-  I separated records with clear neutralising or non neutralising labels from records with missing or conflicting labels. The strict set is used for supervised model evaluation, while the broader set is retained for later review.
-
-* **Grouped validation**
-  Related antibody records are kept together during train and test splitting, so closely related sequence families do not appear on both sides of the split. This gives a more realistic estimate than a simple random split.
-
-* **Source and study holdout validation**
-  Entire source or study groups are held out from training. This tests whether the model generalises beyond the specific publications or datasets it learned from.
-
-* **Calibration and threshold analysis**
-  Calibration checks whether model scores behave like reliable probabilities. Threshold analysis then tests how precision, recall, and coverage change when only records above a chosen score cutoff are selected for review.
-
-* **CDR and region feature comparisons**
-  I compared whole sequence inputs with CDR and region based inputs to test whether the signal is concentrated in antigen binding regions or distributed across the paired sequence.
-
-* **Pretrained antibody representation benchmarks**
-  I compared the k mer baseline with pretrained antibody language model representations to test whether learned antibody embeddings improved performance.
-
-* **OAS broad and matched background retrieval controls**
-  OAS records were used as unknown target antibody background. Broad and length matched retrieval controls tested how separable the curated project records were from this external antibody record pool.
-
-* **Nearest neighbour similarity checks**
-  Existing OAS records were compared with curated positive CoV AbDab records. This adds context to the ranking by asking whether a record is close to known positive records in sequence feature space.
-
-* **Diverse shortlist selection**
-  The final review lists avoid returning many near duplicate records. The shortlist keeps high scoring records while preserving diversity across sequence and metadata groups.
-
-
-Most rows represent one public antibody entry, usually with a heavy-chain or VHH amino-acid sequence, sometimes a light-chain sequence, source information, target-region information, and, when available, a neutralising or non-neutralising label.
-
 ## Table of Contents
 
-- [At a Glance](#at-a-glance)
 - [Project Workflow](#project-workflow)
 - [Main Results](#main-results)
 - [Selected Model](#selected-model)
@@ -46,58 +13,95 @@ Most rows represent one public antibody entry, usually with a heavy-chain or VHH
 - [Reproduce](#reproduce)
 - [Useful Files](#useful-files)
 
-## At a Glance
 
-| Part | What it does |
-|---|---|
-| Data curation | Cleans public SARS-CoV-2 antibody entries and separates clear yes/no labels from missing or conflicting labels. |
-| Main classifier | Represents heavy/light-chain sequence text with k-mer TF-IDF features and trains balanced logistic regression. |
-| Model comparison | Compares the k-mer baseline with pretrained antibody embedding and language-model runs. |
-| CDR and region checks | Tests CDR/region sequence views on the paired annotated subset. |
-| Robustness checks | Uses grouped validation, source/study holdout, calibration, and threshold analysis to test where the signal is stable. |
-| OAS background controls | Compares project records against OAS unknown-target antibody background in broad and matched retrieval tasks. |
-| OAS record review | Scores existing OAS records by retrieval score and similarity to curated project-positive records. |
-| Shortlist selection | Builds small review queues with diversity filters rather than returning one long ranked list. |
+## Project Workflow
 
 <p align="center">
   <img src="docs/assets/project_workflow.png" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
 </p>
 
-## Project Workflow
+The project starts with CoV AbDab SARS CoV 2 entries: heavy/VHH and light chain sequences are cleaned, missing placeholders are standardised, amino acid strings are checked, and each record is linked to its source and target region metadata when available.
 
-The first step is curation. Public CoV-AbDab rows are filtered to entries whose `Binds to` field mentions SARS-CoV-2. Sequence fields are normalized, common placeholders are treated as missing, canonical amino-acid checks are applied, and a sequence key is built from the heavy/VHH chain plus the light chain when present.
+Neutralisation labels are taken directly from the public record fields. Records reported as neutralising against SARS CoV 2 form the positive class, records reported as not neutralising form the negative class, and conflicting records are kept separate rather than forced into the supervised benchmark.
 
-Neutralisation labels are extracted from the public record fields. A row is treated as label 1 when `Neutralising Vs` mentions SARS-CoV-2. A row is treated as label 0 when `Not Neutralising Vs` mentions SARS-CoV-2 and the positive field does not. Rows where both fields point to SARS-CoV-2 are marked as conflicts.
-
-From there, the project keeps two useful views of the same public-record space. The strict labeled table is the supervised ML table: it keeps rows with usable binary labels and supports the main benchmarks, source/study validation, calibration checks, model selection, and sequence-space summaries. The broader prepared table keeps more public records, including rows with missing or conflicting labels, so the trained workflow can score and organize existing records for review.
+After curation, the data is organised into working tables. The strict labelled table is used for model benchmarking, grouped validation, source holdout, calibration, and model selection. The broader prepared table keeps records with missing or conflicting labels so they can still be scored and reviewed. A paired annotated subset is used separately for CDR and region based comparisons.
 
 | Table | Rows | Used for |
 |---|---:|---|
-| Strict labeled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Supervised benchmarking, source/study holdout, calibration, model selection, and sequence-space summaries. |
-| Broader prepared table | 11,748 | Existing-record scoring, missing/conflicting-label review categories, and shortlist construction. |
-| Paired annotated subset | 5,092 | CDR and region feature checks on rows with paired-chain annotation. |
+| Strict labelled ML table | 5,573; label 0 = 2,292, label 1 = 3,281 | Supervised benchmarking, source/study holdout, calibration, model selection, and sequence space summaries. |
+| Broader prepared table | 11,748 | Existing record scoring, missing/conflicting label review categories, and shortlist construction. |
+| Paired annotated subset | 5,092 | CDR and region comparisons on rows with paired chain annotation. |
 
-For modeling, antibody entries are converted into several sequence-text views: whole-pair, heavy-only, paired-only whole-pair, CDR/region, and whole-pair plus CDR/region. These views are not all available for the same rows, so full strict-table metrics and paired/region-subset metrics are reported separately.
+For modelling, each antibody record is represented as heavy/VHH sequence, paired heavy-light sequence when available, CDR/region sequence, or combined whole-pair plus region sequence. These representations are evaluated separately because not all records contain the same chain fields or region annotations.
 
-The main baseline is intentionally simple. In this project, k-mer TF-IDF logistic regression means splitting antibody sequence text into overlapping amino-acid character k-mers, weighting those k-mers with TF-IDF, and fitting a balanced logistic-regression classifier to the public binary labels.
+The main baseline uses amino acid k mer TF IDF features with logistic regression and class weights. Pretrained antibody representations, including AbLang2 and IgBERT based experiments, are benchmarked as comparisons rather than assumed to be better.
 
-The OAS analyses are separate from the main neutralisation benchmark. Broad and matched OAS retrieval compare project rows against OAS unknown-target antibody background. The existing-OAS review module then ranks OAS records by a computational prioritization score built from retrieval-model score, nearest-neighbor similarity to project-positive records, top-neighbor similarity, and centroid similarity.
+The OAS analysis is kept separate from the neutralisation benchmark. OAS records are treated as unknown target antibody background, then existing OAS records are ranked using model score and similarity to curated positive CoV AbDab records. Final review lists use hashed outputs, sequence review flags, and diversity filtering to avoid near duplicate shortlists.
 
-The shortlist step keeps the output small enough to inspect. It keeps existing records for expert review, uses hashed/public-safe outputs, applies review flags, and uses diversity filtering so the final list is not just many near-duplicates from the same sequence neighborhood.
+## Validation Strategy
+
+The workflow is evaluated with several checks before any record shortlist is interpreted:
+
+1. **Strict and broader label curation:**  
+   Clear neutralising and non neutralising records are used for supervised evaluation. Missing or conflicting labels are kept separate for review instead of being forced into the benchmark.
+
+1. **Grouped validation:**  
+   Related antibody records are kept together during train/test splitting, so closely related sequence families do not appear on both sides of the split.
+
+1. **Source and study holdout validation:**  
+   Entire source or study groups are held out from training to test whether performance survives publication or dataset shifts.
+
+1. **Calibration and threshold analysis:**  
+   Calibration checks whether model scores behave like probabilities. Threshold analysis measures how precision, recall, and coverage change when only records above a selected score cutoff are reviewed.
+
+1. **CDR and region comparisons:**  
+   Whole sequence and CDR/region representations are compared to test whether the label signal is concentrated in antigen binding regions or distributed across the paired sequence.
+
+1. **Pretrained antibody representation benchmarks:**  
+   The k mer baseline is compared with pretrained antibody representation models, including AbLang2 and IgBERT based runs.
+
+1. **OAS background controls:**  
+   Broad and length matched OAS retrieval controls test how separable curated CoV AbDab records are from external unknown target antibody background.
+
+1. **Nearest neighbour similarity checks:**  
+   Existing OAS records are compared with curated positive CoV AbDab records to add local sequence neighbourhood context to the ranking.
+
+1. **Diverse shortlist selection:**  
+   Final review lists avoid returning many near duplicate records by preserving diversity across sequence and metadata groups.
 
 ## Main Results
 
-| Area | Result | What it means |
+The simple k mer model performed well on the curated labelled benchmark, but source holdout showed a clear drop, so the final outputs are treated as review lists rather than final biological labels.
+
+### 1. Supervised neutralisation benchmark
+
+| Result | Value | Interpretation |
 |---|---:|---|
-| Broad whole-pair k-mer benchmark | ROC-AUC 0.7800, PR-AUC 0.8233 | The sequence baseline learns signal on the strict labeled table. |
-| Paired/region benchmark | ROC-AUC 0.6629, PR-AUC 0.6330 | CDR/region features are evaluated on the paired annotated subset, not the full strict table. |
-| Source-robust selected model | `whole_pair_kmer` | The selected model under source-robust model selection. |
-| Source/study holdout | weighted ROC-AUC 0.6095, weighted PR-AUC 0.6363 | Performance is lower when whole sources are held out. |
-| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | A more selective cutoff for existing-record review. |
-| Broad OAS retrieval | ROC-AUC 0.9921, PR-AUC 0.9897 | Project records are separable from OAS unknown-target antibody background. |
-| Matched OAS retrieval | ROC-AUC 0.9911, PR-AUC 0.9893 | Separation stays high after coarse length and light-chain matching. |
-| Diversity-aware project shortlist | 23 records | A small review queue from the broader project table. |
-| OAS existing-record shortlist | 17,882 OAS rows scored; top 25 diverse records | A public-safe review queue of existing OAS records, not a binder or therapeutic claim. |
+| Strict labelled dataset | 5,573 records | 2,292 non neutralising, 3,281 neutralising |
+| Selected broad model | `whole_pair_kmer` | Whole pair k mer TF IDF with logistic regression |
+| Main k mer benchmark | ROC AUC 0.7800, PR AUC 0.8233 | On the strict labelled table, the whole pair k mer model ranks reported neutralising records above reported non neutralising records under grouped validation. |
+| CDR/region subset benchmark | ROC AUC 0.6629, PR AUC 0.6330 | CDR and region based inputs were tested on the paired annotated subset only, so this result is reported separately from the full table benchmark. |
+| IgBERT fine tuning benchmark | ROC AUC 0.7695, PR AUC 0.8317 | Fine tuning improved PR AUC slightly but did not improve ROC AUC, so it was kept as comparison evidence rather than replacing the k mer model. |
+
+### 2. Robustness and score interpretation
+
+| Check | Result | Interpretation |
+|---|---:|---|
+| Source/study holdout | weighted ROC AUC 0.6095, weighted PR AUC 0.6363 | Performance drops when whole sources are held out |
+| Selected source robust model | `whole_pair_kmer` | The simpler broad model remained the selected scorer |
+| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | Useful as a selective review cutoff |
+| Calibration | imperfect | Scores are better used for ranking than as literal probabilities |
+
+### 3. Existing record review outputs
+
+| Output | Result | Interpretation |
+|---|---:|---|
+| Broader CoV AbDab table | 11,748 records | Includes missing/conflicting labels for review |
+| Broader CoV AbDab shortlist | 23 records | Compact review list after filtering and diversity selection |
+| Broad OAS retrieval control | ROC AUC 0.9921, PR AUC 0.9897 | CoV AbDab records are separable from broad OAS background |
+| Matched OAS retrieval control | ROC AUC 0.9911, PR AUC 0.9893 | Separation remains after coarse length and light chain matching |
+| OAS existing record scoring | 17,882 OAS rows scored | Existing OAS records ranked with model score and similarity to curated positives |
+| OAS shortlist | top 25 diverse records | Public safe expert review queue |
 
 ## Selected Model
 
