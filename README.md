@@ -57,7 +57,7 @@ Because this was not a clear improvement, I did not select IgBERT based on its b
 
 After selecting the whole-pair k-mer model, I tested it with stricter validation checks. Grouped validation reduces leakage by making sure that closely related antibody sequences are not split between training and test data. Source and study holdout is stricter: it holds out whole publications or data sources to test whether the model still works on records from sources it did not see during training. Performance dropped under this harder test, with weighted ROC AUC 0.6095 and weighted PR AUC 0.6363.
 
-After model selection, I checked how the model scores behave when different minimum score thresholds are used to build review lists. Using 0.7 as the threshold means that only records with a model score of 0.7 or higher are selected. This produced a smaller but higher precision set of records, making it useful for focused expert review. 
+After model selection, I checked how the model scores behave when different minimum score thresholds are used. Using 0.7 as the threshold means that only records with a model score of 0.7 or higher are selected. This produced a smaller but higher precision set of records, making it useful for expert review. 
 
 <p align="center">
   <img src="docs/assets/selected_model_robustness.png" alt="Selected model robustness and threshold 0.7 review cutoff" width="100%">
