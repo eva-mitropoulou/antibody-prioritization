@@ -71,11 +71,6 @@ The shortlist step keeps the output small enough to inspect. It keeps existing r
 | Diversity-aware project shortlist | 23 records | A small review queue from the broader project table. |
 | OAS existing-record shortlist | 17,882 OAS rows scored; top 25 diverse records | A public-safe review queue of existing OAS records, not a binder or therapeutic claim. |
 
-<p align="center">
-  <img src="reports/figures/threshold_precision_recall.png" alt="Threshold precision and recall tradeoff" width="48%">
-  <img src="reports/figures/oas_matched_retrieval_score_distribution.png" alt="Matched OAS retrieval score distribution" width="48%">
-</p>
-
 ## Selected Model
 
 The selected source-robust model is `whole_pair_kmer`. It uses compact heavy/light sequence-pair text, character k-mer TF-IDF features, and balanced logistic regression.
