@@ -31,9 +31,9 @@ After curation, the data is organised into model-ready datasets. The clearly lab
 | Broader prepared table | 11,748 | Existing record scoring, reviewing records with missing/conflicting labels, building the final candidate shortlist |
 | Heavy/light-chain subset with marked CDR positions | 5,092 | heavy/light-chain subset with marked CDR positions |
 
-For modelling, each antibody record is represented as heavy/VHH sequence, paired heavy-light sequence when available, CDR/region sequence, or combined whole-pair plus region sequence. These representations are evaluated separately because not all records contain the same chain fields or region annotations.
+For model training and evaluation, each antibody record is represented as heavy/VHH sequence, paired heavy-light sequence when available, CDR/region sequence, or combined full heavy-light sequence plus marked CDR segments. These representations are evaluated separately because not all records contain the same heavy, light, or VHH sequence columns.
 
-The main baseline uses amino acid k mer TF IDF features with logistic regression and class weights. Pretrained antibody representations, including AbLang2 and IgBERT based experiments, are evaluated later as benchmark comparisons rather than assumed to be better.
+The main reference model uses TF IDF features built from short amino acid sequence fragments and trains a class weighted logistic regression classifier. AbLang2 and IgBERT embeddings are tested separately as comparison models, not treated as automatically better.
 
 The OAS analysis is kept separate from the neutralisation benchmark. OAS records are treated as unknown target antibody background, and existing OAS records are ranked using model score and similarity to curated positive CoV AbDab records.
 
