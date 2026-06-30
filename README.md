@@ -2,7 +2,35 @@
 
 This project builds an antibody sequence ML pipeline using public SARS-CoV-2 antibody records. I curated labeled public records, trained ML models to learn patterns associated with neutralising versus non-neutralising sequences, and then used the trained scoring workflow to prioritize existing OAS antibody records that look most similar to known neutralizing antibodies. The goal is finding existing records that may be worth closer expert review.
 
-The workflow is supported by several validation, benchmarking, and robustness checks: strict versus broader label curation, grouped validation to reduce sequence-family leakage, source/study holdout validation to test cross-study generalization, calibration and threshold analysis, CDR/region feature comparisons, pretrained antibody-representation benchmarks, OAS broad and matched-background retrieval controls, nearest-neighbor similarity audits, and diversity-aware shortlist selection.
+The workflow is evaluated with several checks:
+
+* **Strict and broader label curation**
+  I separated records with clear neutralising or non neutralising labels from records with missing or conflicting labels. The strict set is used for supervised model evaluation, while the broader set is retained for later review.
+
+* **Grouped validation**
+  Related antibody records are kept together during train and test splitting, so closely related sequence families do not appear on both sides of the split. This gives a more realistic estimate than a simple random split.
+
+* **Source and study holdout validation**
+  Entire source or study groups are held out from training. This tests whether the model generalises beyond the specific publications or datasets it learned from.
+
+* **Calibration and threshold analysis**
+  Calibration checks whether model scores behave like reliable probabilities. Threshold analysis then tests how precision, recall, and coverage change when only records above a chosen score cutoff are selected for review.
+
+* **CDR and region feature comparisons**
+  I compared whole sequence inputs with CDR and region based inputs to test whether the signal is concentrated in antigen binding regions or distributed across the paired sequence.
+
+* **Pretrained antibody representation benchmarks**
+  I compared the k mer baseline with pretrained antibody language model representations to test whether learned antibody embeddings improved performance.
+
+* **OAS broad and matched background retrieval controls**
+  OAS records were used as unknown target antibody background. Broad and length matched retrieval controls tested how separable the curated project records were from this external antibody record pool.
+
+* **Nearest neighbour similarity checks**
+  Existing OAS records were compared with curated positive CoV AbDab records. This adds context to the ranking by asking whether a record is close to known positive records in sequence feature space.
+
+* **Diverse shortlist selection**
+  The final review lists avoid returning many near duplicate records. The shortlist keeps high scoring records while preserving diversity across sequence neighbourhoods and metadata groups.
+
 
 Most rows represent one public antibody entry, usually with a heavy-chain or VHH amino-acid sequence, sometimes a light-chain sequence, source information, target-region information, and, when available, a neutralising or non-neutralising label.
 
