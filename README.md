@@ -37,38 +37,7 @@ For modelling, each antibody record is represented as heavy/VHH sequence, paired
 
 The main baseline uses amino acid k mer TF IDF features with logistic regression and class weights. Pretrained antibody representations, including AbLang2 and IgBERT based experiments, are benchmarked as comparisons rather than assumed to be better.
 
-The OAS analysis is kept separate from the neutralisation benchmark. OAS records are treated as unknown target antibody background, then existing OAS records are ranked using model score and similarity to curated positive CoV AbDab records. Final review lists use hashed outputs, sequence review flags, and diversity filtering to avoid near duplicate shortlists.
-
-## Validation Strategy
-
-The workflow is evaluated with several checks before any record shortlist is interpreted:
-
-1. **Strict and broader label curation:**  
-   Clear neutralising and non neutralising records are used for supervised evaluation. Missing or conflicting labels are kept separate for review instead of being forced into the benchmark.
-
-1. **Grouped validation:**  
-   Related antibody records are kept together during train/test splitting, so closely related sequence families do not appear on both sides of the split.
-
-1. **Source and study holdout validation:**  
-   Entire source or study groups are held out from training to test whether performance survives publication or dataset shifts.
-
-1. **Calibration and threshold analysis:**  
-   Calibration checks whether model scores behave like probabilities. Threshold analysis measures how precision, recall, and coverage change when only records above a selected score cutoff are reviewed.
-
-1. **CDR and region comparisons:**  
-   Whole sequence and CDR/region representations are compared to test whether the label signal is concentrated in antigen binding regions or distributed across the paired sequence.
-
-1. **Pretrained antibody representation benchmarks:**  
-   The k mer baseline is compared with pretrained antibody representation models, including AbLang2 and IgBERT based runs.
-
-1. **OAS background controls:**  
-   Broad and length matched OAS retrieval controls test how separable curated CoV AbDab records are from external unknown target antibody background.
-
-1. **Nearest neighbour similarity checks:**  
-   Existing OAS records are compared with curated positive CoV AbDab records to add local sequence neighbourhood context to the ranking.
-
-1. **Diverse shortlist selection:**  
-   Final review lists avoid returning many near duplicate records by preserving diversity across sequence and metadata groups.
+The main baseline uses amino acid k mer TF IDF features with logistic regression and class weights. Pretrained antibody language models are evaluated later as benchmark comparisons.
 
 ## Model Benchmarking and Selection
 
@@ -102,75 +71,25 @@ Calibration and threshold analysis were used after model selection. The threshol
 
 ## Main Results
 
-The simple k mer model performed well on the curated labelled benchmark, but source holdout showed a clear drop, so the final outputs are treated as review lists rather than final biological labels.
-
-### 1. Supervised neutralisation benchmark
-
-| Result | Value | Interpretation |
+| Area | Result | Interpretation |
 |---|---:|---|
-| Strict labelled dataset | 5,573 records | 2,292 non neutralising, 3,281 neutralising |
-| Selected broad model | `whole_pair_kmer` | Whole pair k mer TF IDF with logistic regression |
-| Main k mer benchmark | ROC AUC 0.7800, PR AUC 0.8233 | On the strict labelled table, the whole pair k mer model ranks reported neutralising records above reported non neutralising records under grouped validation. |
-| CDR/region subset benchmark | ROC AUC 0.6629, PR AUC 0.6330 | CDR and region based inputs were tested on the paired annotated subset only, so this result is reported separately from the full table benchmark. |
-| IgBERT fine tuning benchmark | ROC AUC 0.7695, PR AUC 0.8317 | Fine tuning improved PR AUC slightly but did not improve ROC AUC, so it was kept as comparison evidence rather than replacing the k mer model. |
+| Strict labelled dataset | 5,573 records; label 0 = 2,292, label 1 = 3,281 | Main supervised benchmark table. |
+| Selected broad scorer | Whole pair k mer TF IDF logistic regression | Retained after k mer, AbLang2, IgBERT, seed, and robustness checks. |
+| Main grouped benchmark | ROC AUC 0.7800, PR AUC 0.8233 | The selected model separates many reported neutralising and non neutralising records under grouped validation. |
+| IgBERT five-seed check | mean ROC AUC 0.7443, mean PR AUC 0.8151 | IgBERT did not consistently beat the k mer baseline across seeds. |
+| Source/study holdout | weighted ROC AUC 0.6095, weighted PR AUC 0.6363 | Performance drops when whole source groups are held out. |
+| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | Selective cutoff for focused review lists. |
+| Broader CoV AbDab shortlist | 23 records | Compact review list from broader records with missing or conflicting labels. |
+| OAS existing record scoring | 17,882 OAS rows scored; top 25 diverse records | Existing OAS records ranked with model score and similarity to curated positive records. |
 
-### 2. Robustness and score interpretation
+### OAS Background Controls
 
-| Check | Result | Interpretation |
-|---|---:|---|
-| Source/study holdout | weighted ROC AUC 0.6095, weighted PR AUC 0.6363 | Performance drops when whole sources are held out |
-| Selected source robust model | `whole_pair_kmer` | The simpler broad model remained the selected scorer |
-| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | Useful as a selective review cutoff |
-| Calibration | imperfect | Scores are better used for ranking than as literal probabilities |
+Broad and matched OAS retrieval were used to check how separable curated CoV AbDab records were from OAS unknown target antibody background. These are background retrieval diagnostics, not neutralisation benchmarks.
 
-### 3. Existing record review outputs
-
-| Output | Result | Interpretation |
-|---|---:|---|
-| Broader CoV AbDab table | 11,748 records | Includes missing/conflicting labels for review |
-| Broader CoV AbDab shortlist | 23 records | Compact review list after filtering and diversity selection |
-| Broad OAS retrieval control | ROC AUC 0.9921, PR AUC 0.9897 | CoV AbDab records are separable from broad OAS background |
-| Matched OAS retrieval control | ROC AUC 0.9911, PR AUC 0.9893 | Separation remains after coarse length and light chain matching |
-| OAS existing record scoring | 17,882 OAS rows scored | Existing OAS records ranked with model score and similarity to curated positives |
-| OAS shortlist | top 25 diverse records | Public safe expert review queue |
-
-## Selected Model
-
-The selected source-robust model is `whole_pair_kmer`. It uses compact heavy/light sequence-pair text, character k-mer TF-IDF features, and balanced logistic regression.
-
-In model-card terms, the k-mer setup is `TfidfVectorizer(analyzer="char", ngram_range=(3,5), min_df=2)` plus `LogisticRegression(max_iter=5000, class_weight="balanced")`. The workflow uses compact sequence strings for these k-mer inputs.
-
-This model was kept as the broad scorer because it works on the full strict labeled table, has the best matched broad k-mer result, remains the selected source-robust model, and is simpler than the pretrained alternatives. Pretrained antibody representation runs are kept as benchmark evidence, but none reliably replaces the matched k-mer references on both primary metrics.
-
-Its scores are used for ranking and review of existing records, not as biological proof.
-
-## How To Read This
-
-The broad whole-pair k-mer benchmark is the main strict-table classification result. It asks whether amino-acid sequence fields carry useful signal on rows with clear yes/no labels.
-
-The paired/region benchmark answers a narrower question. It uses rows where paired-chain CDR/region annotation is available, so it should not be compared directly against full strict-table metrics.
-
-The source/study holdout result is the skeptical check. It tests whether the model still performs when whole source groups are held out. The lower value matters because public antibody records carry study-specific structure.
-
-The threshold analysis turns model scores into possible review cutoffs. At threshold 0.7, the model covers about 30.5% of evaluated rows with higher precision and lower recall.
-
-The OAS tasks should be read as background and review workflows. OAS rows are unknown-target natural antibody background, not assayed negative neutralisation data. Similarity to curated project-positive records can help organize records for review, but it does not establish binding, neutralisation, or therapeutic value.
-
-## Figures
-
-The left plot, `threshold_precision_recall.png`, shows how precision and recall change as the review threshold moves. Higher thresholds select fewer rows; in this project, threshold 0.7 is reported as a selective review cutoff.
-
-The right plot, `oas_matched_retrieval_score_distribution.png`, shows the matched OAS retrieval score distribution. It compares project records with OAS unknown-target antibody background after coarse matching by heavy-chain length, light-chain length, total length, and light-chain status. The strong separation is a background-retrieval diagnostic, not a neutralisation benchmark.
-
-## Scope and Limits
-
-This is a retrospective public-record ML project. It does not perform antibody design, sequence generation, sequence optimization, or prospective wet-lab validation.
-
-Model scores are ranking signals for existing-record review. They are not calibrated biological truth and do not establish neutralisation, binding, developability, or therapeutic value.
-
-OAS is used as unknown-target antibody background. It is not used as non-neutralising neutralisation data.
-
-The OAS existing-record shortlist is an expert-review queue. It is not antibody design, therapeutic discovery, or prospective validation.
+| Control | Result |
+|---|---:|
+| Broad OAS retrieval | ROC AUC 0.9921, PR AUC 0.9897 |
+| Matched OAS retrieval | ROC AUC 0.9911, PR AUC 0.9893 |
 
 ## Reproduce
 
