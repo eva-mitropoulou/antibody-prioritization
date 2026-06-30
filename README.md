@@ -48,13 +48,13 @@ The first comparison showed that the whole pair k mer model and IgBERT fine tuni
 
 This same-subset benchmark shows why the first comparison was close, but not a clear win for IgBERT on both primary metrics.
 
-Because this was not a clear win, I ran additional checks instead of selecting the neural model from one strong run. A five seed IgBERT fine tuning check gave lower mean performance, with ROC AUC 0.7443 and PR AUC 0.8151. Later IgBERT variants also did not consistently improve over the k mer baseline.
+Because this was not a clear win, I ran additional checks instead of selecting the fine-tuned IgBERT model from one strong run. A five seed IgBERT fine tuning check gave lower mean performance, with ROC AUC 0.7443 and PR AUC 0.8151. Later IgBERT variants also did not consistently improve over the k mer baseline.
 
 <p align="center">
   <img src="docs/assets/kmer_vs_igbert_followup.png" alt="K-mer and IgBERT follow-up model comparison" width="100%">
 </p>
 
-The seed-averaged follow-up supports retaining the k mer model rather than selecting a neural model from one strong run.
+The seed-averaged follow-up supports retaining the k mer model rather than selecting the fine-tuned IgBERT model from one strong run.
 
 The final broad scorer was therefore the whole pair k mer model. It was retained because it performed strongly on the full strict labelled dataset, remained simpler and easier to reproduce, and no same subset pretrained alternative clearly improved both primary metrics.
 
@@ -71,7 +71,7 @@ Calibration and threshold analysis were used after model selection. The threshol
 | Area | Result | Interpretation |
 |---|---:|---|
 | Strict labelled dataset | 5,573 records; label 0 = 2,292, label 1 = 3,281 | Main supervised benchmark table. |
-| Selected broad scorer | Whole pair k mer TF IDF logistic regression | Retained after k mer, AbLang2, IgBERT, seed, and robustness checks. |
+| Selected broad scorer | Whole pair k mer TF IDF logistic regression | Retained after AbLang2, IgBERT, five seed, and source holdout checks. |
 | Main grouped benchmark | ROC AUC 0.7800, PR AUC 0.8233 | The selected model separates many reported neutralising and non neutralising records under grouped validation. |
 | IgBERT five-seed check | mean ROC AUC 0.7443, mean PR AUC 0.8151 | IgBERT did not consistently beat the k mer baseline across seeds. |
 | Source/study holdout | weighted ROC AUC 0.6095, weighted PR AUC 0.6363 | Performance drops when whole source groups are held out. |
