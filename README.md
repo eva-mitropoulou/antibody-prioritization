@@ -29,7 +29,7 @@ The workflow is evaluated with several checks:
   Existing OAS records were compared with curated positive CoV AbDab records. This adds context to the ranking by asking whether a record is close to known positive records in sequence feature space.
 
 * **Diverse shortlist selection**
-  The final review lists avoid returning many near duplicate records. The shortlist keeps high scoring records while preserving diversity across sequence neighbourhoods and metadata groups.
+  The final review lists avoid returning many near duplicate records. The shortlist keeps high scoring records while preserving diversity across sequence and metadata groups.
 
 
 Most rows represent one public antibody entry, usually with a heavy-chain or VHH amino-acid sequence, sometimes a light-chain sequence, source information, target-region information, and, when available, a neutralising or non-neutralising label.
