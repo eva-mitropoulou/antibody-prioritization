@@ -7,9 +7,6 @@ This project builds an antibody sequence ML pipeline using public SARS-CoV-2 ant
 - [Project Workflow](#project-workflow)
 - [Model Benchmarking and Selection](#model-benchmarking-and-selection)
 - [Main Results](#main-results)
-- [Selected Model](#selected-model)
-- [How To Read This](#how-to-read-this)
-- [Figures](#figures)
 - [Scope and Limits](#scope-and-limits)
 - [Reproduce](#reproduce)
 - [Useful Files](#useful-files)
@@ -35,9 +32,9 @@ After curation, the data is organised into working tables. The strict labelled t
 
 For modelling, each antibody record is represented as heavy/VHH sequence, paired heavy-light sequence when available, CDR/region sequence, or combined whole-pair plus region sequence. These representations are evaluated separately because not all records contain the same chain fields or region annotations.
 
-The main baseline uses amino acid k mer TF IDF features with logistic regression and class weights. Pretrained antibody representations, including AbLang2 and IgBERT based experiments, are benchmarked as comparisons rather than assumed to be better.
+The main baseline uses amino acid k mer TF IDF features with logistic regression and class weights. Pretrained antibody representations, including AbLang2 and IgBERT based experiments, are evaluated later as benchmark comparisons rather than assumed to be better.
 
-The main baseline uses amino acid k mer TF IDF features with logistic regression and class weights. Pretrained antibody language models are evaluated later as benchmark comparisons.
+The OAS analysis is kept separate from the neutralisation benchmark. OAS records are treated as unknown target antibody background, and existing OAS records are ranked using model score and similarity to curated positive CoV AbDab records.
 
 ## Model Benchmarking and Selection
 
