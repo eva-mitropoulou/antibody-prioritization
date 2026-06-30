@@ -67,14 +67,14 @@ After model selection, I checked how the model scores behave when different mini
 
 | Area | Result | Interpretation |
 |---|---:|---|
-| Strict labelled dataset | 5,573 records; label 0 = 2,292, label 1 = 3,281 | Main supervised benchmark table. |
-| Selected broad scorer | Whole pair k mer TF IDF logistic regression | Retained after AbLang2, IgBERT, five seed, and source holdout checks. |
-| Main grouped benchmark | ROC AUC 0.7800, PR AUC 0.8233 | The selected model separates many reported neutralising and non neutralising records under grouped validation. |
-| IgBERT five-seed check | mean ROC AUC 0.7443, mean PR AUC 0.8151 | IgBERT did not consistently beat the k mer baseline across seeds. |
-| Source/study holdout | weighted ROC AUC 0.6095, weighted PR AUC 0.6363 | Performance drops when whole source groups are held out. |
-| Threshold 0.7 | precision 0.8266, recall 0.3062, coverage 0.3051 | Selective cutoff for focused review lists. |
-| Broader CoV AbDab shortlist | 23 records | Compact review list from broader records with missing or conflicting labels. |
-| OAS existing record scoring | 17,882 OAS rows scored; top 25 diverse records | Existing OAS records ranked with model score and similarity to curated positive records. |
+| High-confidence labelled CoV-AbDab table | 5,573 records; 2,292 non-neutralising and 3,281 neutralising | Main table used for model comparison and validation. |
+| Selected main model | Whole-pair k-mer TF IDF logistic regression | Selected because it was simple, reproducible, and not consistently beaten by AbLang2 or IgBERT checks. |
+| Grouped validation | ROC AUC 0.7800, PR AUC 0.8233 | The selected model separates many reported neutralising and non-neutralising records when related sequence groups are kept out of both train and test overlap. |
+| Repeated IgBERT check | Mean ROC AUC 0.7443, mean PR AUC 0.8151 | Repeated IgBERT fine tuning did not consistently outperform the k-mer model. |
+| Source/study holdout | Weighted ROC AUC 0.6095, weighted PR AUC 0.6363 | Performance drops when whole publications or data sources are held out, so scores are used for prioritization rather than final labels. |
+| Score threshold 0.7 | Precision 0.8266, recall 0.3062, coverage 0.3051 | Practical filter for smaller, higher-precision expert review lists. |
+| Broader CoV-AbDab shortlist | 23 records | Review list built from broader CoV-AbDab records with missing or conflicting labels. |
+| OAS existing-record shortlist | 17,882 OAS rows scored; top 25 diverse records | Existing unknown-target OAS records ranked using a composite prioritization score and similarity to curated positive CoV-AbDab records. |
 
 ### OAS Background Controls
 
