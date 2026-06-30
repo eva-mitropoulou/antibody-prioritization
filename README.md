@@ -48,7 +48,7 @@ The initial benchmark on the labelled dataset showed that the whole-pair k-mer m
 
 The benchmark using the same records and split showed that IgBERT was not a clear winner over the whole-pair k-mer model: it slightly improved PR AUC, but not ROC AUC.
 
-Because this was not a clear win, I ran additional checks instead of selecting the fine-tuned IgBERT model from one strong run. A five seed IgBERT fine tuning check gave lower mean performance, with ROC AUC 0.7443 and PR AUC 0.8151. Later IgBERT variants also did not consistently improve over the k mer baseline.
+Because this was not a clear improvement, I did not select IgBERT based on its best single fine tuning result. A repeated IgBERT check on 5 different seeds gave lower mean performance, with ROC AUC 0.7443 and PR AUC 0.8151. Other IgBERT configurations also did not consistently outperform the k-mer baseline.
 
 <p align="center">
   <img src="docs/assets/kmer_vs_igbert_followup.png" alt="K-mer and IgBERT follow-up model comparison" width="100%">
