@@ -20,10 +20,6 @@ Most rows represent one public antibody entry, usually with a heavy-chain or VHH
 
 ## At a Glance
 
-<p align="center">
-  <img src="docs/assets/project_workflow.png" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
-</p>
-
 | Part | What it does |
 |---|---|
 | Data curation | Cleans public SARS-CoV-2 antibody entries and separates clear yes/no labels from missing or conflicting labels. |
@@ -35,14 +31,17 @@ Most rows represent one public antibody entry, usually with a heavy-chain or VHH
 | OAS record review | Scores existing OAS records by retrieval score and similarity to curated project-positive records. |
 | Shortlist selection | Builds small review queues with diversity filters rather than returning one long ranked list. |
 
+<p align="center">
+  <img src="docs/assets/project_workflow.png" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
+</p>
 
 ## Project Workflow
 
-The first layer is curation. Public CoV-AbDab rows are filtered to entries whose `Binds to` field mentions SARS-CoV-2. Sequence fields are normalized, common placeholders are treated as missing, canonical amino-acid checks are applied, and a sequence key is built from the heavy/VHH chain plus the light chain when present.
+The first step is curation. Public CoV-AbDab rows are filtered to entries whose `Binds to` field mentions SARS-CoV-2. Sequence fields are normalized, common placeholders are treated as missing, canonical amino-acid checks are applied, and a sequence key is built from the heavy/VHH chain plus the light chain when present.
 
 Neutralisation labels are extracted from the public record fields. A row is treated as label 1 when `Neutralising Vs` mentions SARS-CoV-2. A row is treated as label 0 when `Not Neutralising Vs` mentions SARS-CoV-2 and the positive field does not. Rows where both fields point to SARS-CoV-2 are marked as conflicts.
 
-The strict labeled table is the supervised ML table. It keeps rows with usable binary labels and supports the main benchmarks, source/study validation, calibration checks, model selection, and sequence-space summaries. The broader prepared table keeps more public records, including rows with missing or conflicting labels, so the trained workflow can score and organize existing records for review.
+From there, the project keeps two useful views of the same public-record space. The strict labeled table is the supervised ML table: it keeps rows with usable binary labels and supports the main benchmarks, source/study validation, calibration checks, model selection, and sequence-space summaries. The broader prepared table keeps more public records, including rows with missing or conflicting labels, so the trained workflow can score and organize existing records for review.
 
 | Table | Rows | Used for |
 |---|---:|---|
@@ -56,7 +55,7 @@ The main baseline is intentionally simple. In this project, k-mer TF-IDF logisti
 
 The OAS analyses are separate from the main neutralisation benchmark. Broad and matched OAS retrieval compare project rows against OAS unknown-target antibody background. The existing-OAS review module then ranks OAS records by a computational prioritization score built from retrieval-model score, nearest-neighbor similarity to project-positive records, top-neighbor similarity, and centroid similarity.
 
-The shortlist step is deliberately conservative. It keeps existing records for expert review, uses hashed/public-safe outputs, applies review flags, and uses diversity filtering so the final list is not just many near-duplicates of the same sequence neighborhood.
+The shortlist step keeps the output small enough to inspect. It keeps existing records for expert review, uses hashed/public-safe outputs, applies review flags, and uses diversity filtering so the final list is not just many near-duplicates from the same sequence neighborhood.
 
 ## Main Results
 
