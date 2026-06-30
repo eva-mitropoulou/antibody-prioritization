@@ -100,8 +100,6 @@ Calibration and threshold analysis were used after model selection. The threshol
   <img src="docs/assets/selected_model_robustness.png" alt="Selected model robustness and threshold 0.7 review cutoff" width="100%">
 </p>
 
-The selected model is useful for review ranking, but the source/study holdout drop motivates conservative interpretation.
-
 ## Main Results
 
 The simple k mer model performed well on the curated labelled benchmark, but source holdout showed a clear drop, so the final outputs are treated as review lists rather than final biological labels.
