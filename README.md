@@ -39,15 +39,14 @@ The OAS analysis is kept separate from the model evaluation on labelled CoV-AbDa
 
 ## Model Benchmarking and Selection
 
-The main supervised benchmark compared sequence models on the strict labelled CoV AbDab table. The simplest model used amino acid k mer TF IDF features with logistic regression, while the pretrained model experiments tested antibody language model representations, including AbLang2 embeddings and IgBERT fine tuning.
+The main model comparison uses the high confidence labelled CoV AbDab table. The reference model uses TF-IDF features built from short amino acid sequence fragments with logistic regression. Pretrained comparison models use embeddings from antibody language models, including AbLang2, and IgBERT fine tuning.
 
-The first comparison showed that the whole pair k mer model and IgBERT fine tuning were close. The k mer model reached ROC AUC 0.7800 and PR AUC 0.8233, while the best single IgBERT fine tuning run reached ROC AUC 0.7695 and PR AUC 0.8317. IgBERT improved PR AUC slightly, but did not improve ROC AUC.
-
+The initial benchmark on the labelled dataset showed that the whole-pair k-mer model and IgBERT fine tuning were close. The k-mer model reached ROC AUC 0.7800 and PR AUC 0.8233, while the best single IgBERT fine tuning run reached ROC AUC 0.7695 and PR AUC 0.8317. IgBERT improved PR AUC slightly, but did not improve ROC AUC.
 <p align="center">
   <img src="docs/assets/broad_model_benchmark.png" alt="Broad model benchmark on the full strict labelled dataset" width="100%">
 </p>
 
-This same-subset benchmark shows why the first comparison was close, but not a clear win for IgBERT on both primary metrics.
+The benchmark using the same records and split showed that IgBERT was not a clear winner over the whole-pair k-mer model: it slightly improved PR AUC, but not ROC AUC.
 
 Because this was not a clear win, I ran additional checks instead of selecting the fine-tuned IgBERT model from one strong run. A five seed IgBERT fine tuning check gave lower mean performance, with ROC AUC 0.7443 and PR AUC 0.8151. Later IgBERT variants also did not consistently improve over the k mer baseline.
 
