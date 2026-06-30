@@ -19,11 +19,11 @@ This project builds an antibody sequence ML pipeline using public SARS-CoV-2 ant
   <img src="docs/assets/project_workflow.png" alt="Project workflow from public antibody rows to model validation and review outputs" width="100%">
 </p>
 
-The project starts with CoV AbDab SARS CoV 2 entries: heavy/VHH and light chain sequences are cleaned, missing placeholders are standardised, amino acid strings are checked, and each record is linked to its source and target region metadata when available.
+The project starts with CoV AbDab SARS CoV 2 entries: heavy/VHH single-domain antibody and light chain sequences are cleaned, missing values are standardised into one consistant format, amino acid strings are checked, and each record is linked to its source and target region metadata, such as antigen or epitope region, when available.
 
 Neutralisation labels are taken directly from the public record fields. Records reported as neutralising against SARS CoV 2 form the positive class, records reported as not neutralising form the negative class, and conflicting records are kept separate rather than forced into the supervised benchmark.
 
-After curation, the data is organised into working tables. The strict labelled table is used for model benchmarking, grouped validation, source holdout, calibration, and model selection. The broader prepared table keeps records with missing or conflicting labels so they can still be scored and reviewed. A paired annotated subset is used separately for CDR and region based comparisons.
+After curation, the data is organised into model-ready datasets. The clearly labelled dataset is used for model benchmarking, grouped validation, source holdout, calibration, and model selection. The broader dataset that including rows with missing values or conflicting labels is kept so that its sequences so  can still be scored and reviewed as unlabelled canditates.A subset with paired heavy/light chains and marked CDR1, CDR2, and CDR3 sequence positions is used separately to compare sequences using only those marked CDR segments.
 
 | Table | Rows | Used for |
 |---|---:|---|
