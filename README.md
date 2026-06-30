@@ -54,13 +54,10 @@ Because this was not a clear improvement, I did not select IgBERT based on its b
   <img src="docs/assets/kmer_vs_igbert_followup.png" alt="K-mer and IgBERT follow-up model comparison" width="100%">
 </p>
 
-The seed-averaged follow-up supports retaining the k mer model rather than selecting the fine-tuned IgBERT model from one strong run.
 
-The final broad scorer was therefore the whole pair k mer model. It was retained because it performed strongly on the full strict labelled dataset, remained simpler and easier to reproduce, and no same subset pretrained alternative clearly improved both primary metrics.
+After selecting the whole-pair k-mer model, I tested it with stricter validation checks. Grouped validation reduces leakage by making sure that closely related antibody sequences are not split between training and test data. Source and study holdout is stricter: it holds out whole publications or data sources to test whether the model still works on records from sources it did not see during training. Performance dropped under this harder test, with weighted ROC AUC 0.6095 and weighted PR AUC 0.6363.
 
-I then tested the selected model under stricter validation. Grouped validation reduced sequence family leakage, while source and study holdout tested whether performance survived publication level shifts. The source holdout result was lower, with weighted ROC AUC 0.6095 and weighted PR AUC 0.6363, so model scores are treated as ranking signals for review rather than final biological labels.
-
-Calibration and threshold analysis were used after model selection. The threshold 0.7 setting selected fewer records but with higher precision, making it useful for focused review lists. This is the score cutoff used to discuss high confidence review behaviour, not a claim that the score is a calibrated probability.
+After model selection, I checked how the model scores behave when different minimum score thresholds are used to build review lists. Using 0.7 as the threshold means that only records with a model score of 0.7 or higher are selected. This produced a smaller but higher precision set of records, making it useful for focused expert review. 
 
 <p align="center">
   <img src="docs/assets/selected_model_robustness.png" alt="Selected model robustness and threshold 0.7 review cutoff" width="100%">
